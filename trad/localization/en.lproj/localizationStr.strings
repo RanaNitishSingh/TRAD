@@ -1,0 +1,190 @@
+/* 
+  localizationStr.strings
+  trad
+
+  Created by Imac on 06/09/21.
+  
+*/
+
+"loginBtn" = "LOG IN";
+/* view controller screen*/
+"welcome" = "Welcome";
+"signIntoContinue" = "Sign in to continue";
+"forgotPassword" = "Forgot Password";
+
+/*------------------------------Choose Category screen*/
+"All" = "All";
+"Villa" = "Villa";
+"Land" = "Land";
+"Floor" = "Floor";
+"Apartment" = "Apartment";
+"Building" = "Building";
+"Esteraha" = "Esteraha";
+"Store" = "Store";
+"Farm" = "Farm";
+"Room" = "Room";
+"Office" = "Office";
+"Warehouse" = "Warehouse";
+"Furnished Apartment" = "Furnished Apartment";
+"Tent" = "Tent";
+
+
+/*------------------------------map screen*/
+"All Categories" = "All Categories";
+"Apartment for rent" = "Apartment for rent";
+"Villa for sale" = "Villa for sale";
+"Land for sale" = "Land for sale";
+"Villa for rent" = "Villa for rent";
+"Floor for rent" = "Floor for rent";
+"Floor for sale" = "Floor for sale";
+"Apartment for sale" ="Apartment for sale";
+"Building for sale" = "Building for sale";
+"Esteraha for rent" = "Esteraha for rent";
+"Esteraha for sale" = "Esteraha for sale";
+"Store for rent" = "Store for rent";
+"Farm for sale" = "Farm for sale";
+"Building for rent" = "Building for rent";
+"Land for rent" = "Land for rent";
+"Room for rent" = "Room for rent";
+"Office for rent" = "Office for rent";
+"Warehouse for rent" = "Warehouse for rent";
+"Furnished Apartment" = "Furnished Apartment";
+"Tent for rent" = "Tent for rent";
+"Tent for sale" = "Tent for sale";
+"Room for sale" = "Room for sale";
+"Office for sale" = "Office for sale";
+"Warehouse for sale" = "Warehouse for sale";
+"Furnished Apartment for sale" = "Furnished Apartment for sale";
+"Furnished Apartment for rent" = "Furnished Apartment for rent";
+"number of properties added by" = "number of properties added by";
+"Store for sale" = "Store for sale";
+"Fram for rent" = "Fram for rent";
+/*------------------------------upload screen*/
+"uploadImageBtn" = "Upload Image";
+"uploadVideoBtn" = "Upload Video";
+"newImageVideo" = "New image/Video";
+"continueBtn" = "Continue";
+"Are you Sure Do not Want To Upload images or Video" = "Are you Sure Do not Want To Upload images or Video";
+"Yes" = "Yes";
+"No" = "No";
+"  Street Width" = "  Street Width";
+
+
+/*------------------------------set filter screen*/
+"streetDirectionLbl" = "Street Direction";
+"North" = "North";
+"East" = "East";
+"West" = "West";
+"South" = "South";
+"Northeast" = "Northeast";
+"Southeast" = "Southeast";
+"southwest" = "southwest";
+"Northwest" = "Northwest";
+"3 streets" = "3 streets";
+"4 streets" = "4 streets";
+
+"singleBtn" = "Single";
+"familyBtn" = "Family";
+"dailyBtn" = "Daily";
+"monthlyBtn" = "Monthly";
+"yearlyBtn" = "Yearly";
+
+
+"Family" = "Family";
+"Single" = "Single";
+"Daily" = "Daily";
+"Monthly" = "Monthly";
+"Yearly" = "Yearly";
+"Residential" = "Residential";
+"Commercial" = "Commercial";
+"Both" = "Both";
+
+"UsersType" = "UsersType";
+"UsersAdmin" = "UsersAdmin";
+"UsersName" = "UsersName";
+
+
+"Less than a year" = "Less than a year";
+"1 year" = "1 year";
+"2 year" = "2 year";
+"3 year" = "3 year";
+"4 year" = "4 year";
+"5 year" = "5 year";
+"6 year" = "6 year";
+"7 year" = "7 year";
+"8 year" = "8 year";
+"9 year" = "9 year";
+"10 year" = "10 year";
+"11 year" = "11 year";
+"12 year" = "12 year";
+"13 year" = "13 year";
+"14 year" = "14 year";
+"15 year" = "15 year";
+"16 year" = "16 year";
+"17 year" = "17 year";
+"18 year" = "18 year";
+"19 year" = "19 year";
+"20 year" = "20 year";
+"21 year" = "21 year";
+"22 year" = "22 year";
+"23 year" = "23 year";
+"24 year" = "24 year";
+"25 year" = "25 year";
+"26 year" = "26 year";
+"27 year" = "27 year";
+"28 year" = "28 year";
+"29 year" = "29 year";
+"30 year" = "30 year";
+"31 year" = "31 year";
+"32 year" = "32 year";
+"33 year" = "33 year";
+"34 year" = "34 year";
+"35+ year" = "35+ year";
+
+"Ground floor" = "Ground floor";
+"Upper ground" = "Upper ground";
+
+"OK" = "OK";
+"Please enter # of bed rooms" = "Please enter # of bed rooms";
+"Please enter Street Direction" = "Please enter Street Direction";
+"Please enter # of bath rooms" = "Please enter # of bath rooms";
+"Please enter age" = "Please enter age";
+"Please enter bed rooms" = "Please enter bed rooms";
+"Please enter Duration" = "Please enter Duration";
+
+
+/*------------------------------add info screen*/
+"Please Enter Rent" = "Please Enter Rent";
+"Please Enter sale Price" = "Please Enter sale Price";
+"Please select Rent or Sale" = "Please select Rent or Sale";
+"Please try again" = "Please try again";
+"List for Sale And Rent Has been Submitted" = "List for Sale And Rent Has been Submitted";
+"List for Sale Has been Submitted" = "List for Sale Has been Submitted";
+"List for Rent Has been Submitted" = "List for Rent Has been Submitted";
+
+"Zcd-sQ-4ee.title" = "Search";
+"Images" = "Images";
+"Videos" = "Videos";
+ /*------------showHide screen-----*/
+
+"List Updated" = "List Updated";
+"User" = "User";
+ " m² " = " m² ";
+
+" m " = " m ";
+"Res. & Comm." = "Res. & Comm.";
+"Submitted By" = "Submitted By";
+"SAR" = "SAR";
+"Commercial&Residential" = "Commercial&Residential";
+"New" = "New";
+"added new property for sale and for rent" = "added new property for sale and for rent";
+"added new property for sale" = "added new property for sale";
+"added new property for rent" = "added new property for rent";
+"Logout" = "Logout";
+"Number of properties Added By" = "Number of properties added by";
+"Property Source" = "Property Source";
+"Agent" = "Agent";
+"Owner" = "Owner";
+"Government" = "Government";
+"min" = "min";
+"max" = "max";

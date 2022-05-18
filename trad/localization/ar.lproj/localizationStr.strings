@@ -1,0 +1,197 @@
+/*
+ localizationStr.strings
+ trad
+ 
+ Created by Imac on 06/09/21.
+ 
+ */
+/*------------------------------login screen*/
+"loginBtn" = "تسجيل الدخول";
+
+"welcome" = "مرحبا";
+"signIntoContinue" = "تسجيل الدخول";
+"forgotPassword" = "نسيت كلمة السر";
+"Villa" = "فيلا";
+
+/*------------------------------Choose Category screen*/
+"All" = "الكل";
+"Villa" = "فيلا";
+"Land" = "أرض";
+"Floor" = "دور";
+"Apartment" = "شقة";
+"Building" = "عمارة";
+"Esteraha" = "استراحة";
+"Store" = "محل";
+"Farm" = "مزرعة";
+"Room" = "غرفة";
+"Office" = "مكتب";
+"Warehouse" = "مستودع";
+"Furnished Apartment" = "شقة مفروشة";
+"Tent" = "مخيم";
+
+/*------------------------------map screen*/
+"All Categories" = "الكل";
+"Apartment for rent" = "شقة للايجار";
+"Villa for sale" = "فيلا للبيع";
+"Land for sale" = "أرض للبيع";
+"Villa for rent" = "فيلا للايجار";
+"Floor for rent" = "دور للايجار";
+"Floor for sale" = "دور للبيع";
+"Apartment for sale" = "شقة للبيع";
+"Building for sale" = "عمارة للبيع";
+"Esteraha for rent" = "استراحة للايجار";
+"Esteraha for sale" = "استراحه للبيع";
+"Store for rent" = "محل للايجار";
+"Farm for sale" = "مزرعة للبيع";
+"Building for rent" = "عمارة للايجار";
+"Land for rent" = "ارض للايجار";
+"Room for rent" = "غرفة للايجار";
+"Office for rent" = "مكتب للايجار";
+"Warehouse for rent" = "مستودع للايجار";
+"Furnished Apartment" = "شقة مفروشة";
+"Tent for rent" = "مخيم للايجار";
+"Tent for sale" = "مخيم للبيع";
+"Room for sale" = "غرفة للبيع";
+"Office for sale" = "مكتب للبيع";
+"Warehouse for sale" = "مستودع للبيع";
+"Furnished Apartment for rent" = "شقة مفروشة للايجار";
+"Furnished Apartment for sale" = "شقة مفروشة للبيع";
+"Store for sale" = "محل للايجار";
+"Fram for rent" = "مزرعة للايجار";
+/*------------------------------upload screen*/
+"uploadImageBtn" = "صوره من الألبوم";
+"uploadVideoBtn" = "فيديو من الألبوم";
+"newImageVideo" = "صوره/فيديو جديد";
+"continueBtn" = "استمرار";
+"Are you Sure Do not Want To Upload images or Video" = "هل أنت متأكد من عدم رفع الصور؟";
+"Yes" = "نعم";
+"No" = "لا";
+"Street Width  " = " شارع عرض  ";
+/*------------------------------set filter screen*/
+"streetDirectionLbl" = "اتجاهات الطرق";
+"North" = "شمال";
+"East" = "شرق";
+"West" = "غرب";
+"South" = "جنوب";
+"Northeast" = "شمال شرقي";
+"Southeast" = "جنوب شرقي";
+"southwest" = "جنوب غربي";
+"Northwest" = "شمال غربي";
+"3 streets" = "ثلاثة شوارع";
+"4 streets" = "أربعة شوارع";
+
+"singleBtn" = "عزاب";
+"familyBtn" = "عائلة";
+"dailyBtn" = "يومي";
+"monthlyBtn" = "شهري";
+"yearlyBtn" = "سنوي";
+
+"Family" = "عائلة";
+"Single" = "عزاب";
+"Daily" = "يومي";
+"Monthly" = "شهري";
+"Yearly" = "سنوي";
+"Residential" = "سكني";
+"Commercial" = "تجاري";
+"Both" = "كلاهما";
+
+"UsersType" = "نوع المستخدم";
+"UsersAdmin" = "المستخدم المدير";
+"UsersName" = "اسم المستخدم";
+
+
+"Less than a year" = "أقل من سنه";
+"1 year" = "1 سنوات";
+"2 year" = "2 سنوات";
+"3 year" = "3 سنوات";
+"4 year" = "4 سنوات";
+"5 year" = "5 سنوات";
+"6 year" = "6 سنوات";
+"7 year" = "7 سنوات";
+"8 year" = "8 سنوات";
+"9 year" = "9 سنوات";
+"10 year" = "10 سنوات";
+"11 year" = "11 سنوات";
+"12 year" = "12 سنوات";
+"13 year" = "13 سنوات";
+"14 year" = "14 سنوات";
+"15 year" = "15 سنوات";
+"16 year" = "16 سنوات";
+"17 year" = "17 سنوات";
+"18 year" = "18 سنوات";
+"19 year" = "19 سنوات";
+"20 year" = "20 سنوات";
+"21 year" = "21 سنوات";
+"22 year" = "22 سنوات";
+"23 year" = "23 سنوات";
+"24 year" = "24 سنوات";
+"25 year" = "25 سنوات";
+"26 year" = "26 سنوات";
+"27 year" = "27 سنوات";
+"28 year" = "28 سنوات";
+"29 year" = "29 سنوات";
+"30 year" = "30 سنوات";
+"31 year" = "31 سنوات";
+"32 year" = "32 سنوات";
+"33 year" = "33 سنوات";
+"34 year" = "34 سنوات";
+"35+ year" = "35+ سنوات";
+
+"Ground floor" = "دور أرضي (0)";
+"Upper ground" = "دور علوي (1)";
+
+"OK" = "استمرار";
+"Please enter # of bed rooms" = "الرجاء ادخال عدد غرف النوم";
+"Please enter Street Direction" = "الرجاء ادخل اتجاه الطريق";
+"Please enter # of bath rooms" = "الرجاء ادخال عدد دورات المياه";
+"Please enter age" = "الرجاء ادخال عمر العقار";
+"Please enter bed rooms" = "الرجاء ادخال غرف النوم";
+"Please enter Duration" = ""; ///////////////////////////////////////////////////////////////////////
+
+
+/*------------------------------add info screen*/
+"Please Enter Rent" = "الرجاء ادخال الاجار";
+"Please Enter sale Price" = "الرجاء ادخال سعر البيع";
+"Please select Rent or Sale" = "الرجاء اختيار أجار أم بيع";
+"Please try again" = "الرجاء المحاولة مره اخرى";
+"List for Sale And Rent Has been Submitted" = "تم رفع العقار بنجاح";
+"List for Sale Has been Submitted" = "تم رفع العقار بنجاح";
+"List for Rent Has been Submitted" = "تم رفع الاعلان";
+
+"Zcd-sQ-4ee.title" = "بحث";
+"Images" = "صور";
+"Videos" = "فيديو";
+
+
+/*------------------------------User's Screen*/
+"UserName" = "اسم االمستخدم";
+"Password" = "الرقم السري";
+"Email" = "بريد الالكتروني";
+"Admin" = "مشرف";
+"Users" = "المستخدمون";
+"User" = "المستخدمون";
+"User Type" = "نوع المستخدم";
+"Add User" = "إضافة مستخدم";
+
+/*------------showHide screen-----*/
+
+"List Updated" = "تم تحديث قائمتي";
+" m² " = " م² ";
+" m " = " م ";
+
+"Res. & Comm." = "تجاري و سكني";
+"Submitted By" = "الاعلان بواسطة";
+"SAR" = "ر.س";
+"Commercial&Residential" = "تجاري و سكني";
+"New" = "جديد";
+"added new property for sale and for rent" = "اضاف عقار جديد للبيع و للأجار";
+"added new property for sale" = "اضاف عقار جديد للبيع";
+"added new property for rent" = "اضاف عقار جديد للبيع و للأجار";
+"Logout" = "تسجيل الخروج";
+"Number of properties Added By" = "احصائيات: اجمالي عدد عروض";
+"Property Source" = "موثوقية الاعلان";
+"Agent" = "صفر";
+"Owner" = "واحد";
+"Government" = "اثنين";
+"min" = "دقيقة";
+"max" = "الأعلى";

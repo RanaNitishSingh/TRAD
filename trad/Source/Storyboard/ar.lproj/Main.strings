@@ -1,0 +1,792 @@
+
+/* Class = "UILabel"; text = "Plate no."; ObjectID = "05G-OO-18E"; */
+"05G-OO-18E.text" = "رقم اللوحة";
+
+/* Class = "UILabel"; text = "Plate no."; ObjectID = "0Dz-iS-cGl"; */
+"0Dz-iS-cGl.text" = "رقم اللوحة";
+
+/* Class = "UILabel"; text = "Playground?"; ObjectID = "06i-1A-l0r"; */
+"06i-1A-l0r.text" = "مساحة للعب";
+
+/* Class = "UILabel"; text = "Set add information"; ObjectID = "07h-Do-R4S"; */
+"07h-Do-R4S.text" = "تعيين إضافة المعلومات";
+
+/* Class = "UIButton"; normalTitle = "Daily"; ObjectID = "0W4-In-YCd"; */
+"0W4-In-YCd.normalTitle" = "يومي";
+
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "6RC-kH-ODS"; */
+"6RC-kH-ODS.normalTitle" = "تسجيل الخروج";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "0n8-4g-co7"; */
+"0n8-4g-co7.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Property Source"; ObjectID = "KBT-Ie-l8r"; */
+"KBT-Ie-l8r.text" = "موثوقية الاعلان";
+
+/* Class = "UILabel"; text = "Property Source"; ObjectID = "46Z-rh-JKA"; */
+"46Z-rh-JKA.text" = "موثوقية الاعلان";
+
+/* Class = "UILabel"; text = "Price Range"; ObjectID = "7YJ-pS-RtF"; */
+"7YJ-pS-RtF.text" = "تحديد السعر";
+
+/* Class = "UILabel"; text = "Size Range"; ObjectID = "AYn-AV-sCZ"; */
+"AYn-AV-sCZ.text" = "تحديد المساحة";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "0nQ-j4-liK"; */
+"0nQ-j4-liK.text" = "150 m² ";
+
+/* Class = "UIButton"; normalTitle = "Family"; ObjectID = "0tE-l2-4hp"; */
+"0tE-l2-4hp.normalTitle" = "عائلة";
+
+/* Class = "UILabel"; text = "CreatedDate"; ObjectID = "1De-Hr-qb4"; */
+"1De-Hr-qb4.text" = "تاريخ الإنشاء";
+
+/* Class = "UILabel"; text = "Total price"; ObjectID = "1NN-hm-2am"; */
+"1NN-hm-2am.text" = "المجموع";
+
+/* Class = "UILabel"; text = "Purpose"; ObjectID = "1e2-ha-OVT"; */
+"1e2-ha-OVT.text" = "تجاري أم سكني";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "1je-Uv-5g0"; */
+"1je-Uv-5g0.normalTitle" = "استمرار";
+
+/* Class = "UILabel"; text = "Total price "; ObjectID = "2EP-F3-ypc"; */
+"2EP-F3-ypc.text" = "المجموع";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "2tr-he-A2d"; */
+"2tr-he-A2d.text" = "150 m² ";
+
+/* Class = "UIButton"; normalTitle = "New image/video\n"; ObjectID = "3Km-dO-Ie3"; */
+"3Km-dO-Ie3.normalTitle" = "صوره/فيديو جديد";
+
+/* Class = "UIButton"; normalTitle = "Search"; ObjectID = "G38-2W-Wo9"; */
+"G38-2W-Wo9.normalTitle" = "بحث";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "3dO-86-bRo"; */
+"3dO-86-bRo.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "I agree to company's terms and ads fee "; ObjectID = "3ta-bB-ltr"; */
+"3ta-bB-ltr.text" = "أوافق على شروط الشركة ورسوم الإعلانات ";
+
+/* Class = "UILabel"; text = "For Sale"; ObjectID = "4EV-Wh-LLx"; */
+"4EV-Wh-LLx.text" = "للبيع";
+
+/* Class = "UIButton"; normalTitle = "Sale"; ObjectID = "4Ka-F0-Ouu"; */
+"4Ka-F0-Ouu.normalTitle" = "بيع";
+
+/* Class = "UIButton"; normalTitle = "Sale"; ObjectID = "kDG-1D-1ty"; */
+"kDG-1D-1ty.normalTitle" = "بيع";
+
+/* Class = "UIButton"; normalTitle = "Single"; ObjectID = "4ef-Hg-75I"; */
+"4ef-Hg-75I.normalTitle" = "عزاب";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "4fG-ag-1xd"; */
+"4fG-ag-1xd.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Extra Unit"; ObjectID = "4hP-Ec-ekA"; */
+"4hP-Ec-ekA.text" = "وحدة اضافية";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "4v2-Pz-Lx3"; */
+"4v2-Pz-Lx3.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Submitted By"; ObjectID = "Ooa-FU-EPG"; */
+"Ooa-FU-EPG.text" = "الاعلان بواسطة";
+
+/* Class = "UIButton"; normalTitle = "Res. & Comm."; ObjectID = "5a4-FF-8H6"; */
+"5a4-FF-8H6.normalTitle" = "تجاري و سكني";
+
+/* Class = "UILabel"; text = "North"; ObjectID = "5bs-b5-RCz"; */
+"5bs-b5-RCz.text" = "شمال";
+
+/* Class = "UIButton"; normalTitle = "Images"; ObjectID = "5iU-5G-mU8"; */
+"5iU-5G-mU8.normalTitle" = "صور";
+
+/* Class = "UIButton"; normalTitle = "Request property"; ObjectID = "5xU-Ml-qwf"; */
+"5xU-Ml-qwf.normalTitle" = "طلب عقار";
+
+/* Class = "UILabel"; text = "Rent price"; ObjectID = "62W-uM-PdY"; */
+"62W-uM-PdY.text" = "سعر الايجار";
+
+/* Class = "UITextField"; placeholder = "Type here"; ObjectID = "6FU-Pp-hAr"; */
+"6FU-Pp-hAr.placeholder" = "اكتب هنا";
+
+/* Class = "UILabel"; text = "Villa"; ObjectID = "6U8-ND-n5U"; */
+"6U8-ND-n5U.text" = "فيلا";
+
+/* Class = "UILabel"; text = "Basement?"; ObjectID = "6Xa-wP-XbU"; */
+"6Xa-wP-XbU.text" = "بدروم";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "6bn-NA-F7h"; */
+"6bn-NA-F7h.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "73f-rL-GJT"; */
+"73f-rL-GJT.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Set add information"; ObjectID = "7Sh-4d-3Bk"; */
+"7Sh-4d-3Bk.text" = "تعيين إضافة المعلومات";
+
+/* Class = "UILabel"; text = "Size (m)"; ObjectID = "7ZV-LF-f4e"; */
+"7ZV-LF-f4e.text" = "مساحه (م)";
+
+/* Class = "UILabel"; text = "contact Info"; ObjectID = "7c7-2Q-sR7"; */
+"7c7-2Q-sR7.text" = "ارقام التواصل";
+
+/* Class = "UILabel"; text = "Football space?"; ObjectID = "7mI-kz-Z2M"; */
+"7mI-kz-Z2M.text" = "ملعب كرة قدم";
+
+/* Class = "UILabel"; text = "Extra details."; ObjectID = "7og-iv-Enk"; */
+"7og-iv-Enk.text" = "تفاصيل اخرى";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "891-au-j6i"; */
+"891-au-j6i.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Pool"; ObjectID = "8Cr-Yi-ZeH"; */
+"8Cr-Yi-ZeH.text" = "مسبح";
+
+/* Class = "UILabel"; text = "10,000,000 SAR"; ObjectID = "8Uq-90-F37"; */
+"8Uq-90-F37.text" = "10,000,000 SAR";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "8Wg-u2-RVZ"; */
+"8Wg-u2-RVZ.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Football"; ObjectID = "8g6-bu-xZD"; */
+"8g6-bu-xZD.text" = "كرة القدم";
+
+/* Class = "UILabel"; text = "eet Width"; ObjectID = "8iB-VV-ZCP"; */
+"8iB-VV-ZCP.text" = "عرض الشارع";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "8pM-FZ-JQq"; */
+"8pM-FZ-JQq.text" = "150 m² ";
+
+/* Class = "UITextField"; placeholder = "Type here"; ObjectID = "9G0-lp-vpc"; */
+"9G0-lp-vpc.placeholder" = "اكتب هنا";
+
+/* Class = "UISearchBar"; placeholder = "Choose Location"; ObjectID = "9za-We-Ntb"; */
+"9za-We-Ntb.placeholder" = "اختر الموقع";
+
+/* Class = "UILabel"; text = "Level"; ObjectID = "ATd-LP-7Jh"; */
+"ATd-LP-7Jh.text" = "رقم الدور";
+
+/* Class = "UILabel"; text = "2 days ago ⏰"; ObjectID = "Ab3-EP-Xqx"; */
+"Ab3-EP-Xqx.text" = "2 منذ أيام ⏰";
+
+/* Class = "UILabel"; text = "Duplex"; ObjectID = "Aem-g1-VMw"; */
+"Aem-g1-VMw.text" = "دوبلكس";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "Ahh-V8-7e7"; */
+"Ahh-V8-7e7.normalTitle" = "استمرار";
+
+/* Class = "UIButton"; normalTitle = "Upload Video"; ObjectID = "AkG-mX-hQj"; */
+"AkG-mX-hQj.normalTitle" = "رفع فيديو";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "Arm-u7-la5"; */
+"Arm-u7-la5.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Maid Room"; ObjectID = "AvA-wM-FZm"; */
+"AvA-wM-FZm.text" = "غرفة خادمه";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "AzF-XJ-z7h"; */
+"AzF-XJ-z7h.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "bathrooms"; ObjectID = "B3c-gx-P58"; */
+"B3c-gx-P58.text" = "حمام";
+
+/* Class = "UILabel"; text = "# of wells"; ObjectID = "BYi-W6-Ji2"; */
+"BYi-W6-Ji2.text" = "عدد الابار";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "CNd-Iy-ndb"; */
+"CNd-Iy-ndb.normalTitle" = "استمرار";
+
+/* Class = "UILabel"; text = "Car entrance?"; ObjectID = "Chl-EP-bNX"; */
+"Chl-EP-bNX.text" = "مدخل سياره";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "DZr-Zf-lBd"; */
+"DZr-Zf-lBd.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Extra"; ObjectID = "Dan-3C-HKM"; */
+"Dan-3C-HKM.text" = "اخرى";
+
+/* Class = "UITabBarItem"; title = "Add"; ObjectID = "E44-i3-3c5"; */
+"E44-i3-3c5.title" = "اضافة";
+
+/* Class = "UITabBarItem"; title = "My Properties"; ObjectID = "dtY-Wg-i51"; */
+"dtY-Wg-i51.title" = "قائمتي";
+
+/* Class = "UITabBarItem"; title = "Search"; ObjectID = "VqT-Uw-QXl"; */
+"VqT-Uw-QXl.title" = "بحث";
+
+
+/* Class = "UITabBarItem"; title = "User's"; ObjectID = "zf5-Go-bNw"; */
+"zf5-Go-bNw.title" = "المستعمل";
+
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "ELM-ig-zQI"; */
+"ELM-ig-zQI.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "# of living rooms"; ObjectID = "ErQ-Yf-he8"; */
+"ErQ-Yf-he8.text" = "عدد غرف المعيشة";
+
+/* Class = "UILabel"; text = "PlayGround"; ObjectID = "F4c-76-U0N"; */
+"F4c-76-U0N.text" = "مساحة للعب";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "FfE-zS-N9M"; */
+"FfE-zS-N9M.text" = "0";
+
+/* Class = "UILabel"; text = "Driver Room"; ObjectID = "G9i-Ix-Tdq"; */
+"G9i-Ix-Tdq.text" = "غرفة سائق";
+
+/* Class = "UILabel"; text = "Size(m²)"; ObjectID = "GCa-WU-Tdi"; */
+"GCa-WU-Tdi.text" = "مساحه (م2)";
+
+/* Class = "UILabel"; text = "Set filter"; ObjectID = "Gt6-Wm-8k5"; */
+"Gt6-Wm-8k5.text" = "فلتر";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "GxA-2J-n4F"; */
+"GxA-2J-n4F.text" = "0";
+
+/* Class = "UITextField"; placeholder = "Type here"; ObjectID = "Gye-HA-L37"; */
+"Gye-HA-L37.placeholder" = "اكتب هنا";
+
+/* Class = "UILabel"; text = "Air Condition"; ObjectID = "H0z-3c-GIt"; */
+"H0z-3c-GIt.text" = "يوجد مكيفات";
+
+/* Class = "UILabel"; text = "Furnished?"; ObjectID = "H3M-CA-LKR"; */
+"H3M-CA-LKR.text" = "مفروشة";
+
+/* Class = "UILabel"; text = "Bedroom"; ObjectID = "Hew-s0-CcR"; */
+"Hew-s0-CcR.text" = "غرفة نوم";
+
+/* Class = "UITextField"; placeholder = "Type here"; ObjectID = "HqY-ZK-OqE"; */
+"HqY-ZK-OqE.placeholder" = "اكتب هنا";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "HxZ-CL-OIE"; */
+"HxZ-CL-OIE.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "I1D-Hb-INF"; */
+"I1D-Hb-INF.text" = "150 m² ";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "I7R-TE-81G"; */
+"I7R-TE-81G.normalTitle" = "استمرار";
+
+/* Class = "UILabel"; text = "Vollyball"; ObjectID = "Ilr-qw-jmh"; */
+"Ilr-qw-jmh.text" = "الكرة الطائرة";
+
+/* Class = "UILabel"; text = "Kitchen?"; ObjectID = "Ipd-Eu-Bf4"; */
+"Ipd-Eu-Bf4.text" = "مطبخ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Ito-d0-XoR"; */
+"Ito-d0-XoR.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Tent"; ObjectID = "JQ5-2I-yGt"; */
+"JQ5-2I-yGt.text" = "خيمة";
+
+/* Class = "UILabel"; text = "Stores"; ObjectID = "Joq-jd-3iD"; */
+"Joq-jd-3iD.text" = "المتاجر";
+
+/* Class = "UILabel"; text = "Extra space"; ObjectID = "Juf-cG-qbn"; */
+"Juf-cG-qbn.text" = "مساحة اضافية";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "JxE-UQ-V1k"; */
+"JxE-UQ-V1k.text" = "0";
+
+/* Class = "UILabel"; text = "Extra space"; ObjectID = "K6D-sX-j1N"; */
+"K6D-sX-j1N.text" = "مساحة إضافية";
+
+/* Class = "UILabel"; text = "Tent?"; ObjectID = "Kfe-gr-hv9"; */
+"Kfe-gr-hv9.text" = "بيت شعر";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "KlP-Lt-5Lv"; */
+"KlP-Lt-5Lv.normalTitle" = "تسجيل الدخول";
+
+/* Class = "UILabel"; text = "For Rent"; ObjectID = "LMG-s5-Wxs"; */
+"LMG-s5-Wxs.text" = "للإيجار";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "Lin-L8-8JV"; */
+"Lin-L8-8JV.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Lift?"; ObjectID = "Luw-Ee-FA9"; */
+"Luw-Ee-FA9.text" = "مصعد";
+
+/* Class = "UILabel"; text = "# of bed rooms"; ObjectID = "NPa-ze-uM8"; */
+"NPa-ze-uM8.text" = "عدد غرف النوم";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "NY0-Vq-Ea2"; */
+"NY0-Vq-Ea2.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Welcome"; ObjectID = "Na8-wS-iVT"; */
+"Na8-wS-iVT.text" = "مرحبا";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "Ngn-fx-W4V"; */
+"Ngn-fx-W4V.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "hello"; ObjectID = "O8f-YS-FUm"; */
+"O8f-YS-FUm.text" = "hello";
+
+/* Class = "UILabel"; text = "Total price "; ObjectID = "OEv-HI-QdC"; */
+"OEv-HI-QdC.text" = "المجموع";
+
+/* Class = "UITextField"; placeholder = "Type here"; ObjectID = "OGZ-bP-XCg"; */
+"OGZ-bP-XCg.placeholder" = "اكتب هنا";
+
+/* Class = "UILabel"; text = "Volleyball space?"; ObjectID = "OHW-nX-hee"; */
+"OHW-nX-hee.text" = "ملعب كرة طائرة";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "OZC-pm-JPK"; */
+"OZC-pm-JPK.text" = "الاصناف";
+
+/* Class = "UITextField"; placeholder = "Type here"; ObjectID = "OzI-qR-mR5"; */
+"OzI-qR-mR5.placeholder" = "اكتب هنا";
+
+/* Class = "UILabel"; text = "Contact info."; ObjectID = "PFa-7L-zqP"; */
+"PFa-7L-zqP.text" = "ارقام التواصل";
+
+/* Class = "UILabel"; text = "Contact info."; ObjectID = "Ps8-Sv-bMa"; */
+"Ps8-Sv-bMa.text" = "ارقام التواصل";
+
+/* Class = "UILabel"; text = "Age"; ObjectID = "PHj-9U-aO0"; */
+"PHj-9U-aO0.text" = "العمر";
+
+/* Class = "UILabel"; text = "house for rent "; ObjectID = "PLk-mx-Zga"; */
+"PLk-mx-Zga.text" = "بيت للإيجار ";
+
+/* Class = "UILabel"; text = "# of stores"; ObjectID = "Pi8-cV-072"; */
+"Pi8-cV-072.text" = "عدد المحلات";
+
+/* Class = "UISearchBar"; placeholder = "Search by Plate number"; ObjectID = "QJV-w9-3nm"; */
+"QJV-w9-3nm.placeholder" = "بحث بواسطة رقم اللوحة";
+
+/* Class = "UISearchBar"; placeholder = "Search by Plate number"; ObjectID = "t5b-yg-3I3"; */
+"t5b-yg-3I3.placeholder" = "بحث بواسطة رقم اللوحة";
+
+/* Class = "UILabel"; text = "# of apartments"; ObjectID = "QaX-4R-yQ4"; */
+"QaX-4R-yQ4.text" = "عدد الشقق";
+
+/* Class = "UILabel"; text = "Furnished"; ObjectID = "Qxk-iR-mjv"; */
+"Qxk-iR-mjv.text" = "مفروش";
+
+/* Class = "UILabel"; text = "Internal Strairs"; ObjectID = "R6v-eV-41p"; */
+"R6v-eV-41p.text" = "درج داخلي";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ROW-zo-nbW"; */
+"ROW-zo-nbW.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "ROn-Mf-XXn"; */
+"ROn-Mf-XXn.text" = "0";
+
+/* Class = "UILabel"; text = "livingrooms"; ObjectID = "RTq-0A-f3W"; */
+"RTq-0A-f3W.text" = "غرف المعيشة";
+
+/* Class = "UILabel"; text = "For Sale"; ObjectID = "Rv6-2d-zGd"; */
+"Rv6-2d-zGd.text" = "للبيع";
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "S0x-xe-62Y"; */
+"S0x-xe-62Y.text" = "نوع العقار";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "SQJ-0O-gfx"; */
+"SQJ-0O-gfx.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Extra details"; ObjectID = "SzT-gd-Gaf"; */
+"SzT-gd-Gaf.text" = "تفاصيل اخرى";
+
+/* Class = "UITextField"; placeholder = "Type here"; ObjectID = "T3X-yk-YIJ"; */
+"T3X-yk-YIJ.placeholder" = "اكتب هنا";
+
+/* Class = "UILabel"; text = "Total price "; ObjectID = "T80-u2-WaN"; */
+"T80-u2-WaN.text" = "المجموع";
+
+/* Class = "UILabel"; text = "# of bath rooms"; ObjectID = "TPU-v1-J3t"; */
+"TPU-v1-J3t.text" = "عدد الحمامات";
+
+/* Class = "UILabel"; text = "Age"; ObjectID = "ToF-8d-to1"; */
+"ToF-8d-to1.text" = "العمر";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "UMo-iK-Qz4"; */
+"UMo-iK-Qz4.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "house for rent | حي الرمال ، الرياض ، الرياض"; ObjectID = "UQF-G3-6i0"; */
+"UQF-G3-6i0.text" = "house for rent | حي الرمال ، الرياض ، الرياض";
+
+/* Class = "UILabel"; text = "singleorfamily"; ObjectID = "UZv-ta-gA8"; */
+"UZv-ta-gA8.text" = "عزاب أو عائلة";
+
+/* Class = "UILabel"; text = "Size(m²)"; ObjectID = "Uk1-pM-1q4"; */
+"Uk1-pM-1q4.text" = "مساحه (م2)";
+
+/* Class = "UILabel"; text = "2"; ObjectID = "VP0-iV-68q"; */
+"VP0-iV-68q.text" = "2";
+
+/* Class = "UILabel"; text = "Kitchen"; ObjectID = "Vwq-bw-q0B"; */
+"Vwq-bw-q0B.text" = "مطبخ";
+
+/* Class = "UILabel"; text = "Size (m² )"; ObjectID = "WJ2-VU-yKe"; */
+"WJ2-VU-yKe.text" = "مساحه (م2)";
+
+/* Class = "UILabel"; text = "Family section"; ObjectID = "WWK-DY-7zI"; */
+"WWK-DY-7zI.text" = "يوجد قسمين منفصلة";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "WuG-rA-s9A"; */
+"WuG-rA-s9A.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "bedrooms"; ObjectID = "XJx-1V-pQH"; */
+"XJx-1V-pQH.text" = "غرف النوم";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "XzU-Kt-sp9"; */
+"XzU-Kt-sp9.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Kitchen"; ObjectID = "YB3-gI-aHb"; */
+"YB3-gI-aHb.text" = "مطبخ";
+
+/* Class = "UILabel"; text = "10,000,000 SAR"; ObjectID = "YHF-lt-vt3"; */
+"YHF-lt-vt3.text" = "10,000,000 SAR";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "YbJ-2H-O1b"; */
+"YbJ-2H-O1b.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "Ye0-m4-zie"; */
+"Ye0-m4-zie.text" = "3";
+
+/* Class = "UILabel"; text = "Basement"; ObjectID = "YfK-fl-FaT"; */
+"YfK-fl-FaT.text" = "بدروم";
+
+/* Class = "UILabel"; text = "14 jun 2021 15:56:11"; ObjectID = "Yjc-Og-0VC"; */
+"Yjc-Og-0VC.text" = "14 jun 2021 15:56:11";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Yoc-aO-soi"; */
+"Yoc-aO-soi.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Apartment for rent"; ObjectID = "YuG-fe-xgp"; */
+"YuG-fe-xgp.text" = "شقة للإيجار";
+
+/* Class = "UILabel"; text = "📍 1000 m²  "; ObjectID = "Z82-QF-meD"; */
+"Z82-QF-meD.text" = "📍 1000 m²  ";
+
+/* Class = "UITabBarItem"; title = "Search"; ObjectID = "Zcd-sQ-4ee"; */
+"Zcd-sQ-4ee.title" = "بحث";
+
+/* Class = "UILabel"; text = "Upload Image and Video"; ObjectID = "aGV-xg-WN3"; */
+"aGV-xg-WN3.text" = "صورة - فيديو من الالبوم";
+
+/* Class = "UILabel"; text = "Internal stair?"; ObjectID = "aK0-Ry-Y8F"; */
+"aK0-Ry-Y8F.text" = "درج داخلي";
+
+/* Class = "UILabel"; text = "Pool?"; ObjectID = "aW2-tF-B7p"; */
+"aW2-tF-B7p.text" = "مسبح";
+
+/* Class = "UITextField"; placeholder = "Type here"; ObjectID = "aef-7H-8wF"; */
+"aef-7H-8wF.placeholder" = "اكتب هنا";
+
+/* Class = "UILabel"; text = "Choose Category"; ObjectID = "aoG-2V-QVi"; */
+"aoG-2V-QVi.text" = "اختر الاصناف";
+
+/* Class = "UILabel"; text = "Trees"; ObjectID = "avB-gF-lWa"; */
+"avB-gF-lWa.text" = "أشجار";
+
+/* Class = "UILabel"; text = "livingrooms"; ObjectID = "bCY-b4-7PE"; */
+"bCY-b4-7PE.text" = "غرف المعيشة";
+
+/* Class = "UILabel"; text = "Street Width"; ObjectID = "bF0-qO-VkL"; */
+"bF0-qO-VkL.text" = "عرض الشارع";
+
+/* Class = "UIButton"; normalTitle = "Rent"; ObjectID = "bVs-Nd-He2"; */
+"bVs-Nd-He2.normalTitle" = "تأجير";
+
+/* Class = "UIButton"; normalTitle = "Rent"; ObjectID = "umY-TX-0XF"; */
+"umY-TX-0XF.normalTitle" = "تأجير";
+
+/* Class = "UITextField"; placeholder = "Type here"; ObjectID = "bXr-tS-zFL"; */
+"bXr-tS-zFL.placeholder" = "اكتب هنا";
+
+/* Class = "UILabel"; text = "Extra"; ObjectID = "bZK-yS-YI4"; */
+"bZK-yS-YI4.text" = "اخرى";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "bej-eQ-Vhd"; */
+"bej-eQ-Vhd.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "btE-E2-V9V"; */
+"btE-E2-V9V.text" = "0";
+
+/* Class = "UILabel"; text = "Garage"; ObjectID = "cGo-l0-dH5"; */
+"cGo-l0-dH5.text" = "كراج";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "cJG-nh-BI0"; */
+"cJG-nh-BI0.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Price per meter"; ObjectID = "cJc-Ah-9R4"; */
+"cJc-Ah-9R4.text" = "سعر المتر";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "caA-ge-apX"; */
+"caA-ge-apX.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "coV-fq-oa4"; */
+"coV-fq-oa4.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Size (m² )"; ObjectID = "cxK-Vf-djc"; */
+"cxK-Vf-djc.text" = "مقاس (m² )";
+
+/* Class = "UIButton"; normalTitle = "Agent"; ObjectID = "d1P-xJ-mg5"; */
+"d1P-xJ-mg5.normalTitle" = "وكيلات";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "dqS-9a-mV2"; */
+"dqS-9a-mV2.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Duplex?"; ObjectID = "e9O-Ur-arf"; */
+"e9O-Ur-arf.text" = "دوبلكس";
+
+/* Class = "UILabel"; text = "Sign in to continue"; ObjectID = "eEB-s5-vM3"; */
+"eEB-s5-vM3.text" = "تسجيل الدخول";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "eH8-OM-Pfl"; */
+"eH8-OM-Pfl.placeholder" = "الرقم السري";
+
+/* Class = "UILabel"; text = "singleorfamily"; ObjectID = "eaQ-M8-wb3"; */
+"eaQ-M8-wb3.text" = "عزاب أو عائلة";
+
+/* Class = "UILabel"; text = "Forgot password?"; ObjectID = "ecA-HO-CgH"; */
+"ecA-HO-CgH.text" = "نسيت كلمة السر";
+
+/* Class = "UILabel"; text = "Apartment for rent"; ObjectID = "ecI-Nn-Ahh"; */
+"ecI-Nn-Ahh.text" = "شقة للإيجار";
+
+/* Class = "UILabel"; text = "Extra unit?"; ObjectID = "ecr-FL-s6E"; */
+"ecr-FL-s6E.text" = "وحدة اضافية";
+
+/* Class = "UILabel"; text = "4321"; ObjectID = "egk-Lc-Nu4"; */
+"egk-Lc-Nu4.text" = "4321";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "ehy-JP-Ivy"; */
+"ehy-JP-Ivy.normalTitle" = "استمرار";
+
+/* Class = "UITextField"; placeholder = "Type here"; ObjectID = "f0U-7z-WRt"; */
+"f0U-7z-WRt.placeholder" = "اكتب هنا";
+
+/* Class = "UIButton"; normalTitle = "Upload Image"; ObjectID = "fKW-lt-OAb"; */
+"fKW-lt-OAb.normalTitle" = "صوره من الألبوم";
+
+/* Class = "UILabel"; text = "Extra space?"; ObjectID = "g71-x9-nMH"; */
+"g71-x9-nMH.text" = "ساحة إضافية";
+
+/* Class = "UILabel"; text = "Adding a video to your listing will raise the priority of your listing, in order to achieve social distancing"; ObjectID = "gAE-sJ-mBb"; */
+"gAE-sJ-mBb.text" = "ارفاق صورة أو فيديو يرفع من مشاهدة الإعلان";
+
+/* Class = "UILabel"; text = "photos(0)"; ObjectID = "gIR-n9-SXu"; */
+"gIR-n9-SXu.text" = "الصور(0)";
+
+/* Class = "UITextField"; placeholder = "Enter here"; ObjectID = "gLZ-78-UVH"; */
+"gLZ-78-UVH.placeholder" = "أدخل هنا";
+
+/* Class = "UILabel"; text = "Driver room?"; ObjectID = "gpk-oG-K7f"; */
+"gpk-oG-K7f.text" = "غرفة سائق";
+
+/* Class = "UILabel"; text = "purpose"; ObjectID = "gwf-Qx-mJu"; */
+"gwf-Qx-mJu.text" = "تجاري أم سكني";
+
+/* Class = "UILabel"; text = "Lift"; ObjectID = "h04-01-cAx"; */
+"h04-01-cAx.text" = "مصعد";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "h3u-9z-Pkf"; */
+"h3u-9z-Pkf.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Location & Nearby Services"; ObjectID = "h9p-yn-clv"; */
+"h9p-yn-clv.text" = "خدمات الموقع والجوار";
+
+/* Class = "UILabel"; text = "# of rooms"; ObjectID = "hQa-kt-rN0"; */
+"hQa-kt-rN0.text" = "عدد غرف النوم";
+
+/* Class = "UITextField"; placeholder = "Type here"; ObjectID = "hm4-uc-BAq"; */
+"hm4-uc-BAq.placeholder" = "اكتب هنا";
+
+/* Class = "UILabel"; text = "Elevator"; ObjectID = "hpf-29-jvW"; */
+"hpf-29-jvW.text" = "مصعد";
+
+/* Class = "UIButton"; normalTitle = "Merketer"; ObjectID = "hzR-q0-25N"; */
+"hzR-q0-25N.normalTitle" = "ميركيتر";
+
+/* Class = "UILabel"; text = "15 m"; ObjectID = "iNu-wT-1YS"; */
+"iNu-wT-1YS.text" = "15 m";
+
+/* Class = "UILabel"; text = "Room"; ObjectID = "ic9-pk-ZUZ"; */
+"ic9-pk-ZUZ.text" = "غرفة";
+
+/* Class = "UILabel"; text = "Set add information"; ObjectID = "iyH-4l-GIe"; */
+"iyH-4l-GIe.text" = "تعيين إضافة المعلومات";
+
+/* Class = "UILabel"; text = "# of trees"; ObjectID = "j3p-gA-aSm"; */
+"j3p-gA-aSm.text" = "عدد الأشجار";
+
+/* Class = "UIButton"; normalTitle = "Commercial"; ObjectID = "jDx-t2-xbG"; */
+"jDx-t2-xbG.normalTitle" = "تجاري";
+
+/* Class = "UIButton"; normalTitle = "Yearly"; ObjectID = "kD2-uC-qeg"; */
+"kD2-uC-qeg.normalTitle" = "سنوي";
+
+/* Class = "UILabel"; text = "99%"; ObjectID = "l2z-5e-CDZ"; */
+"l2z-5e-CDZ.text" = "99%";
+
+/* Class = "UILabel"; text = "Value of total price"; ObjectID = "l35-5j-auH"; */
+"l35-5j-auH.text" = "قيمة السعر الإجمالي";
+
+/* Class = "UILabel"; text = "Street direction?"; ObjectID = "lCF-Tw-xC2"; */
+"lCF-Tw-xC2.text" = "اتجاه الشارع";
+
+/* Class = "UILabel"; text = "Office for rent"; ObjectID = "lW0-Ew-FKz"; */
+"lW0-Ew-FKz.text" = "مكتب للايجار";
+
+/* Class = "UILabel"; text = "Plate No."; ObjectID = "laZ-jI-CZi"; */
+"laZ-jI-CZi.text" = "رقم لوحة";
+
+/* Class = "UILabel"; text = "Duration"; ObjectID = "lsh-om-ZiF"; */
+"lsh-om-ZiF.text" = "مدة";
+
+/* Class = "UILabel"; text = "Maid room?"; ObjectID = "m8i-J1-4Io"; */
+"m8i-J1-4Io.text" = "غرفة خادمه";
+
+/* Class = "UILabel"; text = "appartments"; ObjectID = "mC6-Z9-JuJ"; */
+"mC6-Z9-JuJ.text" = "شقق سكنية";
+
+/* Class = "UIButton"; normalTitle = "Videos"; ObjectID = "mVG-al-S1S"; */
+"mVG-al-S1S.normalTitle" = "فيديو";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "mg9-cF-BJY"; */
+"mg9-cF-BJY.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Price per meter"; ObjectID = "nOK-k9-m4R"; */
+"nOK-k9-m4R.text" = "سعر المتر";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "nVi-eN-yoj"; */
+"nVi-eN-yoj.text" = "الاصناف";
+
+/* Class = "UILabel"; text = "Family section?"; ObjectID = "od8-eR-GJu"; */
+"od8-eR-GJu.text" = "يوجد قسمين منفصلة";
+
+/* Class = "UITextField"; placeholder = "Email or Mobile number"; ObjectID = "pik-dO-Bdg"; */
+"pik-dO-Bdg.placeholder" = "ادخل الايميل أو رقم الجوال";
+
+/* Class = "UILabel"; text = "Plate no."; ObjectID = "q13-Fa-N35"; */
+"q13-Fa-N35.text" = "رقم لوحة";
+
+/* Class = "UILabel"; text = "سقق للايجار الشهري بحي العسيلة بمكة المكرمة الدور الاول شارع ۲۰ قريبة من المحلات التجارية وحديقة لعسيلة مكونة من 4 غرف ومطبخ وصالة ودورتين مياه يوجد بها تأسيس مصعد سیتم ترکیبه قريبا\n"; ObjectID = "qBL-Li-5qd"; */
+"qBL-Li-5qd.text" = "سقق للايجار الشهري بحي العسيلة بمكة المكرمة الدور الاول شارع ۲۰ قريبة من المحلات التجارية وحديقة لعسيلة مكونة من 4 غرف ومطبخ وصالة ودورتين مياه يوجد بها تأسيس مصعد سیتم ترکیبه قريبا\n";
+
+/* Class = "UILabel"; text = "For Rent"; ObjectID = "qqf-Ip-sjU"; */
+"qqf-Ip-sjU.text" = "للإيجار";
+
+/* Class = "UILabel"; text = "Apartment for Rent "; ObjectID = "qrz-Tl-6Be"; */
+"qrz-Tl-6Be.text" = "شقة للإيجار ";
+
+/* Class = "UITextField"; placeholder = "Enter here"; ObjectID = "rAy-aB-8cr"; */
+"rAy-aB-8cr.placeholder" = "أدخل هنا";
+
+/* Class = "UITextField"; placeholder = "Type here"; ObjectID = "rau-jw-yeY"; */
+"rau-jw-yeY.placeholder" = "اكتب هنا";
+
+/* Class = "UILabel"; text = "Level"; ObjectID = "rfV-Xf-GGu"; */
+"rfV-Xf-GGu.text" = "رقم الدور";
+
+/* Class = "UIButton"; normalTitle = "Monthly"; ObjectID = "s7P-xR-YSy"; */
+"s7P-xR-YSy.normalTitle" = "شهري";
+
+/* Class = "UILabel"; text = "Wells"; ObjectID = "sQX-fe-2ut"; */
+"sQX-fe-2ut.text" = "آبار";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "sUt-Ik-bb9"; */
+"sUt-Ik-bb9.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Extra details."; ObjectID = "szH-lj-E8U"; */
+"szH-lj-E8U.text" = "تفاصيل اخرى";
+
+/* Class = "UILabel"; text = "شارع الشيخ حسن بن حسين بن علي ، حي الحمراء 4 الرياض ، الريا"; ObjectID = "t9a-sk-5DQ"; */
+"t9a-sk-5DQ.text" = "شارع الشيخ حسن بن حسين بن علي ، حي الحمراء 4 الرياض ، الريا";
+
+/* Class = "UILabel"; text = "25,000,000 SAR"; ObjectID = "tZg-hE-ttm"; */
+"tZg-hE-ttm.text" = "25,000,000 SAR";
+
+/* Class = "UILabel"; text = "Street Direction"; ObjectID = "ttW-Cx-Qdw"; */
+"ttW-Cx-Qdw.text" = "اتجاه الطريق";
+
+/* Class = "UILabel"; text = "Street direction"; ObjectID = "1ha-sS-RL9"; */
+"1ha-sS-RL9.text" = "اتجاه الطريق";
+
+/* Class = "UILabel"; text = "Selected Location"; ObjectID = "uFT-pK-J7c"; */
+"uFT-pK-J7c.text" = "الموقع المحدد";
+
+/* Class = "UILabel"; text = "createdDate"; ObjectID = "ua0-V4-MP2"; */
+"ua0-V4-MP2.text" = "تاريخ الإنشاء";
+
+/* Class = "UILabel"; text = "For Rent"; ObjectID = "udT-HC-A6J"; */
+"udT-HC-A6J.text" = "للإيجار";
+
+/* Class = "UILabel"; text = "For Rent"; ObjectID = "KGX-fM-MM9"; */
+"KGX-fM-MM9.text" = "مؤجر/مباع";
+
+/* Class = "UILabel"; text = "For Rent"; ObjectID = "K10-vg-gtW"; */
+"K10-vg-gtW.text" = "مؤجر/مباع";
+
+/* Class = "UILabel"; text = "Price per meter"; ObjectID = "uga-5h-Poh"; */
+"uga-5h-Poh.text" = "سعر المتر";
+
+/* Class = "UIButton"; normalTitle = "Residential"; ObjectID = "ulp-9D-SXu"; */
+"ulp-9D-SXu.normalTitle" = "سكني";
+
+/* Class = "UILabel"; text = "Rent price"; ObjectID = "v21-az-J0w"; */
+"v21-az-J0w.text" = "سعر الايجار";
+
+/* Class = "UILabel"; text = "Street width (m)"; ObjectID = "vaE-du-wKG"; */
+"vaE-du-wKG.text" = "عرض الشارع (m)";
+
+/* Class = "UILabel"; text = "Duration"; ObjectID = "vnr-Pf-ne1"; */
+"vnr-Pf-ne1.text" = "مدة";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "wMH-Zd-qHP"; */
+"wMH-Zd-qHP.normalTitle" = "استمرار";
+
+/* Class = "UIButton"; normalTitle = "Owner"; ObjectID = "x1E-id-eyL"; */
+"x1E-id-eyL.normalTitle" = "صاحب";
+
+/* Class = "UILabel"; text = "it is long established fact that a reader will be distracted by the readable content of a page when looking at its layout."; ObjectID = "xB5-ka-6Uf"; */
+"xB5-ka-6Uf.text" = "هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها";
+
+/* Class = "UITextField"; placeholder = "Type here"; ObjectID = "xCU-ev-wLe"; */
+"xCU-ev-wLe.placeholder" = "اكتب هنا";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "xK7-jc-xqd"; */
+"xK7-jc-xqd.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "appartments"; ObjectID = "xS3-mV-GEz"; */
+"xS3-mV-GEz.text" = "شقق سكنية";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "xU0-Do-d8m"; */
+"xU0-Do-d8m.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Rent price"; ObjectID = "xm8-V7-1YF"; */
+"xm8-V7-1YF.text" = "سعر الايجار";
+
+/* Class = "UILabel"; text = "Size(m²)"; ObjectID = "xoE-hv-xkh"; */
+"xoE-hv-xkh.text" = "مساحه (م2)";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "y5i-69-BHN"; */
+"y5i-69-BHN.text" = "0";
+
+/* Class = "UILabel"; text = "Car enterance"; ObjectID = "yE4-br-53X"; */
+"yE4-br-53X.text" = "مدخل السيارة";
+
+/* Class = "UILabel"; text = "Price per meter"; ObjectID = "yja-2F-epv"; */
+"yja-2F-epv.text" = "سعر المتر";
+
+/* Class = "UILabel"; text = "150 m² "; ObjectID = "z5f-Vf-Xnj"; */
+"z5f-Vf-Xnj.text" = "150 m² ";
+
+/* Class = "UILabel"; text = "Bathroom"; ObjectID = "zg9-dk-uNm"; */
+"zg9-dk-uNm.text" = "حمام";
+
+/* Class = "UILabel"; text = "Air Conditioner?"; ObjectID = "zwz-1q-fhG"; */
+"zwz-1q-fhG.text" = "يوجد مكيفات";
+
+/* Class = "UILabel"; text = "UsersName"; ObjectID = "Om0-J5-uoL"; */
+"Om0-J5-uoL.text" = "اسم المستخدم";
+
+/* Class = "UILabel"; text = "UsersType"; ObjectID = "HbO-pS-kIt"; */
+"HbO-pS-kIt.text" = "نوع المستخدم";
+
+/* Class = "UILabel"; text = "UsersAdmin"; ObjectID = "O2I-I4-47w"; */
+"O2I-I4-47w.text" = "المستخدم المدير";
+
