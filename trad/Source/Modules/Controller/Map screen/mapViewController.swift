@@ -44,7 +44,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     var toolBar = UIToolbar()
     var arrCategories = ["All Categories","Apartment for rent","Villa for sale","Land for sale","Villa for rent","Floor for rent","Floor for sale","Apartment for sale","Building for sale","Esteraha for rent","Esteraha for sale","Store for rent","Farm for sale","Building for rent","Land for rent","Room for rent","Room for sale","Office for rent","Office for sale","Warehouse for rent","Warehouse for sale", "Furnished Apartment for sale","Furnished Apartment for rent","Tent for rent", "Tent for sale"]
     
-   //var droplist = ["Owner","Agent","Government"]
+    //var droplist = ["Owner","Agent","Government"]
     var droplist = [" ","0","1","2"]
     var valueDropDown = ""
     var tappedmarker : GMSMarker?
@@ -54,7 +54,6 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     var distanceInMeters : CLLocationDistance?
     var  adminUid = ""
     var  userUid = ""
-    
     
     //MARK:- View life cycle functions
     override func viewDidLoad() {
@@ -102,38 +101,36 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-            dropDownSearchView.isHidden = true
-       
+        dropDownSearchView.isHidden = true
     }
-
+    
     @objc func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    
     @IBAction func ActionPropertySource(_ sender: Any) {
         if pickerView.isHidden {
-        pickerView.isHidden = false
-        pickerView = UIPickerView.init()
-        self.pickerView.dataSource = self
-        self.pickerView.delegate = self
-        pickerView.backgroundColor = UIColor.white
-        pickerView.setValue(UIColor.black, forKey: "textColor")
-        pickerView.autoresizingMask = .flexibleWidth
-        pickerView.contentMode = .center
-        pickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
-        self.view.addSubview(pickerView)
-      
-        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
-        self.view.addSubview(toolBar)
+            pickerView.isHidden = false
+            pickerView = UIPickerView.init()
+            self.pickerView.dataSource = self
+            self.pickerView.delegate = self
+            pickerView.backgroundColor = UIColor.white
+            pickerView.setValue(UIColor.black, forKey: "textColor")
+            pickerView.autoresizingMask = .flexibleWidth
+            pickerView.contentMode = .center
+            pickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+            self.view.addSubview(pickerView)
+            
+            toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+            toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            self.view.addSubview(toolBar)
         }else if !pickerView.isHidden{
             toolBar.removeFromSuperview()
             pickerView.removeFromSuperview()
@@ -162,9 +159,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 self.properties = self.mainArrayProperties
             }
         }
-     
     }
-    
     
     @IBAction func searchPropertyAction(_ sender: Any) {
         self.getdata()
@@ -173,65 +168,61 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         let minSize = minSizeRange.text ?? ""
         let maxSize = maxSizeRange.text ?? ""
         
-        
         if (self.minPriceRange.text == "" && self.maxPriceRange.text == "") && (self.minSizeRange.text == "" && self.maxSizeRange.text == "") && (propertySourceLbl.text != "")
         {
             for filteredProperty in properties {
                 if valueDropDown == filteredProperty.propertySource {
-                self.properties = self.mainArrayProperties.filter { data in
-                    return data.propertySource.contains("\(valueDropDown)")
-                }
+                    self.properties = self.mainArrayProperties.filter { data in
+                        return data.propertySource.contains("\(valueDropDown)")
+                    }
                     rangeArray.append(filteredProperty)
                 }
-                
-                
-                }
-          
+            }
         }
-       else if (self.minPriceRange.text != "" && self.maxPriceRange.text != "") && (self.minSizeRange.text != "" && self.maxSizeRange.text != "") && (propertySourceLbl.text != ""){
-                for filteredPrice in properties {
-                    let pricerange = filteredPrice.valueOftotalPrice
-                    if Int(pricerange) ?? 0 >= Int(minPrice) ?? 0 && Int(pricerange) ?? 0 <= Int(maxPrice) ?? 0 {
-                        print("pricerange \(pricerange)")
-                        let sizeRange = filteredPrice.valueOfsizeTextView
-                        if Int(sizeRange) ?? 0 >= Int(minSize) ?? 0 && Int(sizeRange) ?? 0 <= Int(maxSize) ?? 0 {
-                          print("sizeRange \(sizeRange)")
-                          rangeArray.append(filteredPrice)
-                        }
+        
+        else if (self.minPriceRange.text != "" && self.maxPriceRange.text != "") && (self.minSizeRange.text != "" && self.maxSizeRange.text != "") && (propertySourceLbl.text != ""){
+            for filteredPrice in properties {
+                let pricerange = filteredPrice.valueOftotalPrice
+                if Int(pricerange) ?? 0 >= Int(minPrice) ?? 0 && Int(pricerange) ?? 0 <= Int(maxPrice) ?? 0 {
+                    print("pricerange \(pricerange)")
+                    let sizeRange = filteredPrice.valueOfsizeTextView
+                    if Int(sizeRange) ?? 0 >= Int(minSize) ?? 0 && Int(sizeRange) ?? 0 <= Int(maxSize) ?? 0 {
+                        print("sizeRange \(sizeRange)")
+                        rangeArray.append(filteredPrice)
                     }
                 }
+            }
         }
-    
-       else if (self.minPriceRange.text != "" && self.maxPriceRange.text != "") && (self.minSizeRange.text == ""  && self.maxSizeRange.text == "") && (propertySourceLbl.text == ""){
-                for filteredPrice in properties {
-                    let pricerange = filteredPrice.valueOftotalPrice
-                    if Int(pricerange) ?? 0 >=  Int(minPrice) ?? 0 && Int(pricerange) ?? 0 <=  Int(maxPrice) ?? 0 {
-                      print("pricerange \(pricerange)")
-                       rangeArray.append(filteredPrice)
-                    }
+        
+        else if (self.minPriceRange.text != "" && self.maxPriceRange.text != "") && (self.minSizeRange.text == ""  && self.maxSizeRange.text == "") && (propertySourceLbl.text == ""){
+            for filteredPrice in properties {
+                let pricerange = filteredPrice.valueOftotalPrice
+                if Int(pricerange) ?? 0 >=  Int(minPrice) ?? 0 && Int(pricerange) ?? 0 <=  Int(maxPrice) ?? 0 {
+                    print("pricerange \(pricerange)")
+                    rangeArray.append(filteredPrice)
                 }
-          
-
-    }  else if (self.minPriceRange.text == "" && self.maxPriceRange.text == "") || (self.minSizeRange.text != "" && self.maxSizeRange.text != "") && (propertySourceLbl.text == "") {
-                for filteredSize in properties {
-                    let sizeRange = filteredSize.valueOfsizeTextView
-                    if Int(sizeRange) ?? 0 >=  Int(minSize) ?? 0 && Int(sizeRange) ?? 0 <=  Int(maxSize) ?? 0 {
-                        SizeRange = sizeRange
-                        print("sizeRange \(SizeRange)")
-                        rangeArray.append(filteredSize)
-                    }
+            }
+            
+        }  else if (self.minPriceRange.text == "" && self.maxPriceRange.text == "") || (self.minSizeRange.text != "" && self.maxSizeRange.text != "") && (propertySourceLbl.text == "") {
+            for filteredSize in properties {
+                let sizeRange = filteredSize.valueOfsizeTextView
+                if Int(sizeRange) ?? 0 >=  Int(minSize) ?? 0 && Int(sizeRange) ?? 0 <=  Int(maxSize) ?? 0 {
+                    SizeRange = sizeRange
+                    print("sizeRange \(SizeRange)")
+                    rangeArray.append(filteredSize)
                 }
-        print(rangeArray)
+            }
+            print(rangeArray)
         }
         self.showMarker_1()
         self.dropDownSearchView.isHidden = true
         UIView.animate(withDuration: 0.9, delay: 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-               self.dropDownSearchView.alpha = 1
-               self.dropDownSearchView.layoutIfNeeded()
-               }, completion: nil)
+            self.dropDownSearchView.alpha = 1
+            self.dropDownSearchView.layoutIfNeeded()
+        }, completion: nil)
         self.markerwindow = markerWindow().loadview()
     }
-  
+    
     @IBAction func showSearchViewAction(_ sender: Any) {
         mapView.clear()
         propertySourceLbl.text?.removeAll()
@@ -242,16 +233,16 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         self.rangeArray.removeAll()
         self.dropDownSearchView.isHidden = false
         UIView.animate(withDuration: 0.9, delay: 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
-               self.dropDownSearchView.alpha = 1
-               self.dropDownSearchView.layoutIfNeeded()
-               }, completion: nil)
+            self.dropDownSearchView.alpha = 1
+            self.dropDownSearchView.layoutIfNeeded()
+        }, completion: nil)
     }
     
     func UpdatedLanguage(){
         Helper().showUniversalLoadingView(true)
         let db = Firestore.firestore()
         db.collection("Users").getDocuments() { [self] (querySnapshot, err) in
-
+            
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -259,7 +250,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                     // 6
                     try? document.data(as: UserData.self)
                 } ?? []
-
+                
                 self.CountData = self.mainArrayData3
             }
         }
@@ -270,31 +261,28 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         
         let userID = Auth.auth().currentUser?.uid
         print(userID!)
-//        let email = CountData[0].Email
-//        print("email is = \(email)")
+        //        let email = CountData[0].Email
+        //        print("email is = \(email)")
         let someData = ["appLanguage" : L102Language.currentAppleLanguage()
         ] as [String : Any]
-//
+        //
         let UpdateRef = db.collection("Users").document(userID!)
         UpdateRef.updateData(someData) { err in
             if let err = err {
                 print("Error adding document: \(err)")
-
+                
                 Helper().showUniversalLoadingView(false)
-
+                
             } else {
-                      //print(userID)
-                }
-                self.UpdatedLanguage()
-                Helper().showUniversalLoadingView(false)
+                //print(userID)
             }
+            self.UpdatedLanguage()
+            Helper().showUniversalLoadingView(false)
         }
-
-    
+    }
     override func viewDidAppear(_ animated: Bool) {
         markerwindow.removeFromSuperview()
     }
-    
     
     func drawText(text: NSString, inImage:UIImage) -> UIImage? {
         
@@ -353,44 +341,39 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
             return "\(sign)\(n)"
         }
     }
-
+    
     func showMarker_1(){
         var bounds = GMSCoordinateBounds()
-      
-            for item in rangeArray{
-                if item.forSoldAndRented == true{
-                    print("done")
-                }else{
-                    let latStr = item.latitude
-                    let longStr = item.longitude
-                    let lat = Double(latStr)
-                    let long = Double(longStr)
-                    let marker = GMSMarker()
-                    marker.map = mapView
-                    marker.position = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
-                    print(item.valueOftotalPrice)
-                    let int = ((item.valueOftotalPrice as NSString).integerValue)
-                    print(int)
-                    let ab = (formatNumber(int))
-                    print(ab)
+        
+        for item in rangeArray{
+            if item.forSoldAndRented == true{
+                print("done")
+            }else{
+                let latStr = item.latitude
+                let longStr = item.longitude
+                let lat = Double(latStr)
+                let long = Double(longStr)
+                let marker = GMSMarker()
+                marker.map = mapView
+                marker.position = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
+                print(item.valueOftotalPrice)
+                let int = ((item.valueOftotalPrice as NSString).integerValue)
+                print(int)
+                let ab = (formatNumber(int))
+                print(ab)
+                
+                if item.Category.contains("rent"){
+                    marker.icon = self.drawText(text:"\(ab)" as NSString, inImage: #imageLiteral(resourceName: "imgpsh_fullsize_anim"))
                     
-                    if item.Category.contains("rent"){
-                        marker.icon = self.drawText(text:"\(ab)" as NSString, inImage: #imageLiteral(resourceName: "imgpsh_fullsize_anim"))
-                        
-                    }else{
-                        marker.icon = self.drawText(text:"\(ab)" as NSString, inImage: #imageLiteral(resourceName: "marker_green"))
-                    }
-                    marker.isFlat = true
-                    marker.userData = item
-                    bounds = bounds.includingCoordinate(marker.position)
+                }else{
+                    marker.icon = self.drawText(text:"\(ab)" as NSString, inImage: #imageLiteral(resourceName: "marker_green"))
                 }
-          
+                marker.isFlat = true
+                marker.userData = item
+                bounds = bounds.includingCoordinate(marker.position)
+            }
         }
-       
     }
-    
-    
-    
     
     func showMarker(){
         var bounds = GMSCoordinateBounds()
@@ -411,8 +394,6 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 print(int)
                 let ab = (formatNumber(int))
                 print(ab)
-                
-                
                 if item.Category.contains("rent"){
                     marker.icon = self.drawText(text:"\(ab)" as NSString, inImage: #imageLiteral(resourceName: "imgpsh_fullsize_anim"))
                     
@@ -423,13 +404,9 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 marker.userData = item
                 bounds = bounds.includingCoordinate(marker.position)
             }
-           
         }
-    
     }
     
-    
- 
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         print("didTap marker \(String(describing: marker.userData))")
         Aproperties.removeAll()
@@ -480,11 +457,11 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                     Aproperties.append(item_1)
                 }
             }
-           
-           
+            
+            
         }
         markerwindow.infoWindowTableView.reloadData()
-   
+        
         return true
     }
     
@@ -515,7 +492,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
             mapView.selectedMarker = nil
         }
     }
-
+    
     
     func fetchDatafromFirebase1(){
         Helper().showUniversalLoadingView(true)
@@ -552,8 +529,8 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         Helper().showUniversalLoadingView(false)
     }
     
- 
-  
+    
+    
     @IBAction func swapScreenBtn(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "salepriceViewController") as! salepriceViewController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -585,9 +562,9 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
 extension mapViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { return arrCategories.count}
- 
     
-  
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = forSaleCollectionView.dequeueReusableCell(withReuseIdentifier: "forSaleCollectionViewCell", for: indexPath) as! forSaleCollectionViewCell
@@ -640,40 +617,40 @@ extension mapViewController: UICollectionViewDelegate,UICollectionViewDataSource
         
     }
     
-  
+    
     //MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if L102Language.currentAppleLanguage() == "ar" {
-           
+            
             return CGSize(width: arrCategories[indexPath.item].localizedStr().size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)]).width + 44 , height: 40)
         }else{
             return CGSize(width: arrCategories[indexPath.item].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)]).width + 44 , height: 40)
+        }
     }
-    }
-        
-        
-        
-  
+    
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-           return -10
-       }
-  
+        return -10
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return -10
     }
-
+    
 }
 
 
 extension mapViewController: UITableViewDelegate,UITableViewDataSource{
-   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if valueDropDown != "" {
             return Aproperties_1.count
         }else{
             return Aproperties.count
         }
-  
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -682,82 +659,8 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
         let cell =  tableView.dequeueReusableCell(withIdentifier: "infoWindowTableViewCell", for: indexPath) as! infoWindowTableViewCell
         
         if valueDropDown != "" {
-       
+            
             if Aproperties_1[indexPath.row].forSoldAndRented == true
-        {
-            cell.isHidden = true
-            tableView.rowHeight = 0.0
-            
-        }
-        else{
-            // show cell values
-            tableView.rowHeight = 130
-            cell.isHidden = false
-            
-            let DateandTime = self.Aproperties_1[indexPath.item].createdDate.components(separatedBy: " ")
-                cell.lblDays.text = String(DateandTime[0]).replacedArabicDigitsWithEnglish
-             cell.lblBuildingType.text = self.Aproperties_1[indexPath.item].Category.localizedStr()
-            let largeNumber = Int(self.Aproperties_1[indexPath.item].valueOftotalPrice.localizedStr())
-            let numberFormatter = NumberFormatter()
-            numberFormatter.numberStyle = .decimal
-            let formattedNumber = numberFormatter.string(from: NSNumber(value:largeNumber!))
-            cell.LblSAR.text = formattedNumber! + " " + "SAR".localizedStr()
-            let meter = " m² ";
-            cell.LblMeter.text = "📍" + self.Aproperties_1[indexPath.item].valueOfsizeTextView + meter .localizedStr()
-            
-            cell.purposeLbl.text = self.Aproperties_1[indexPath.item].purpose.localizedStr()
-            
-            cell.LblDescription.text = self.Aproperties_1[indexPath.item].valueofExtraDetail.localizedStr()
-            cell.houseImages.sd_setImage(with: URL(string:self.Aproperties_1[indexPath.item].ImageUrl.first ?? ""), placeholderImage: #imageLiteral(resourceName: "simple_home"))
-            
-            if Aproperties_1[indexPath.row].bathrooms == "" || Aproperties_1[indexPath.row].bathrooms == "0"{
-                cell.bathroomTubLbl.isHidden = true
-                cell.bathTubIMG.isHidden = true
-           
-            }else{
-                cell.bathroomTubLbl.isHidden = false
-                cell.bathTubIMG.isHidden = false
-                cell.bathroomTubLbl.text = self.Aproperties_1[indexPath.item].bathrooms.localizedStr()
-           }
-            
-            if Aproperties_1[indexPath.row].bedrooms == "" || Aproperties_1[indexPath.row].bedrooms == "0" {
-                cell.bedroomLbl.isHidden = true
-                cell.bedIMG.isHidden = true
-           
-            }else{
-                cell.bedroomLbl.isHidden = false
-                cell.bedIMG.isHidden = false
-                cell.bedroomLbl.text = self.Aproperties_1[indexPath.item].bedrooms.localizedStr()
-           }
-            
-            
-            if Aproperties_1[indexPath.row].eetwidth == "" {
-                cell.widthLbl.isHidden = true
-                cell.widthImg.isHidden = true
-           
-            }else{
-                cell.widthLbl.isHidden = false
-                cell.widthImg.isHidden = false
-                let meterwidth = " m ";
-                cell.widthLbl.text = self.Aproperties_1[indexPath.item].eetwidth +  meterwidth.localizedStr()
-           }
-        
-            if Aproperties_1[indexPath.row].streetdirection == "" {
-                cell.streetImg.isHidden = true
-                cell.streetLbl.isHidden = true
-                cell.streetView.isHidden = true
-               
-            }else{
-                cell.streetView.isHidden = false
-                cell.streetImg.isHidden = false
-                cell.streetLbl.isHidden = false
-                cell.streetLbl.text = self.Aproperties_1[indexPath.item].streetdirection.localizedStr()
-            }
-            
-        
-        }} else {
-            
-            if Aproperties[indexPath.row].forSoldAndRented == true
             {
                 cell.isHidden = true
                 tableView.rowHeight = 0.0
@@ -768,78 +671,152 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
                 tableView.rowHeight = 130
                 cell.isHidden = false
                 
-                let DateandTime = self.Aproperties[indexPath.item].createdDate.components(separatedBy: " ")
-                    cell.lblDays.text = String(DateandTime[0]).replacedArabicDigitsWithEnglish
-                 cell.lblBuildingType.text = self.Aproperties[indexPath.item].Category.localizedStr()
-                let largeNumber = Int(self.Aproperties[indexPath.item].valueOftotalPrice.localizedStr())
+                let DateandTime = self.Aproperties_1[indexPath.item].createdDate.components(separatedBy: " ")
+                cell.lblDays.text = String(DateandTime[0]).replacedArabicDigitsWithEnglish
+                cell.lblBuildingType.text = self.Aproperties_1[indexPath.item].Category.localizedStr()
+                let largeNumber = Int(self.Aproperties_1[indexPath.item].valueOftotalPrice.localizedStr())
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
                 let formattedNumber = numberFormatter.string(from: NSNumber(value:largeNumber!))
                 cell.LblSAR.text = formattedNumber! + " " + "SAR".localizedStr()
                 let meter = " m² ";
-                cell.LblMeter.text = "📍" + self.Aproperties[indexPath.item].valueOfsizeTextView + meter .localizedStr()
+                cell.LblMeter.text = "📍" + self.Aproperties_1[indexPath.item].valueOfsizeTextView + meter .localizedStr()
                 
-                cell.purposeLbl.text = self.Aproperties[indexPath.item].purpose.localizedStr()
+                cell.purposeLbl.text = self.Aproperties_1[indexPath.item].purpose.localizedStr()
                 
-                cell.LblDescription.text = self.Aproperties[indexPath.item].valueofExtraDetail.localizedStr()
-                cell.houseImages.sd_setImage(with: URL(string:self.Aproperties[indexPath.item].ImageUrl.first ?? ""), placeholderImage: #imageLiteral(resourceName: "simple_home"))
+                cell.LblDescription.text = self.Aproperties_1[indexPath.item].valueofExtraDetail.localizedStr()
+                cell.houseImages.sd_setImage(with: URL(string:self.Aproperties_1[indexPath.item].ImageUrl.first ?? ""), placeholderImage: #imageLiteral(resourceName: "simple_home"))
                 
-                if Aproperties[indexPath.row].bathrooms == "" || Aproperties[indexPath.row].bathrooms == "0"{
+                if Aproperties_1[indexPath.row].bathrooms == "" || Aproperties_1[indexPath.row].bathrooms == "0"{
                     cell.bathroomTubLbl.isHidden = true
                     cell.bathTubIMG.isHidden = true
-               
+                    
                 }else{
                     cell.bathroomTubLbl.isHidden = false
                     cell.bathTubIMG.isHidden = false
-                    cell.bathroomTubLbl.text = self.Aproperties[indexPath.item].bathrooms.localizedStr()
-               }
+                    cell.bathroomTubLbl.text = self.Aproperties_1[indexPath.item].bathrooms.localizedStr()
+                }
                 
-                if Aproperties[indexPath.row].bedrooms == "" || Aproperties[indexPath.row].bedrooms == "0" {
+                if Aproperties_1[indexPath.row].bedrooms == "" || Aproperties_1[indexPath.row].bedrooms == "0" {
                     cell.bedroomLbl.isHidden = true
                     cell.bedIMG.isHidden = true
-               
+                    
                 }else{
                     cell.bedroomLbl.isHidden = false
                     cell.bedIMG.isHidden = false
-                    cell.bedroomLbl.text = self.Aproperties[indexPath.item].bedrooms.localizedStr()
-               }
+                    cell.bedroomLbl.text = self.Aproperties_1[indexPath.item].bedrooms.localizedStr()
+                }
                 
                 
-                if Aproperties[indexPath.row].eetwidth == "" {
+                if Aproperties_1[indexPath.row].eetwidth == "" {
                     cell.widthLbl.isHidden = true
                     cell.widthImg.isHidden = true
-               
+                    
                 }else{
                     cell.widthLbl.isHidden = false
                     cell.widthImg.isHidden = false
                     let meterwidth = " m ";
-                    cell.widthLbl.text = self.Aproperties[indexPath.item].eetwidth +  meterwidth.localizedStr()
-               }
-            
-                if Aproperties[indexPath.row].streetdirection == "" {
+                    cell.widthLbl.text = self.Aproperties_1[indexPath.item].eetwidth +  meterwidth.localizedStr()
+                }
+                
+                if Aproperties_1[indexPath.row].streetdirection == "" {
                     cell.streetImg.isHidden = true
                     cell.streetLbl.isHidden = true
                     cell.streetView.isHidden = true
-                   
+                    
                 }else{
                     cell.streetView.isHidden = false
                     cell.streetImg.isHidden = false
                     cell.streetLbl.isHidden = false
-                    cell.streetLbl.text = self.Aproperties[indexPath.item].streetdirection.localizedStr()
+                    cell.streetLbl.text = self.Aproperties_1[indexPath.item].streetdirection.localizedStr()
                 }
                 
-            
+                
+            }} else {
+                
+                if Aproperties[indexPath.row].forSoldAndRented == true
+                {
+                    cell.isHidden = true
+                    tableView.rowHeight = 0.0
+                    
+                }
+                else{
+                    // show cell values
+                    tableView.rowHeight = 130
+                    cell.isHidden = false
+                    
+                    let DateandTime = self.Aproperties[indexPath.item].createdDate.components(separatedBy: " ")
+                    cell.lblDays.text = String(DateandTime[0]).replacedArabicDigitsWithEnglish
+                    cell.lblBuildingType.text = self.Aproperties[indexPath.item].Category.localizedStr()
+                    let largeNumber = Int(self.Aproperties[indexPath.item].valueOftotalPrice.localizedStr())
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    let formattedNumber = numberFormatter.string(from: NSNumber(value:largeNumber!))
+                    cell.LblSAR.text = formattedNumber! + " " + "SAR".localizedStr()
+                    let meter = " m² ";
+                    cell.LblMeter.text = "📍" + self.Aproperties[indexPath.item].valueOfsizeTextView + meter .localizedStr()
+                    
+                    cell.purposeLbl.text = self.Aproperties[indexPath.item].purpose.localizedStr()
+                    
+                    cell.LblDescription.text = self.Aproperties[indexPath.item].valueofExtraDetail.localizedStr()
+                    cell.houseImages.sd_setImage(with: URL(string:self.Aproperties[indexPath.item].ImageUrl.first ?? ""), placeholderImage: #imageLiteral(resourceName: "simple_home"))
+                    
+                    if Aproperties[indexPath.row].bathrooms == "" || Aproperties[indexPath.row].bathrooms == "0"{
+                        cell.bathroomTubLbl.isHidden = true
+                        cell.bathTubIMG.isHidden = true
+                        
+                    }else{
+                        cell.bathroomTubLbl.isHidden = false
+                        cell.bathTubIMG.isHidden = false
+                        cell.bathroomTubLbl.text = self.Aproperties[indexPath.item].bathrooms.localizedStr()
+                    }
+                    
+                    if Aproperties[indexPath.row].bedrooms == "" || Aproperties[indexPath.row].bedrooms == "0" {
+                        cell.bedroomLbl.isHidden = true
+                        cell.bedIMG.isHidden = true
+                        
+                    }else{
+                        cell.bedroomLbl.isHidden = false
+                        cell.bedIMG.isHidden = false
+                        cell.bedroomLbl.text = self.Aproperties[indexPath.item].bedrooms.localizedStr()
+                    }
+                    
+                    
+                    if Aproperties[indexPath.row].eetwidth == "" {
+                        cell.widthLbl.isHidden = true
+                        cell.widthImg.isHidden = true
+                        
+                    }else{
+                        cell.widthLbl.isHidden = false
+                        cell.widthImg.isHidden = false
+                        let meterwidth = " m ";
+                        cell.widthLbl.text = self.Aproperties[indexPath.item].eetwidth +  meterwidth.localizedStr()
+                    }
+                    
+                    if Aproperties[indexPath.row].streetdirection == "" {
+                        cell.streetImg.isHidden = true
+                        cell.streetLbl.isHidden = true
+                        cell.streetView.isHidden = true
+                        
+                    }else{
+                        cell.streetView.isHidden = false
+                        cell.streetImg.isHidden = false
+                        cell.streetLbl.isHidden = false
+                        cell.streetLbl.text = self.Aproperties[indexPath.item].streetdirection.localizedStr()
+                    }
+                    
+                    
+                }
+                
+                
             }
-            
-            
-        }
         
         Helper().showUniversalLoadingView(false)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        
         if valueDropDown != ""{
             
             let vc = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! detailViewController
@@ -847,10 +824,10 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
             self.navigationController?.pushViewController(vc, animated: true)
             
         }else{
-        
-        let vc = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! detailViewController
-        vc.Aproperties = [(Aproperties[indexPath.item])]
-        self.navigationController?.pushViewController(vc, animated: true)
+            
+            let vc = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! detailViewController
+            vc.Aproperties = [(Aproperties[indexPath.item])]
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
@@ -883,7 +860,7 @@ extension mapViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let mylist = droplist[row]
-       // propertySourceLbl.text = "\(mylist)"
+        // propertySourceLbl.text = "\(mylist)"
         return mylist
         
     }
