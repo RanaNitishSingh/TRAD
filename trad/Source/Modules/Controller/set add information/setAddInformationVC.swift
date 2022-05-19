@@ -353,7 +353,7 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
         
         
         
-        if ForSaleBool && ForRentBool == true {
+        if ForSaleBool == true && ForRentBool == true {
             if forRentTextField.text  == "" {
                 TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Rent".localizedStr(), VC: self, cancel_action: false)
                 Helper().showUniversalLoadingView(false)
@@ -456,8 +456,8 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
         ] as [String : Any]
         
         self.count = countProperty
-        
-        let countdata = ["propertyCount" : self.count + 1 ]
+        if self.ForSaleBool == true && self.ForRentBool == true {
+        let countdata = ["propertyCount" : self.count + 2 ]
         
         if updateProperty.count == 0 {
             
@@ -474,6 +474,28 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
                 
             }
         }
+        }else{
+            
+            let countdata = ["propertyCount" : self.count + 1]
+            
+            if updateProperty.count == 0 {
+                
+                let UpdateRef =  db.collection("Users").document(UserDefaults.standard.value(forKey: "loginUID") as! String)
+                UpdateRef.updateData(countdata) { err in
+                    if let err = err {
+                        print("Error adding document: \(err)")
+                        TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please try again".localizedStr(), VC: self, cancel_action: false)
+                        
+                    } else {
+                        print("Document added with ID: \(UserDefaults.standard.value(forKey: "loginUID") as! String)")
+                        
+                    }
+                    
+                }
+            }
+            
+            
+        }
         
         if updateProperty.count == 0 {
             Helper().showUniversalLoadingView(true)
@@ -485,7 +507,7 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
                 } else {
                     print("Document added with ID: \(newDocumentID)")
                     
-                    if self.ForSaleBool && self.ForRentBool == true &&  self.categoryindex == 0 &&  self.categoryindex == 1 {
+                    if self.ForSaleBool == true && self.ForRentBool == true {
                         TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "List for Sale And Rent Has been Submitted".localizedStr(), VC: self, cancel_action: false)
                         self.tabBarController?.tabBar.isHidden = false
                         self.tabBarController?.selectedIndex = 0
