@@ -226,7 +226,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
             }
             print(rangeArray)
         }
-        self.showMarker_1()
+        self.showMarker_search()
         self.dropDownSearchView.isHidden = true
         UIView.animate(withDuration: 0.9, delay: 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.dropDownSearchView.alpha = 1
@@ -354,20 +354,21 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         }
     }
     
-    func showMarker_1(){
+    func showMarker_search(){
         var bounds = GMSCoordinateBounds()
         
         for item in rangeArray{
+            let variation = Double.random(in: -0.01...0.01) / 1500
             if item.forSoldAndRented == true{
                 print("done")
             }else{
                 let latStr = item.latitude
                 let longStr = item.longitude
-                let lat = Double(latStr)
-                let long = Double(longStr)
+                let lat = Double(latStr)! + variation
+                let long = Double(longStr)! + variation
                 let marker = GMSMarker()
                 marker.map = mapView
-                marker.position = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
+                marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
                 print(item.valueOftotalPrice)
                 let int = ((item.valueOftotalPrice as NSString).integerValue)
                 print(int)
@@ -390,22 +391,23 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     func showMarker(){
         var bounds = GMSCoordinateBounds()
         for item in properties{
-            
+            let variation = Double.random(in: -0.01...0.01) / 1500
             if item.forSoldAndRented == true{
                 print("done")
             }else{
                 let latStr = item.latitude
                 let longStr = item.longitude
-                let lat = Double(latStr)
-                let long = Double(longStr)
+                let lat = Double(latStr)! + variation
+                let long = Double(longStr)! + variation
                 let marker = GMSMarker()
                 marker.map = mapView
-                marker.position = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
+                marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
                 print(item.valueOftotalPrice)
                 let int = ((item.valueOftotalPrice as NSString).integerValue)
                 print(int)
                 let ab = (formatNumber(int))
                 print(ab)
+               
                 if item.Category.contains("rent"){
                     marker.icon = self.drawText(text:"\(ab)" as NSString, inImage: #imageLiteral(resourceName: "imgpsh_fullsize_anim"))
                     
@@ -455,9 +457,9 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 }
             }
         }else{
-            for item_1 in properties {
-                let latStr = item_1.latitude
-                let longStr = item_1.longitude
+            for item_search in properties {
+                let latStr = item_search.latitude
+                let longStr = item_search.longitude
                 let lat = Double(latStr)
                 let long = Double(longStr)
                 let coordinate0 = CLLocation(latitude:markerlat, longitude: markerlng)
@@ -466,7 +468,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 print(distanceInMeters!)
                 let radious = 3 as CLLocationDistance?
                 if self.distanceInMeters! <= radious!{
-                    Aproperties.append(item_1)
+                    Aproperties.append(item_search)
                 }
             }
             
@@ -622,10 +624,7 @@ extension mapViewController: UICollectionViewDelegate,UICollectionViewDataSource
                     mapCenterPinImage.isHidden = false
                 }
                 
-            }} else if valueDropDown != ""{
-                getdata()
-                showMarker_1()
-            } else { fetchDatafromFirebase1()}
+            }}else {fetchDatafromFirebase1()}
         
         
         

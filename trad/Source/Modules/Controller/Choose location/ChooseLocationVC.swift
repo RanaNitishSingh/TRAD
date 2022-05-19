@@ -82,7 +82,6 @@ class ChooseLocationVC: UIViewController,GMSAutocompleteViewControllerDelegate, 
             //Finally stop updating location otherwise it will come again and again in this delegate
             self.locationManager.stopUpdatingLocation()
             
-            
             // self.hideKeyboardWhenTappedAround()
             currentLocationBtn.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
             currentLocationBtn.imageView?.alpha = 0.70
