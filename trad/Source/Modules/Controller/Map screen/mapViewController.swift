@@ -91,7 +91,6 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         self.getdata()
         self.hideKeyboardWhenTappedAround()
         print(valueDropDown)
-        dropDownSearchView.tag = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,17 +99,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         self.hideKeyboardWhenTappedAround()
         print(valueDropDown)
     }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        super.touchesBegan(touches, with: event)
-//        let touch = touches.first!
-//            if touch.view?.tag != 1 {
-//                dropDownSearchView.isHidden = true
-//            }
-//
-//    }
 
-    
     @objc func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -358,17 +347,16 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         var bounds = GMSCoordinateBounds()
         
         for item in rangeArray{
-            let variation = Double.random(in: -0.01...0.01) / 1500
             if item.forSoldAndRented == true{
                 print("done")
             }else{
                 let latStr = item.latitude
                 let longStr = item.longitude
-                let lat = Double(latStr)! + variation
-                let long = Double(longStr)! + variation
+                let lat = Double(latStr)
+                let long = Double(longStr)
                 let marker = GMSMarker()
                 marker.map = mapView
-                marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                marker.position = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
                 print(item.valueOftotalPrice)
                 let int = ((item.valueOftotalPrice as NSString).integerValue)
                 print(int)
@@ -391,17 +379,16 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     func showMarker(){
         var bounds = GMSCoordinateBounds()
         for item in properties{
-            let variation = Double.random(in: -0.01...0.01) / 1500
             if item.forSoldAndRented == true{
                 print("done")
             }else{
                 let latStr = item.latitude
                 let longStr = item.longitude
-                let lat = Double(latStr)! + variation
-                let long = Double(longStr)! + variation
+                let lat = Double(latStr)
+                let long = Double(longStr)
                 let marker = GMSMarker()
                 marker.map = mapView
-                marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                marker.position = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
                 print(item.valueOftotalPrice)
                 let int = ((item.valueOftotalPrice as NSString).integerValue)
                 print(int)
@@ -600,9 +587,7 @@ extension mapViewController: UICollectionViewDelegate,UICollectionViewDataSource
         collectionView.reloadData()
         valueDropDown = ""
         propertytype = arrCategories[indexPath.row]
-        
         print(propertytype)
-        
         if propertytype != "All Categories"  {
             let db = Firestore.firestore()
             db.collection("Properties").whereField("Category", isEqualTo: propertytype).getDocuments() { [self] (querySnapshot, err) in
