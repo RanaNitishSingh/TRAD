@@ -54,6 +54,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     var distanceInMeters : CLLocationDistance?
     var  adminUid = ""
     var  userUid = ""
+    var propertytype  = ""
     
     //MARK:- View life cycle functions
     override func viewDidLoad() {
@@ -90,6 +91,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         self.getdata()
         self.hideKeyboardWhenTappedAround()
         print(valueDropDown)
+        dropDownSearchView.tag = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,10 +101,15 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         print(valueDropDown)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        dropDownSearchView.isHidden = true
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        super.touchesBegan(touches, with: event)
+//        let touch = touches.first!
+//            if touch.view?.tag != 1 {
+//                dropDownSearchView.isHidden = true
+//            }
+//
+//    }
+
     
     @objc func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -155,8 +162,13 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 self.mainArrayProperties = querySnapshot?.documents.compactMap { document in
                     try? document.data(as: Propertiesdata.self)
                 } ?? []
-                
-                self.properties = self.mainArrayProperties
+                if propertytype != "" {
+                self.properties = self.mainArrayProperties.filter { data in
+                    return data.Category.contains("\(propertytype)")
+                }
+                }else{
+                     self.properties = self.mainArrayProperties
+                }
             }
         }
     }
@@ -461,7 +473,6 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
             
         }
         markerwindow.infoWindowTableView.reloadData()
-        
         return true
     }
     
@@ -478,6 +489,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     }
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         markerwindow.removeFromSuperview()
+        self.dropDownSearchView.isHidden = true
     }
     
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
@@ -585,7 +597,9 @@ extension mapViewController: UICollectionViewDelegate,UICollectionViewDataSource
         selectedIndexPath = indexPath
         collectionView.reloadData()
         valueDropDown = ""
-        let propertytype = arrCategories[indexPath.row]
+        propertytype = arrCategories[indexPath.row]
+        
+        print(propertytype)
         
         if propertytype != "All Categories"  {
             let db = Firestore.firestore()
