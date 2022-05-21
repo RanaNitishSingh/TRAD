@@ -33,8 +33,6 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     var properties: [Propertiesdata] = []
     var mainArrayProperties: [Propertiesdata] = []
     var rangeArray : [Propertiesdata] = []
-    var PriceRange = ""
-    var SizeRange = ""
     var selectedIndex = Int ()
     var selectedIndexPath : IndexPath?
     var levelCheck = ""
@@ -47,6 +45,8 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     //var droplist = ["Owner","Agent","Government"]
     var droplist = [" ","0","1","2"]
     var valueDropDown = ""
+    var valuePrice = ""
+    var valueSize = ""
     var tappedmarker : GMSMarker?
     var markerwindow  = markerWindow()
     var Aproperties : [Propertiesdata] = []
@@ -185,12 +185,38 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
             for filteredPrice in properties {
                 let pricerange = filteredPrice.valueOftotalPrice
                 if Int(pricerange) ?? 0 >= Int(minPrice) ?? 0 && Int(pricerange) ?? 0 <= Int(maxPrice) ?? 0 {
-                    print("pricerange \(pricerange)")
+                    valuePrice = pricerange
+                    print("pricerange \(valuePrice)")
                     let sizeRange = filteredPrice.valueOfsizeTextView
                     if Int(sizeRange) ?? 0 >= Int(minSize) ?? 0 && Int(sizeRange) ?? 0 <= Int(maxSize) ?? 0 {
-                        print("sizeRange \(sizeRange)")
+                        valueSize = sizeRange
+                        print("sizeRange \(valueSize)")
                         rangeArray.append(filteredPrice)
                     }
+                }
+            }
+        }
+        
+        
+        else if (self.minPriceRange.text != "" && self.maxPriceRange.text != "") && (self.minSizeRange.text == "" && self.maxSizeRange.text == "") && (propertySourceLbl.text != ""){
+            for filteredPrice in properties {
+                let pricerange = filteredPrice.valueOftotalPrice
+                if Int(pricerange) ?? 0 >= Int(minPrice) ?? 0 && Int(pricerange) ?? 0 <= Int(maxPrice) ?? 0 {
+                    valuePrice = pricerange
+                    print("pricerange \(valuePrice)")
+                    rangeArray.append(filteredPrice)
+                    }
+                }
+            }
+       
+    
+        else if (self.minPriceRange.text == "" && self.maxPriceRange.text == "") && (self.minSizeRange.text != "" && self.maxSizeRange.text != "") && (propertySourceLbl.text != "") {
+            for filteredSize in properties {
+                let sizeRange = filteredSize.valueOfsizeTextView
+                if Int(sizeRange) ?? 0 >=  Int(minSize) ?? 0 && Int(sizeRange) ?? 0 <=  Int(maxSize) ?? 0 {
+                    valueSize = sizeRange
+                    print("sizeRange \(valueSize)")
+                    rangeArray.append(filteredSize)
                 }
             }
         }
@@ -198,18 +224,18 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         else if (self.minPriceRange.text != "" && self.maxPriceRange.text != "") && (self.minSizeRange.text == ""  && self.maxSizeRange.text == "") && (propertySourceLbl.text == ""){
             for filteredPrice in properties {
                 let pricerange = filteredPrice.valueOftotalPrice
-                if Int(pricerange) ?? 0 >=  Int(minPrice) ?? 0 && Int(pricerange) ?? 0 <=  Int(maxPrice) ?? 0 {
-                    print("pricerange \(pricerange)")
+                if Int(pricerange) ?? 0 >=  Int(minPrice) ?? 0 && Int(pricerange) ?? 0 <=  Int(maxPrice) ?? 0 {                     valuePrice = pricerange
+                    print("pricerange \(valuePrice)")
                     rangeArray.append(filteredPrice)
                 }
             }
             
-        }  else if (self.minPriceRange.text == "" && self.maxPriceRange.text == "") || (self.minSizeRange.text != "" && self.maxSizeRange.text != "") && (propertySourceLbl.text == "") {
+        }  else if (self.minPriceRange.text == "" && self.maxPriceRange.text == "") && (self.minSizeRange.text != "" && self.maxSizeRange.text != "") && (propertySourceLbl.text == "") {
             for filteredSize in properties {
                 let sizeRange = filteredSize.valueOfsizeTextView
                 if Int(sizeRange) ?? 0 >=  Int(minSize) ?? 0 && Int(sizeRange) ?? 0 <=  Int(maxSize) ?? 0 {
-                    SizeRange = sizeRange
-                    print("sizeRange \(SizeRange)")
+                    valueSize = sizeRange
+                    print("sizeRange \(valueSize)")
                     rangeArray.append(filteredSize)
                 }
             }
@@ -431,7 +457,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         let markerlat = marker.position.latitude
         let markerlng = marker.position.longitude
         // now check for properties in 5 km radius from the array
-        if  valueDropDown != "" {
+        if  valueDropDown != "" || valueSize != "" || valuePrice != "" {
             for item in rangeArray {
                 let latStr = item.latitude
                 let longStr = item.longitude

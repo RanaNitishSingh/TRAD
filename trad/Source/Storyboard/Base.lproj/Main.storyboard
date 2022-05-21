@@ -4941,11 +4941,11 @@
             </objects>
             <point key="canvasLocation" x="549" y="-27"/>
         </scene>
-        <!--Search-->
+        <!--Map-->
         <scene sceneID="2wN-3H-SQp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="0Rd-2g-7yl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="VqT-Uw-QXl">
+                    <tabBarItem key="tabBarItem" title="Map" image="magnifyingglass" catalog="system" id="VqT-Uw-QXl">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>

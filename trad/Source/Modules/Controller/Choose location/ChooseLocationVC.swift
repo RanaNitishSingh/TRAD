@@ -9,7 +9,7 @@ import GooglePlaces
 import GooglePlacesSearchController
 
 
-class ChooseLocationVC: UIViewController,GMSAutocompleteViewControllerDelegate, UISearchBarDelegate,CLLocationManagerDelegate  {
+class ChooseLocationVC: UIViewController,GMSAutocompleteViewControllerDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var locationSearchBar: UISearchBar!
     @IBOutlet weak var addressLabel: UILabel!
@@ -35,58 +35,59 @@ class ChooseLocationVC: UIViewController,GMSAutocompleteViewControllerDelegate, 
         super.viewDidLoad()
         
         if self.Aproperties1.count == 0 {
-            
             propertyType.text = CategoryDetail1.localizedStr()
             currentLocationBtn.layer.cornerRadius = 26
             currentLocationBtn.alpha = 0.8
             mapView.delegate = self
-            
+            locationManager.delegate = self
+            if CLLocationManager.locationServicesEnabled() {
+              // 3
+              locationManager.requestLocation()
+
+              // 4
+              mapView.isMyLocationEnabled = true
+              mapView.settings.myLocationButton = true
+            } else {
+              // 5
+              locationManager.requestWhenInUseAuthorization()
+            }
             continueBtn.layer.cornerRadius = 24
             locationSearchBar.delegate = self
-            locationManager.delegate = self
-            locationManager.requestWhenInUseAuthorization()
             self.locationManager.startUpdatingLocation()
             currentLocationBtn.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
             currentLocationBtn.imageView?.alpha = 0.70
             
             // Do any additional setup after loading the view.
-            
             self.getMyCurrentLoction()
             mapChangeBtn.isSelected = true
             mapChangeBtn.layer.borderWidth = 2
             mapChangeBtn.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             continueBtn.setTitle("continueBtn".localizedStr(), for: .normal)
-            mapView.isMyLocationEnabled = true
         }else{
             propertyType.text = Aproperties1[0].selectCategory.localizedStr()
-            currentLocationBtn.layer.cornerRadius = 26
-            currentLocationBtn.alpha = 0.8
             mapView.delegate = self
             locationManager.delegate = self
-            continueBtn.layer.cornerRadius = 24
-            locationSearchBar.delegate = self
-            locationManager.delegate = self
             locationManager.requestWhenInUseAuthorization()
-            self.locationManager.startUpdatingLocation()
-            
+            locationManager.requestLocation()
             let lat = Aproperties1[0].latitude
             let lng = Aproperties1[0].longitude
-            
             let lati = Double(lat) ?? 0.0
             let longi = Double(lng) ?? 0.0
-            
-            let camera = GMSCameraPosition.camera(withLatitude: lati  , longitude: longi , zoom: 16.0)
-            
-            self.mapView?.animate(to: camera)
-            
+            mapView.camera = GMSCameraPosition(
+            latitude: lati , longitude: longi  ,
+              zoom: 15,
+              bearing: 0,
+              viewingAngle: 0)
             //Finally stop updating location otherwise it will come again and again in this delegate
-            self.locationManager.stopUpdatingLocation()
-            
-            // self.hideKeyboardWhenTappedAround()
+              self.locationManager.stopUpdatingLocation()
+            currentLocationBtn.layer.cornerRadius = 26
+            currentLocationBtn.alpha = 0.8
+            continueBtn.layer.cornerRadius = 24
+            locationSearchBar.delegate = self
             currentLocationBtn.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
             currentLocationBtn.imageView?.alpha = 0.70
             // Do any additional setup after loading the view.
-            self.getMyCurrentLoction()
+            //self.getMyCurrentLoction()
             mapChangeBtn.isSelected = true
             mapChangeBtn.layer.borderWidth = 2
             mapChangeBtn.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
@@ -111,20 +112,7 @@ class ChooseLocationVC: UIViewController,GMSAutocompleteViewControllerDelegate, 
         }
     }
     
-    
-    //Location Manager delegates
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let location = locations.last
-        
-        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 16.0)
-        
-        self.mapView?.animate(to: camera)
-        
-        //Finally stop updating location otherwise it will come again and again in this delegate
-        self.locationManager.stopUpdatingLocation()
-        
-    }
+
     @IBAction func onLaunchClicked(sender: UIButton) {
         let acController = GMSAutocompleteViewController()
         acController.delegate = self
@@ -261,4 +249,53 @@ extension ChooseLocationVC: GMSMapViewDelegate {
         longitude = mapView.camera.target.longitude
         reverseGeocodeCoordinate(position.target)
     }
+}
+
+
+extension ChooseLocationVC: CLLocationManagerDelegate {
+  // 2
+  func locationManager(
+    _ manager: CLLocationManager,
+    didChangeAuthorization status: CLAuthorizationStatus
+  ) {
+    // 3
+    guard status == .authorizedWhenInUse else {
+      return
+    }
+    // 4
+    locationManager.requestLocation()
+
+    //5
+    mapView.isMyLocationEnabled = true
+    mapView.settings.myLocationButton = true
+  }
+
+  // 6
+  func locationManager(
+    _ manager: CLLocationManager,
+    didUpdateLocations locations: [CLLocation]) {
+ 
+        if self.Aproperties1.count == 0 {
+    guard let location = locations.first else {
+    return
+    }
+    // 7
+    mapView.camera = GMSCameraPosition(
+      target: location.coordinate,
+      zoom: 15,
+      bearing: 0,
+      viewingAngle: 0)
+    //Finally stop updating location otherwise it will come again and again in this delegate
+      self.locationManager.stopUpdatingLocation()
+        }
+        
+  }
+
+  // 8
+  func locationManager(
+    _ manager: CLLocationManager,
+    didFailWithError error: Error
+  ) {
+    print(error)
+  }
 }
