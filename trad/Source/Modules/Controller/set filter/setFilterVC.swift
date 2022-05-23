@@ -225,6 +225,8 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             self.levelLbl.text = updatePropertyData[0].level
             self.valueForlevel = updatePropertyData[0].level
             self.streetDirectionLbl.text = updatePropertyData[0].streetdirection
+            self.valueForstreetdirection =  updatePropertyData[0].streetdirection
+            self.valueForPropertySource =  updatePropertyData[0].propertySource
             self.propertySourceLbl.text = updatePropertyData[0].propertySource
             self.streeetWidthvalueLbl.text = updatePropertyData[0].eetwidth
             self.valueForstreetwidth = updatePropertyData[0].eetwidth
@@ -258,6 +260,12 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         monthlyBtn.setTitle("monthlyBtn".localizedStr(), for: .normal)
         yearlyBtn.setTitle("yearlyBtn".localizedStr(), for: .normal)
         continueBtn.setTitle("continueBtn".localizedStr(), for: .normal)
+        
+        
+        
+        
+        
+        
     
     }
     
@@ -1839,3 +1847,4 @@ extension UILabel {
            textField.addTarget(self, action: #selector(UILabel.input(textField:)), for: .editingChanged)
        }
 }
+

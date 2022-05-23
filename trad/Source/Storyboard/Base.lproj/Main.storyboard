@@ -280,7 +280,7 @@
                                             <constraint firstAttribute="height" constant="34" id="Em3-B7-vHR"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="max" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TD3-cq-FMQ">
                                         <rect key="frame" x="156" y="110" width="100" height="34"/>
@@ -289,7 +289,7 @@
                                             <constraint firstAttribute="height" constant="34" id="sOh-Vf-mjT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wVd-BU-I9u">
                                         <rect key="frame" x="138" y="125" width="10" height="4"/>
@@ -6243,7 +6243,7 @@
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
                                                                         <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="simple_home" adjustsImageSizeForAccessibilityContentSizeCategory="YES" id="vYB-oL-vSB">
-                                                                            <rect key="frame" x="8" y="0.0" width="401" height="180.5"/>
+                                                                            <rect key="frame" x="8" y="12" width="397" height="168"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </imageView>
@@ -10500,8 +10500,8 @@
         <image name="play_icon" width="512" height="512"/>
         <image name="playground" width="512" height="512"/>
         <image name="plug" width="512" height="512"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus" width="32" height="32"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="price" width="512" height="512"/>
         <image name="room" width="512" height="512"/>
         <image name="shop" width="512" height="512"/>

@@ -343,7 +343,6 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
     
     @IBAction func continueAction(_ sender: Any)  {
         
-        
         Helper().showUniversalLoadingView(true)
         valueOfsizeTextView = sizeTextView.text ?? ""
         valueofPriceTextView = priceTextView.text ?? ""
@@ -394,7 +393,6 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
         let userEmail = Auth.auth().currentUser?.email
         let newDocumentID = UUID().uuidString
         let ref = db.collection("Properties").document(newDocumentID)
-        
         let someData = [
             "Category" : Propertytype,
             "selectCategory" : Category,

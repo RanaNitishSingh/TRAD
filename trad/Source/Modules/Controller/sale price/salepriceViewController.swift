@@ -222,9 +222,7 @@ extension salepriceViewController:UITableViewDelegate, UITableViewDataSource {
             // show cell values
                 cell.isHidden = false
                 
-                if searching {
-                  
-                    
+                if searching {                     
                     
                     let DateandTime = self.filtered[indexPath.row].createdDate.components(separatedBy: " ")
                     cell.lblDays.text = String(DateandTime[0]).replacedArabicDigitsWithEnglish

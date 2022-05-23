@@ -231,18 +231,16 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             LblContact.isHidden = true
             editButton.isHidden = true
         }
-        
-        
+        UpdatedDate()
         print(language)
         
         
         
     }
-    //
+   
     override func viewWillAppear(_: Bool) {
             super.viewWillAppear(true)
         UpdatedDate()
-//        dateRefreshBtn.addTarget(self, action:#selector(Datee(sender:)), for: .touchUpInside)
     }
     
     
@@ -358,6 +356,7 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             }
         }
     }
+    
     func UpdatedDate(){
             
             Helper().showUniversalLoadingView(true)

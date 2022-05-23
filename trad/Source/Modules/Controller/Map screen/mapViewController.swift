@@ -27,7 +27,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     @IBOutlet weak var searchPropertyBtn: UIButton!
     @IBOutlet weak var propertySourceLbl: UILabel!
     @IBOutlet weak var propertySourceBtn: UIButton!
-    
+  
     //MARK:- Variables
     private let locationManager = CLLocationManager()
     var properties: [Propertiesdata] = []
@@ -55,6 +55,8 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     var  adminUid = ""
     var  userUid = ""
     var propertytype  = ""
+    var currentString = ""
+   
     
     //MARK:- View life cycle functions
     override func viewDidLoad() {
@@ -88,16 +90,20 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         searchPropertyBtn.layer.borderColor = UIColor.black.cgColor
         self.pickerView.isHidden = true
         self.dropDownSearchView.isHidden = true
-        self.getdata()
         self.hideKeyboardWhenTappedAround()
         print(valueDropDown)
+        print(propertytype)
+        self.minPriceRange.delegate = self
+        self.maxPriceRange.delegate = self
+        self.minSizeRange.delegate = self
+        self.maxSizeRange.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
-        self.getdata()
         self.hideKeyboardWhenTappedAround()
         print(valueDropDown)
+        print(propertytype)
     }
 
     @objc func hideKeyboardWhenTappedAround() {
@@ -151,25 +157,42 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 self.mainArrayProperties = querySnapshot?.documents.compactMap { document in
                     try? document.data(as: Propertiesdata.self)
                 } ?? []
-                if propertytype != "" {
+                if propertytype != "All Categories" {
                 self.properties = self.mainArrayProperties.filter { data in
                     return data.Category.contains("\(propertytype)")
-                }
-                }else{
-                     self.properties = self.mainArrayProperties
+                }                    
+                }  else {
+                    self.properties = self.mainArrayProperties
                 }
             }
+     
+            
         }
+        
+  
+        
     }
+    
+    
+   
+ 
     
     @IBAction func searchPropertyAction(_ sender: Any) {
         self.getdata()
-        let minPrice = minPriceRange.text ?? ""
-        let maxPrice = maxPriceRange.text ?? ""
-        let minSize = minSizeRange.text ?? ""
-        let maxSize = maxSizeRange.text ?? ""
+        let minPrice_Property = minPriceRange.text ?? ""
+        let maxPrice_Property = maxPriceRange.text ?? ""
+        let minSize_Property = minSizeRange.text ?? ""
+        let maxSize_Property = maxSizeRange.text ?? ""
         
-        if (self.minPriceRange.text == "" && self.maxPriceRange.text == "") && (self.minSizeRange.text == "" && self.maxSizeRange.text == "") && (propertySourceLbl.text != "")
+        
+        let minPrice = minPrice_Property.replacingOccurrences(of: ",", with: "")
+        let maxPrice = maxPrice_Property.replacingOccurrences(of: ",", with: "")
+        let minSize = minSize_Property.replacingOccurrences(of: ",", with: "")
+        let maxSize = maxSize_Property.replacingOccurrences(of: ",", with: "")
+        
+        
+       
+        if (minPrice == "" && maxPrice == "") && (minSize == "" && maxSize == "") && (propertySourceLbl.text != "")
         {
             for filteredProperty in properties {
                 if valueDropDown == filteredProperty.propertySource {
@@ -181,7 +204,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
             }
         }
         
-        else if (self.minPriceRange.text != "" && self.maxPriceRange.text != "") && (self.minSizeRange.text != "" && self.maxSizeRange.text != "") && (propertySourceLbl.text != ""){
+        else if (minPrice != "" && maxPrice != "") && (minSize != "" && maxSize != "") && (propertySourceLbl.text != ""){
             for filteredPrice in properties {
                 let pricerange = filteredPrice.valueOftotalPrice
                 if Int(pricerange) ?? 0 >= Int(minPrice) ?? 0 && Int(pricerange) ?? 0 <= Int(maxPrice) ?? 0 {
@@ -198,7 +221,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         }
         
         
-        else if (self.minPriceRange.text != "" && self.maxPriceRange.text != "") && (self.minSizeRange.text == "" && self.maxSizeRange.text == "") && (propertySourceLbl.text != ""){
+        else if (minPrice != "" && maxPrice != "") && (minSize == "" && maxSize == "") && (propertySourceLbl.text != ""){
             for filteredPrice in properties {
                 let pricerange = filteredPrice.valueOftotalPrice
                 if Int(pricerange) ?? 0 >= Int(minPrice) ?? 0 && Int(pricerange) ?? 0 <= Int(maxPrice) ?? 0 {
@@ -210,7 +233,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
             }
        
     
-        else if (self.minPriceRange.text == "" && self.maxPriceRange.text == "") && (self.minSizeRange.text != "" && self.maxSizeRange.text != "") && (propertySourceLbl.text != "") {
+        else if (minPrice == "" && maxPrice == "") && (minSize != "" && maxSize != "") && (propertySourceLbl.text != "") {
             for filteredSize in properties {
                 let sizeRange = filteredSize.valueOfsizeTextView
                 if Int(sizeRange) ?? 0 >=  Int(minSize) ?? 0 && Int(sizeRange) ?? 0 <=  Int(maxSize) ?? 0 {
@@ -221,7 +244,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
             }
         }
         
-        else if (self.minPriceRange.text != "" && self.maxPriceRange.text != "") && (self.minSizeRange.text == ""  && self.maxSizeRange.text == "") && (propertySourceLbl.text == ""){
+        else if(minPrice != "" && maxPrice != "") && (minSize == "" && maxSize == "") && (propertySourceLbl.text == ""){
             for filteredPrice in properties {
                 let pricerange = filteredPrice.valueOftotalPrice
                 if Int(pricerange) ?? 0 >=  Int(minPrice) ?? 0 && Int(pricerange) ?? 0 <=  Int(maxPrice) ?? 0 {                     valuePrice = pricerange
@@ -230,7 +253,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 }
             }
             
-        }  else if (self.minPriceRange.text == "" && self.maxPriceRange.text == "") && (self.minSizeRange.text != "" && self.maxSizeRange.text != "") && (propertySourceLbl.text == "") {
+        }  else if(minPrice == "" && maxPrice == "") && (minSize != "" && maxSize != "") && (propertySourceLbl.text == "") {
             for filteredSize in properties {
                 let sizeRange = filteredSize.valueOfsizeTextView
                 if Int(sizeRange) ?? 0 >=  Int(minSize) ?? 0 && Int(sizeRange) ?? 0 <=  Int(maxSize) ?? 0 {
@@ -238,6 +261,11 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                     print("sizeRange \(valueSize)")
                     rangeArray.append(filteredSize)
                 }
+            }
+            print(rangeArray)
+        } else if (minPrice == "" && maxPrice == "") && (minSize == "" && maxSize == "") && (propertySourceLbl.text == "") {
+            for filteredProperties in properties {
+            rangeArray.append(filteredProperties)
             }
             print(rangeArray)
         }
@@ -457,7 +485,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         let markerlat = marker.position.latitude
         let markerlng = marker.position.longitude
         // now check for properties in 5 km radius from the array
-        if  valueDropDown != "" || valueSize != "" || valuePrice != "" {
+        if  valueDropDown != "" || valueSize != "" || valuePrice != ""  {
             for item in rangeArray {
                 let latStr = item.latitude
                 let longStr = item.longitude
@@ -467,12 +495,13 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 let coordinate1 = CLLocation(latitude: lat!, longitude: long!)
                 distanceInMeters = coordinate0.distance(from: coordinate1)
                 print(distanceInMeters!)
-                let radious = 3 as CLLocationDistance?
+                let radious = 5 as CLLocationDistance?
                 if self.distanceInMeters! <= radious!{
                     Aproperties_1.append(item)
                 }
             }
-        }else{
+        }
+        else{
             for item_search in properties {
                 let latStr = item_search.latitude
                 let longStr = item_search.longitude
@@ -482,7 +511,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 let coordinate1 = CLLocation(latitude: lat!, longitude: long!)
                 distanceInMeters = coordinate0.distance(from: coordinate1)
                 print(distanceInMeters!)
-                let radious = 3 as CLLocationDistance?
+                let radious = 5 as CLLocationDistance?
                 if self.distanceInMeters! <= radious!{
                     Aproperties.append(item_search)
                 }
@@ -614,6 +643,8 @@ extension mapViewController: UICollectionViewDelegate,UICollectionViewDataSource
         selectedIndexPath = indexPath
         collectionView.reloadData()
         valueDropDown = ""
+        valueSize = ""
+        valuePrice = ""
         propertytype = arrCategories[indexPath.row]
         print(propertytype)
         if propertytype != "All Categories"  {
@@ -673,7 +704,7 @@ extension mapViewController: UICollectionViewDelegate,UICollectionViewDataSource
 extension mapViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if valueDropDown != "" {
+        if valueDropDown != "" || valueSize != "" || valuePrice != "" {
             return Aproperties_1.count
         }else{
             return Aproperties.count
@@ -686,7 +717,7 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
         Helper().showUniversalLoadingView(true)
         let cell =  tableView.dequeueReusableCell(withIdentifier: "infoWindowTableViewCell", for: indexPath) as! infoWindowTableViewCell
         
-        if valueDropDown != "" {
+        if valueDropDown != "" || valueSize != "" || valuePrice != "" {
             
             if Aproperties_1[indexPath.row].forSoldAndRented == true
             {
@@ -845,7 +876,7 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if valueDropDown != ""{
+        if valueDropDown != "" || valueSize != "" || valuePrice != "" {
             
             let vc = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! detailViewController
             vc.Aproperties = [(Aproperties_1[indexPath.item])]
@@ -897,3 +928,40 @@ extension mapViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         valueDropDown = droplist[row]
     }
 }
+
+
+extension mapViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+         // Uses the number format corresponding to your Locale
+        let formatter = NumberFormatter()
+         formatter.numberStyle = .decimal
+          formatter.minimumFractionDigits = 0
+         formatter.usesGroupingSeparator = true
+         formatter.groupingSize = 3
+        // Uses the grouping separator corresponding to your Locale
+        // e.g. "," in the US, a space in France, and so on
+        if let groupingSeparator = formatter.groupingSeparator {
+
+            if string == groupingSeparator {
+                return true
+            }
+
+
+            if let textWithoutGroupingSeparator = textField.text?.replacingOccurrences(of: groupingSeparator, with: "") {
+                var totalTextWithoutGroupingSeparators = textWithoutGroupingSeparator + string
+                if string.isEmpty { // pressed Backspace key
+                    totalTextWithoutGroupingSeparators.removeLast()
+                }
+                if let numberWithoutGroupingSeparator = formatter.number(from: totalTextWithoutGroupingSeparators),
+                    let formattedText = formatter.string(from: numberWithoutGroupingSeparator) {
+
+                    textField.text = formattedText
+                    return false
+                }
+            }
+        }
+        return true
+    }
+}
+
