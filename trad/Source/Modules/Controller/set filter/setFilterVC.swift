@@ -1510,27 +1510,42 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         }else{
         if CategoryDetail2 == "Villa" {
             if valueForbedrooms.isEmpty == true || valueForbedrooms == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter # of bed rooms".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bed rooms".localizedStr(), VC: self, cancel_action: false)
                 
             }  else if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
                 
             }  else if valueForPropertySource.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
                 
             } else if valueForbathrooms.isEmpty == true  || valueForbathrooms == "0"{
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
+                
+            }else if valueForappartments.isEmpty == true  || valueForappartments == "0"{
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of apartment ".localizedStr(), VC: self, cancel_action: false)
+                
+            } else if plateNumberText.text!.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                
+            }else if valueForstreetwidth.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
                 
             } else { postToNextScreen() }
             
         } else if CategoryDetail2 == "Land" {
             if valueForstreetdirection.isEmpty == true   {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
                 
             }  else if valueForPropertySource.isEmpty == true   {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
                 
-            } else {
+            } else if plateNumberText.text!.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                
+            }else if valueForstreetwidth.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
+                
+            }else {
                 postToNextScreen()
                 
             }
@@ -1538,113 +1553,187 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         }
         else if CategoryDetail2 == "Apartment"{
             if valueForbedrooms.isEmpty == true || valueForbedrooms == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter # of bed rooms".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bed rooms".localizedStr(), VC: self, cancel_action: false)
             }
             
             else  if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
                 
             }  else if valueForPropertySource.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
                 
-            } else { postToNextScreen() }
+            } else if plateNumberText.text!.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                
+            }else if valueForstreetwidth.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
+                
+            }else if valueForbathrooms.isEmpty == true  || valueForbathrooms == "0"{
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
+                
+            }  else { postToNextScreen() }
             
         } else if CategoryDetail2 == "Building"{
             if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
                 
             }  else if valueForPropertySource.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
                 
             }else if valueForage.isEmpty == true || valueForage == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter age".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter age".localizedStr(), VC: self, cancel_action: false)
                 
-            } else {
+            } else if plateNumberText.text!.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                
+            } else if valueForstreetwidth.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
+                
+            }else {
                 postToNextScreen() }
         }
         
         else if CategoryDetail2 ==  "Esteraha" {
             
             if valueForbathrooms.isEmpty == true || valueForbathrooms == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
                 
             }else  if valueForage.isEmpty == true || valueForage == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter age".localizedStr(), VC: self, cancel_action: false)
-            } else { postToNextScreen() }
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter age".localizedStr(), VC: self, cancel_action: false)
+            }
+            else if plateNumberText.text!.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                
+            }else if valueForstreetwidth.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
+                
+            }else if valueForPropertySource.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                
+            }
             
-        } else if CategoryDetail2 == "Farm" { postToNextScreen()
+            
+            else { postToNextScreen() }
+            
+        } else if CategoryDetail2 == "Farm" {
+           
+            if plateNumberText.text!.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                
+            }else if valueForPropertySource.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                
+            } else { postToNextScreen()}
+           
             
         } else if CategoryDetail2 == "Store" {
+            
             if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
                 
             }  else if valueForPropertySource.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                
+            }else if valueForstreetwidth.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
+                
+            }else if plateNumberText.text!.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter  Plate Number".localizedStr(), VC: self, cancel_action: false)
                 
             } else { postToNextScreen() }
         } else if CategoryDetail2 == "Floor" {
             
             
             if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
                 
             }  else if valueForPropertySource.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
                 
             } else if valueForbedrooms.isEmpty == true || valueForbedrooms == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg:  "Please enter bed rooms".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg:  "Please Enter bed rooms".localizedStr(), VC: self, cancel_action: false)
                 
             } else if valueForbathrooms.isEmpty == true || valueForbathrooms == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
+                
+            }else if plateNumberText.text!.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
                 
             } else { postToNextScreen() }
             
         } else if CategoryDetail2 == "Room" {
             
-            
             if valueFordailyormonthlyoryearly.isEmpty == true || valueFordailyormonthlyoryearly == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Duration".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Duration".localizedStr(), VC: self, cancel_action: false)
+            } else if plateNumberText.text!.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+            }else if valueForPropertySource.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                
             } else { postToNextScreen() }
         }
         
-        else if CategoryDetail2 == "Office for rent" {
+        else if CategoryDetail2 == "Office" {
             if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
                 
             }  else if valueForPropertySource.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                
+            } else if plateNumberText.text!.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+            } else if valueForstreetwidth.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
                 
             }
             else { postToNextScreen() }}
         
         else if CategoryDetail2 == "Warehouse" {
             if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
                 
             }  else if valueForPropertySource.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
                 
-            } else { postToNextScreen() }
-            
-        } else if CategoryDetail2 == "Office"{
-            
-            if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+            }else if plateNumberText.text!.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+            } else if valueForstreetwidth.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
                 
-            }  else if valueForPropertySource.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter Property Source".localizedStr(), VC: self, cancel_action: false)
-                
-            } else { postToNextScreen() }
+            }else { postToNextScreen() }
             
-        } else if CategoryDetail2 == "Furnished Apartment" {
+        }
+            else if CategoryDetail2 == "Furnished Apartment" {
             if valueForbedrooms.isEmpty == true || valueForbedrooms == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter # of bed rooms".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bed rooms".localizedStr(), VC: self, cancel_action: false)
             } else if valueForbathrooms.isEmpty == true || valueForbathrooms == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
+                
+            } else if valueForstreetdirection.isEmpty == true  {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                
+            }  else if valueForPropertySource.isEmpty == true  {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                
+            }else if plateNumberText.text!.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+            } else if valueForstreetwidth.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
                 
             } else { postToNextScreen() }
         }
-        else if CategoryDetail2 == "Tent"{ postToNextScreen() }
+        else if CategoryDetail2 == "Tent"{
+            
+            if valueForPropertySource.isEmpty == true  {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                
+            }else if plateNumberText.text!.isEmpty == true {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+            }else{
+                postToNextScreen()
+            }
+          
+                }
         }
     }
     

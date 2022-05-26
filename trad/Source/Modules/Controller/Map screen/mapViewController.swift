@@ -77,6 +77,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         forSaleCollectionView.layer.cornerRadius = 18
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         fetchDatafromFirebase1()
         currentLocationBtn.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         currentLocationBtn.imageView?.alpha = 0.70
@@ -100,10 +101,12 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         self.hideKeyboardWhenTappedAround()
         print(valueDropDown)
         print(propertytype)
+
     }
 
     @objc func hideKeyboardWhenTappedAround() {
@@ -469,6 +472,8 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         print("didTap marker \(String(describing: marker.userData))")
         Aproperties.removeAll()
         Aproperties_1.removeAll()
+        mapView.isMyLocationEnabled = false
+        self.locationManager.stopUpdatingLocation()
         tappedmarker = marker
         //get position of tapped marker
         let position = marker.position

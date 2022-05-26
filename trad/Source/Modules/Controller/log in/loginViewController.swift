@@ -77,7 +77,7 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         Helper().showUniversalLoadingView(true)
         Auth.auth().signIn(withEmail: emailTextView.text!, password: passwordTextview.text!) { [weak self] authResult, error in
             if error != nil {
-                TRADSingleton.sharedInstance.showAlert(title: "ERROR", msg: "User Not Found", VC: self!, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: "ERROR", msg: "Enter Vaild Email And Password".localizedStr(), VC: self!, cancel_action: false)
                 Helper().showUniversalLoadingView(false)
                 
                 

@@ -343,19 +343,19 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
         else  {return}
         let isValidateName = self.validation.validateName(name: name)
         if (isValidateName == false) {
-            showAlert(message: "Enter valid name")
+            showAlert(message: "Enter Valid UserName".localizedStr())
             print("Incorrect Name")
             return
         }
         let isValidateEmail = self.validation.validateEmailId(emailID: email)
         if (isValidateEmail == false) {
-            showAlert(message: "Email not Valid")
+            showAlert(message: "Enter Valid Email".localizedStr())
             print("Incorrect Email")
             return
         }
         let isValidatePass = self.validation.validatePassword(password: password)
         if (isValidatePass == false) {
-            showAlert(message: "Password minimum 8 characters at least 1 Alphabet and 1 Number")
+            showAlert(message: "Password minimum 8 characters at least 1 Alphabet and 1 Number".localizedStr())
             print("Incorrect Pass")
             return
         }
@@ -502,13 +502,14 @@ class Validation {
         return isValidateEmail
     }
     public func validatePassword(password: String) -> Bool {
-        //Minimum 8 characters at least 1 Alphabet and 1 Number:
-        let passRegEx = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
+        //Minimum 8 characters at least 1 Alphabet, 1 Number and 1 Special Character:
+        let passRegEx = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
         let trimmedString = password.trimmingCharacters(in: .whitespaces)
         let validatePassord = NSPredicate(format:"SELF MATCHES %@", passRegEx)
         let isvalidatePass = validatePassord.evaluate(with: trimmedString)
         return isvalidatePass
     }
+    
 }
 
 

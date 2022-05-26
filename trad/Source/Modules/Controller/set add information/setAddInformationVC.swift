@@ -353,11 +353,11 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
         
         
         if ForSaleBool == true && ForRentBool == true {
-            if forRentTextField.text  == "" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Rent".localizedStr(), VC: self, cancel_action: false)
+            if forRentTextField.text  == "" && sizeTextView.text == "" && priceTextView.text == "" && totalPriceTextView.text == "" {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Size , Sale Price Per Meter and Rent Price".localizedStr(), VC: self, cancel_action: false)
                 Helper().showUniversalLoadingView(false)
-            } else if totalPriceTextView.text  == "" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter sale Price".localizedStr(), VC: self, cancel_action: false)
+            } else  if forRentTextField.text  == "" && sizeTextView.text != "" && priceTextView.text != "" && totalPriceTextView.text != "" {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Rent Price".localizedStr(), VC: self, cancel_action: false)
                 Helper().showUniversalLoadingView(false)
             } else {
                 saveValuesToFirebase(Propertytype: Category + " for sale", Price: valueOftotalPrice )
@@ -365,15 +365,15 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
             }
             
         } else if ForSaleBool == true {
-            if totalPriceTextView.text  == "" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter sale Price".localizedStr(), VC: self, cancel_action: false)
+            if sizeTextView.text == "" && priceTextView.text == "" && totalPriceTextView.text == ""  {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Size and Sale Price Per Meter ".localizedStr(), VC: self, cancel_action: false)
                 Helper().showUniversalLoadingView(false)
             } else {
                 saveValuesToFirebase(Propertytype: Category + " for sale", Price: valueOftotalPrice ) }
             
         } else if ForRentBool == true {
-            if forRentTextField.text  == "" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Rent".localizedStr(), VC: self, cancel_action: false)
+            if forRentTextField.text  == "" && sizeTextView.text == "" {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Rent Price And Size".localizedStr(), VC: self, cancel_action: false)
                 Helper().showUniversalLoadingView(false)
                 
             } else {
@@ -512,16 +512,61 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
                         
                         for item in userTokenData {
                             let currentUserToken = Messaging.messaging().fcmToken
-                            if item.deviceToken != currentUserToken {
+                            if item.deviceToken != currentUserToken && item.appLanguage != "ar" {
                                 wantToSendNotification = item.deviceToken
-                                sale_rentNotification  = "added new property for sale and for rent"
+                                saleNotification = "added"
+                                sale_rentNotification = "for sale and rent"
                                 let sender = PushNotificationSender()
-                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName!.localizedStr() + "  " + self.sale_rentNotification.localizedStr() + "  " + self.Category.localizedStr())
+                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + Category + " " + self.sale_rentNotification)
                                 print(wantToSendNotification)
+                            } else if item.deviceToken != currentUserToken && item.appLanguage != "en"{
+                                wantToSendNotification = item.deviceToken
+                                saleNotification = "اضاف"
+                                sale_rentNotification = "للبيع و للإجار"
+                                let sender = PushNotificationSender()
+                                if Category == "Land"{
+                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "أرض" + " " + self.sale_rentNotification)
+                                print(wantToSendNotification)
+                                } else if Category == "Villa"{
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "فيلا" + " " + self.sale_rentNotification)
+                                    print(wantToSendNotification)
+                                    }else if Category == "Floor"{
+                                        sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "دور" + " " + self.sale_rentNotification)
+                                        print(wantToSendNotification)
+                                        }else if Category == "Apartment"{
+                                            sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "شقة" + " " + self.sale_rentNotification)
+                                            print(wantToSendNotification)
+                                            }else if Category == "Building"{
+                                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "عمارة" + " " + self.sale_rentNotification)
+                                                print(wantToSendNotification)
+                                                }else if Category == "Esteraha"{
+                                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "استراحة" + " " + self.sale_rentNotification)
+                                                    print(wantToSendNotification)
+                                                    }else if Category == "Store"{
+                                                        sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "محل" + " " + self.sale_rentNotification)
+                                                        print(wantToSendNotification)
+                                                        }else if Category == "Farm"{
+                                                            sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "مزرعة" + " " + self.sale_rentNotification)
+                                                            print(wantToSendNotification)
+                                                            }else if Category == "Room"{
+                                                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "غرفة" + " " + self.sale_rentNotification)
+                                                                print(wantToSendNotification)
+                                                                }else if Category == "Office"{
+                                                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "مكتب" + " " + self.sale_rentNotification)
+                                                                    print(wantToSendNotification)
+                                                                    }else if Category == "Warehouse"{
+                                                                        sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "مستودع" + " " + self.sale_rentNotification)
+                                                                        print(wantToSendNotification)
+                                                                        }else if Category == "Furnished Apartment"{
+                                                                            sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "شقة مفروشة" + " " + self.sale_rentNotification)
+                                                                            print(wantToSendNotification)
+                                                                            }else if Category == "Tent"{
+                                                                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "مخيم" + " " + self.sale_rentNotification)
+                                                                                print(wantToSendNotification)
+                                                                                }
                             }
-                            
-                        }
-                        
+                            }
+                     
                         Helper().showUniversalLoadingView(false)
                     } else if self.ForSaleBool == true  {
                         Helper().showUniversalLoadingView(false)
@@ -530,29 +575,58 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
                         self.tabBarController?.selectedIndex = 0
                         for item in userTokenData {
                             let currentUserToken = Messaging.messaging().fcmToken
-                            if item.deviceToken != currentUserToken {
+                            if item.deviceToken != currentUserToken && item.appLanguage != "ar" {
                                 wantToSendNotification = item.deviceToken
-                                let language = item.appLanguage
-                                print("language are == \(language)")
-                                saleNotification = "added new property for sale"
+                                saleNotification = "added"
                                 let sender = PushNotificationSender()
-                                
-                                if language == "ar" {
-                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " +  self.saleNotification + " " +  self.Category)
-                                    print(wantToSendNotification)
-                                    
-                                }else{
-                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " +  self.saleNotification + " " +  self.Category)
-                                    print(wantToSendNotification)
+                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + Propertytype)
+                                print(wantToSendNotification)
+                            } else if item.deviceToken != currentUserToken && item.appLanguage != "en"{
+                                wantToSendNotification = item.deviceToken
+                                saleNotification = "اضاف"
+                                let sender = PushNotificationSender()
+                                if Propertytype == "Land for sale"{
+                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "أرض للبيع")
+                                print(wantToSendNotification)
+                                }else if Propertytype == "Villa for sale" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "فيلا للبيع")
+                                }else if Propertytype == "Floor for sale" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "دور للبيع")
+                                }
+                                else if Propertytype == "Apartment for sale" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "شقة للبيع")
+                                }
+                                else if Propertytype == "Building for sale" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "عمارة للبيع")
+                                }
+                                else if Propertytype == "Esteraha for sale" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "استراحه للبيع")
+                                }
+                                else if Propertytype == "Farm for sale" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مزرعة للبيع")
+                                }
+                                else if Propertytype == "Tent for sale" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مخيم للبيع")
+                                }
+                                else if Propertytype == "Room for sale" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "غرفة للبيع")
+                                }
+                                else if Propertytype == "Office for sale" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مكتب للبيع")
+                                }
+                                else if Propertytype == "Warehouse for sale" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مستودع للبيع")
+                                }
+                                else if Propertytype == "Furnished Apartment for sale" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "شقة مفروشة للبيع")
+                                }
+                                else if Propertytype == "Store for sale" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "محل للايجار")
                                 }
                                 
-//                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName!.localizedStr() + " " +  self.saleNotification.localizedStr() + " " +  self.Category.localizedStr())
-//                                print(wantToSendNotification)
-                                
                             }
-                            
-                        }
-                        
+                            }
+                    
                         Helper().showUniversalLoadingView(false)
                     } else if self.ForRentBool == true  {
                         Helper().showUniversalLoadingView(false)
@@ -561,15 +635,63 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
                         self.tabBarController?.selectedIndex = 0
                         for item in userTokenData {
                             let currentUserToken = Messaging.messaging().fcmToken
-                            if item.deviceToken != currentUserToken {
+                            if item.deviceToken != currentUserToken && item.appLanguage != "ar" {
                                 wantToSendNotification = item.deviceToken
-                                rentNotification = "added new property for rent"
+                                saleNotification = "added"
                                 let sender = PushNotificationSender()
-                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName!.localizedStr() + " " + self.rentNotification.localizedStr() +  " " + self.Category.localizedStr())
+                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + Propertytype)
                                 print(wantToSendNotification)
+                            } else if item.deviceToken != currentUserToken && item.appLanguage != "en"{
+                                wantToSendNotification = item.deviceToken
+                                saleNotification = "اضاف"
+                                let sender = PushNotificationSender()
+                                if Propertytype == "Land for rent"{
+                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "ارض للايجار")
+                                print(wantToSendNotification)
+                                }else if Propertytype == "Villa for rent" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "فيلا للايجار")
+                                }else if Propertytype == "Floor for rent" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "دور للايجار")
+                                }
+                                else if Propertytype == "Apartment for rent" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "شقة للايجار")
+                                }
+                                else if Propertytype == "Building for rent" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "عمارة للايجار")
+                                }
+                                else if Propertytype == "Esteraha for rent" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "استراحة للايجار")
+                                }
+                                else if Propertytype == "Farm for rent" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مزرعة للايجار")
+                                }
+                                else if Propertytype == "Tent for rent" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مخيم للايجار")
+                                }
+                                else if Propertytype == "Room for rent" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "غرفة للايجار")
+                                }
+                                else if Propertytype == "Office for rent" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مكتب للايجار")
+                                }
+                                else if Propertytype == "Warehouse for rent" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مستودع للايجار")
+                                }
+                                else if Propertytype == "Furnished Apartment for rent" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "شقة مفروشة للايجار")
+                                }
+                                else if Propertytype == "Store for rent" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "محل للايجار")
+                                }
+                                
                             }
-                            
-                        }
+                            }
+                        
+                        
+                        
+                        
+                        
+                        
                         Helper().showUniversalLoadingView(false)
                     } else {
                         TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please select Rent or Sale".localizedStr(), VC: self, cancel_action: false)

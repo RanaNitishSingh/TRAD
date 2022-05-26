@@ -44,6 +44,15 @@
 /* Class = "UILabel"; text = "CreatedDate"; ObjectID = "1De-Hr-qb4"; */
 "1De-Hr-qb4.text" = "CreatedDate";
 
+/* Class = "UILabel"; text = "Purpose"; ObjectID = "afh-gt-0yi"; */
+"afh-gt-0yi.text" = "Purpose";
+
+/* Class = "UILabel"; text = "Property Source"; ObjectID = "yoN-t9-6iM"; */
+"yoN-t9-6iM.text" = "Property Source";   
+
+/* Class = "UILabel"; text = "Created Date"; ObjectID = "26V-Fs-Tgn"; */
+"26V-Fs-Tgn.text" = "Created Date";
+
 /* Class = "UILabel"; text = "Total price"; ObjectID = "1NN-hm-2am"; */
 "1NN-hm-2am.text" = "Total price";
 
@@ -274,6 +283,9 @@
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Ito-d0-XoR"; */
 "Ito-d0-XoR.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Search"; ObjectID = "YSW-mm-25A"; */
+"YSW-mm-25A.normalTitle" = "Search";
 
 /* Class = "UILabel"; text = "Tent"; ObjectID = "JQ5-2I-yGt"; */
 "JQ5-2I-yGt.text" = "Tent";

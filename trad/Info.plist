@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<string>en,ar</string>
 	<key>CFBundleDisplayName</key>
 	<string>TRAD</string>
 	<key>CFBundleExecutable</key>

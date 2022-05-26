@@ -8896,11 +8896,6 @@
                             <constraint firstItem="afO-IU-qpc" firstAttribute="top" secondItem="Xqi-ee-vh9" secondAttribute="top" id="pXX-wE-bPo"/>
                             <constraint firstItem="ilb-eS-eMZ" firstAttribute="top" secondItem="Xqi-ee-vh9" secondAttribute="top" id="uUl-Tb-S0y"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="PKI-Qf-UQF"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="ACBoolView" destination="NuY-Ll-Q1l" id="TOb-rE-OBH"/>

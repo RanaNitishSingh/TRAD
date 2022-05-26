@@ -58,7 +58,8 @@
 "Furnished Apartment for rent" = "Furnished Apartment for rent";
 "number of properties added by" = "number of properties added by";
 "Store for sale" = "Store for sale";
-"Fram for rent" = "Fram for rent";
+"Farm for rent" = "Farm for rent";
+
 /*------------------------------upload screen*/
 "uploadImageBtn" = "Upload Image";
 "uploadVideoBtn" = "Upload Video";
@@ -145,12 +146,18 @@
 "Upper ground" = "Upper ground";
 
 "OK" = "OK";
-"Please enter # of bed rooms" = "Please enter # of bed rooms";
-"Please enter Street Direction" = "Please enter Street Direction";
-"Please enter # of bath rooms" = "Please enter # of bath rooms";
-"Please enter age" = "Please enter age";
-"Please enter bed rooms" = "Please enter bed rooms";
-"Please enter Duration" = "Please enter Duration";
+"Please Enter # of bed rooms" = "Please Enter # of bed rooms";
+"Please Enter Street Direction" = "Please Enter Street Direction";
+"Please Enter # of bath rooms" = "Please Enter # of bath rooms";
+"Please Enter age" = "Please Enter age";
+"Please Enter bed rooms" = "Please Enter bed rooms";
+"Please Enter Property Source" = "Please Enter Property Source";
+"Please Enter Plate Number" = "Please Enter Plate Number";
+"Please Enter Street Width" = "Please Enter Street Width";
+"Enter Valid Email" = "Enter Valid Email";
+"Enter Valid UserName" = "Enter Valid UserName";
+"Password minimum 8 characters at least 1 Alphabet and 1 Number" = "Password minimum 8 characters at least 1 Alphabet and 1 Number";
+"Enter Valid Email And Password" = "Enter Valid Email And Password";
 
 
 /*------------------------------add info screen*/
@@ -188,3 +195,4 @@
 "Government" = "Government";
 "min" = "min";
 "max" = "max";
+

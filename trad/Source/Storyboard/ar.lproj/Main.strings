@@ -17,6 +17,9 @@
 /* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "6RC-kH-ODS"; */
 "6RC-kH-ODS.normalTitle" = "تسجيل الخروج";
 
+/* Class = "UIButton"; normalTitle = "Search"; ObjectID = "YSW-mm-25A"; */
+"YSW-mm-25A.normalTitle" = "بحث";
+
 /* Class = "UILabel"; text = "150 m² "; ObjectID = "0n8-4g-co7"; */
 "0n8-4g-co7.text" = "150 m² ";
 
@@ -40,6 +43,17 @@
 
 /* Class = "UILabel"; text = "CreatedDate"; ObjectID = "1De-Hr-qb4"; */
 "1De-Hr-qb4.text" = "تاريخ الإنشاء";
+
+/* Class = "UILabel"; text = "Purpose"; ObjectID = "afh-gt-0yi"; */
+"afh-gt-0yi.text" = "الغرض";
+
+/* Class = "UILabel"; text = "Property Source"; ObjectID = "yoN-t9-6iM"; */
+"yoN-t9-6iM.text" = "موثوقية الاعلان";
+
+
+/* Class = "UILabel"; text = "Created Date"; ObjectID = "26V-Fs-Tgn"; */
+"26V-Fs-Tgn.text" = "تاريخ الإنشاء";
+
 
 /* Class = "UILabel"; text = "Total price"; ObjectID = "1NN-hm-2am"; */
 "1NN-hm-2am.text" = "المجموع";

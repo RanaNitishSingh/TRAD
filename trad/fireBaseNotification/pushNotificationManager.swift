@@ -117,7 +117,7 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
       // ...
 
       // Print full message.
-      print(userInfo)
+        print(userInfo)
 
       // Change this to your preferred presentation option
       completionHandler([[.alert, .sound]])

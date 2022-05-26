@@ -57,7 +57,8 @@
 "Furnished Apartment for rent" = "شقة مفروشة للايجار";
 "Furnished Apartment for sale" = "شقة مفروشة للبيع";
 "Store for sale" = "محل للايجار";
-"Fram for rent" = "مزرعة للايجار";
+"Farm for rent" = "مزرعة للايجار";    
+
 /*------------------------------upload screen*/
 "uploadImageBtn" = "صوره من الألبوم";
 "uploadVideoBtn" = "فيديو من الألبوم";
@@ -141,12 +142,18 @@
 "Upper ground" = "دور علوي (1)";
 
 "OK" = "استمرار";
-"Please enter # of bed rooms" = "الرجاء ادخال عدد غرف النوم";
-"Please enter Street Direction" = "الرجاء ادخل اتجاه الطريق";
-"Please enter # of bath rooms" = "الرجاء ادخال عدد دورات المياه";
-"Please enter age" = "الرجاء ادخال عمر العقار";
-"Please enter bed rooms" = "الرجاء ادخال غرف النوم";
-"Please enter Duration" = ""; ///////////////////////////////////////////////////////////////////////
+"Please Enter # of bed rooms" = "الرجاء ادخال عدد غرف النوم";
+"Please Enter Street Direction" = "الرجاء ادخل اتجاه الطريق";
+"Please Enter # of bath rooms" = "الرجاء ادخال عدد دورات المياه";
+"Please Enter age" = "الرجاء ادخال عمر العقار";
+"Please Enter bed rooms" = "الرجاء ادخال غرف النوم";
+"Please Enter Property Source" = "فضلا ادخل مصدر الاعلان";
+"Please Enter Plate Number" = "فضلا ادخل رقم اللوحه";
+"Please Enter Street Width" = "فضلا ادخل عرض الشارع";
+"Enter Valid Email" = "ادخل الايميل";
+"Enter Valid UserName" = "ادخل اسم المستخدم";
+"Enter Valid Password" = "ادخل الرقم السري";
+"Password minimum 8 characters at least 1 Alphabet and 1 Number" = "الرقم السري يتكون من ٨ خانات: لا يقل عن حرف و رقم";
 
 
 /*------------------------------add info screen*/
@@ -157,6 +164,7 @@
 "List for Sale And Rent Has been Submitted" = "تم رفع العقار بنجاح";
 "List for Sale Has been Submitted" = "تم رفع العقار بنجاح";
 "List for Rent Has been Submitted" = "تم رفع الاعلان";
+"Enter Vaild Email And Password" = "ادخل الايميل و الرقم السري";
 
 "Zcd-sQ-4ee.title" = "بحث";
 "Images" = "صور";
@@ -195,3 +203,4 @@
 "Government" = "اثنين";
 "min" = "دقيقة";
 "max" = "الأعلى";
+
