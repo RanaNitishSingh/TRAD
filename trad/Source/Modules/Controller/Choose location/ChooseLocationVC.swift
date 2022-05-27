@@ -9,7 +9,7 @@ import GooglePlaces
 import GooglePlacesSearchController
 
 
-class ChooseLocationVC: UIViewController,GMSAutocompleteViewControllerDelegate, UISearchBarDelegate {
+class ChooseLocationVC: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var locationSearchBar: UISearchBar!
     @IBOutlet weak var addressLabel: UILabel!
@@ -18,7 +18,7 @@ class ChooseLocationVC: UIViewController,GMSAutocompleteViewControllerDelegate, 
     @IBOutlet var currentLocationBtn: UIButton!
     @IBOutlet var mapChangeBtn: UIButton!
     @IBOutlet var propertyType: UILabel!
-    
+  
     var Aproperties1 : [Propertiesdata] = []
     
     var CategoryDetail1 =  String()
@@ -98,6 +98,7 @@ class ChooseLocationVC: UIViewController,GMSAutocompleteViewControllerDelegate, 
         
     }
     
+    
     @IBAction func mapChangeAction(_ sender: UIButton) {
         if mapChangeBtn.isSelected == true{
             mapChangeBtn.isSelected = false
@@ -111,59 +112,26 @@ class ChooseLocationVC: UIViewController,GMSAutocompleteViewControllerDelegate, 
             mapView.mapType = .normal
         }
     }
-    
 
     @IBAction func onLaunchClicked(sender: UIButton) {
-        let acController = GMSAutocompleteViewController()
-        acController.delegate = self
-        acController.modalPresentationStyle = .fullScreen
-        
-        
-        // Specify the place data types to return.
-        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
-                                                    UInt(GMSPlaceField.placeID.rawValue) | UInt(GMSPlaceField.coordinate.rawValue))
-        acController.placeFields = fields
-        
-        // Specify a filter.
-        let filter = GMSAutocompleteFilter()
-        filter.type = .establishment
-        acController.autocompleteFilter = filter
-        
-        // Display the autocomplete view controller.
-        present(acController, animated: true, completion: nil)
+        let autocompleteController = GMSAutocompleteViewController()
+            autocompleteController.delegate = self
+
+            // Specify the place data types to return.
+            let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
+                                                      UInt(GMSPlaceField.placeID.rawValue))
+            autocompleteController.placeFields = fields
+
+            // Specify a filter.
+            let filter = GMSAutocompleteFilter()
+            filter.type = .address
+            autocompleteController.autocompleteFilter = filter
+
+            // Display the autocomplete view controller.
+            present(autocompleteController, animated: true, completion: nil)
         
     }
-    // Handle the user's selection.
-    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        print("Place name: \(place.name ?? "")")
-        print("Place ID: \(place.placeID ?? "")")
-        let latitude = place.coordinate.latitude
-        let longitude = place.coordinate.longitude
-        print(latitude)
-        print(longitude)
-        let camera = GMSCameraPosition.camera(withLatitude: latitude ,longitude: longitude, zoom: 18.0)
-        self.mapView.animate(to: camera)
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        // TODO: handle the error.
-        print("Error: ", error.localizedDescription)
-    }
-    
-    // User canceled the operation.
-    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    // Turn the network activity indicator on and off again.
-    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    }
-    
-    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
+
     
  
     
@@ -238,7 +206,10 @@ class ChooseLocationVC: UIViewController,GMSAutocompleteViewControllerDelegate, 
             self.mapView.padding = UIEdgeInsets(top: self.view.safeAreaInsets.top, left: 0,bottom: labelHeight, right: 0)
             UIView.animate(withDuration: 0.25) {
                 self.view.layoutIfNeeded()
-            }}}}
+            }}}
+
+    
+}
 
 
 //// MARK: - GMSMapViewDelegate
@@ -298,4 +269,35 @@ extension ChooseLocationVC: CLLocationManagerDelegate {
   ) {
     print(error)
   }
+}
+
+extension ChooseLocationVC: GMSAutocompleteViewControllerDelegate {
+
+  // Handle the user's selection.
+  func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+    print("Place name: \(place.name)")
+    print("Place ID: \(place.placeID)")
+    print("Place attributions: \(place.attributions)")
+    dismiss(animated: true, completion: nil)
+  }
+
+  func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+    // TODO: handle the error.
+    print("Error: ", error.localizedDescription)
+  }
+
+  // User canceled the operation.
+  func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+    dismiss(animated: true, completion: nil)
+  }
+
+  // Turn the network activity indicator on and off again.
+  func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+  }
+
+  func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+  }
+
 }

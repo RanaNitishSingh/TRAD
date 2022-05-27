@@ -156,9 +156,9 @@
 "Please Enter Street Width" = "Please Enter Street Width";
 "Enter Valid Email" = "Enter Valid Email";
 "Enter Valid UserName" = "Enter Valid UserName";
-"Password minimum 8 characters at least 1 Alphabet and 1 Number" = "Password minimum 8 characters at least 1 Alphabet and 1 Number";
+"Password minimum 8 characters at least 1 Alphabet , 1 Special Character and 1 Number" = "Password minimum 8 characters at least 1 Alphabet , 1 Special Character and 1 Number";
 "Enter Valid Email And Password" = "Enter Valid Email And Password";
-
+"Please Enter # of apartment" = "Please Enter # of apartment";
 
 /*------------------------------add info screen*/
 "Please Enter Rent" = "Please Enter Rent";
@@ -168,6 +168,12 @@
 "List for Sale And Rent Has been Submitted" = "List for Sale And Rent Has been Submitted";
 "List for Sale Has been Submitted" = "List for Sale Has been Submitted";
 "List for Rent Has been Submitted" = "List for Rent Has been Submitted";
+"Please Enter Size , Sale Price Per Meter and Rent Price" = "Please Enter Size , Sale Price Per Meter and Rent Price";
+"Please Enter Rent Price" = "Please Enter Rent Price";
+"Please Enter Size" = "Please Enter Size";
+"Please Enter Size and Sale Price Per Meter" = "Please Enter Size and Sale Price Per Meter";
+"Please Enter Size And Rent Price" = "Please Enter Size And Rent Price";
+"Please Enter Size" = "Please Enter Size";
 
 "Zcd-sQ-4ee.title" = "Search";
 "Images" = "Images";

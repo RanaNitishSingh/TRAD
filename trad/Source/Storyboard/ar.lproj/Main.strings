@@ -231,7 +231,7 @@
 
 
 /* Class = "UITabBarItem"; title = "User's"; ObjectID = "zf5-Go-bNw"; */
-"zf5-Go-bNw.title" = "المستعمل";
+"zf5-Go-bNw.title" = "المستخدمين";
 
 
 /* Class = "UIButton"; normalTitle = "Login"; ObjectID = "ELM-ig-zQI"; */
@@ -794,6 +794,9 @@
 
 /* Class = "UILabel"; text = "Air Conditioner?"; ObjectID = "zwz-1q-fhG"; */
 "zwz-1q-fhG.text" = "يوجد مكيفات";
+
+/* Class = "UILabel"; text = "Air Conditioner"; ObjectID = "wNz-r7-2vH"; */
+"wNz-r7-2vH.text" = "يوجد مكيفات";
 
 /* Class = "UILabel"; text = "UsersName"; ObjectID = "Om0-J5-uoL"; */
 "Om0-J5-uoL.text" = "اسم المستخدم";

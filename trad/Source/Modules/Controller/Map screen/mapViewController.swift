@@ -440,7 +440,6 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
             if item.forSoldAndRented == true{
                 print("done")
             }else{
-               
                 let variation = Double.random(in: -0.01...0.01) / 1500
                 let latStr = item.latitude
                 let longStr = item.longitude
@@ -500,7 +499,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 let coordinate1 = CLLocation(latitude: lat!, longitude: long!)
                 distanceInMeters = coordinate0.distance(from: coordinate1)
                 print(distanceInMeters!)
-                let radious = 5 as CLLocationDistance?
+                let radious = 3218688 as CLLocationDistance?
                 if self.distanceInMeters! <= radious!{
                     Aproperties_1.append(item)
                 }
@@ -516,7 +515,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 let coordinate1 = CLLocation(latitude: lat!, longitude: long!)
                 distanceInMeters = coordinate0.distance(from: coordinate1)
                 print(distanceInMeters!)
-                let radious = 5 as CLLocationDistance?
+                let radious = 3218688 as CLLocationDistance?
                 if self.distanceInMeters! <= radious!{
                     Aproperties.append(item_search)
                 }
@@ -579,8 +578,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                       let lng = self.mapView.myLocation?.coordinate.longitude else { return }
                 let camera = GMSCameraPosition.camera(withLatitude: lat ,longitude: lng, zoom: 14.0)
                 self.mapView.animate(to: camera)
-                mapCenterPinImage.isHidden = false
-                
+                mapCenterPinImage.isHidden = false                 
             }
             
             let df = DateFormatter()

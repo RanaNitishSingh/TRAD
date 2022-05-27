@@ -231,6 +231,7 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func actionLogoutBtn(_ sender: Any) {
         let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "loginUID")
         defaults.removeObject(forKey: "user_Email")
         defaults.removeObject(forKey: "user_Password")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -355,7 +356,7 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
         }
         let isValidatePass = self.validation.validatePassword(password: password)
         if (isValidatePass == false) {
-            showAlert(message: "Password minimum 8 characters at least 1 Alphabet and 1 Number".localizedStr())
+            showAlert(message: "Password minimum 8 characters at least 1 Alphabet , 1 Special Character and 1 Number".localizedStr())
             print("Incorrect Pass")
             return
         }
@@ -393,14 +394,11 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
                 
                 self.UserData = self.mainArrayData
             }
-            
             AdminTableView.reloadData()
             Helper().showUniversalLoadingView(false)
         }
     }
 }
-
-
 
 //MARK:- TableView
 
@@ -478,7 +476,41 @@ extension addUsersVC : UITableViewDelegate, UITableViewDataSource {
         return 40
         
     }
+ 
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//      if editingStyle == .delete {
+//        print("Deleted")
+//        self.UserData.remove(at: indexPath.row)
+//        self.userTableView.deleteRows(at: [indexPath], with: .fade)
+//      }
+//    }
     
+    
+    
+//    func tableView(_ tableView: UITableView, commit editingStyle:
+//                   UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//
+//        if tableView == userTableView {
+//        if editingStyle == .delete {
+//            for item in UserData {
+//                let postID = item.uid   //Assuming that you saving postID as a string.
+//            self.arrayUser.remove(at: indexPath.row)
+//            userTableView.deleteRows(at: [indexPath], with: .fade)
+//                db.collection("Users").whereField("uid", isEqualTo: postID).getDocuments() { (querySnapshot, err) in
+//                  if let err = err {
+//                    print("Error getting documents: \(err)")
+//                  } else {
+//                    for document in querySnapshot!.documents {
+//                      document.reference.delete()
+//                    }
+//                  }
+//                }
+//   }
+//  }
+//    }
+//
+//
+//    }
 }
 
 

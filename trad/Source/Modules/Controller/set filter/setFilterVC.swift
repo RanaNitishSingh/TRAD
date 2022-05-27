@@ -1521,9 +1521,6 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             } else if valueForbathrooms.isEmpty == true  || valueForbathrooms == "0"{
                 TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
                 
-            }else if valueForappartments.isEmpty == true  || valueForappartments == "0"{
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of apartment ".localizedStr(), VC: self, cancel_action: false)
-                
             } else if plateNumberText.text!.isEmpty == true {
                 TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
                 
@@ -1577,7 +1574,10 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             if valueForstreetdirection.isEmpty == true  {
                 TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
                 
-            }  else if valueForPropertySource.isEmpty == true {
+            } else if valueForappartments.isEmpty == true  || valueForappartments == "0"{
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of apartment".localizedStr(), VC: self, cancel_action: false)
+                
+            } else if valueForPropertySource.isEmpty == true {
                 TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
                 
             }else if valueForage.isEmpty == true || valueForage == "0" {
@@ -1638,7 +1638,7 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
                 TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
                 
             }else if plateNumberText.text!.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter  Plate Number".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
                 
             } else { postToNextScreen() }
         } else if CategoryDetail2 == "Floor" {

@@ -153,7 +153,9 @@
 "Enter Valid Email" = "ادخل الايميل";
 "Enter Valid UserName" = "ادخل اسم المستخدم";
 "Enter Valid Password" = "ادخل الرقم السري";
-"Password minimum 8 characters at least 1 Alphabet and 1 Number" = "الرقم السري يتكون من ٨ خانات: لا يقل عن حرف و رقم";
+"Password minimum 8 characters at least 1 Alphabet , 1 Special Character and 1 Number" = "الرقم السري لا يقل ٨ خانات، حروف و  أرقام";
+
+"Please Enter # of apartment" = "ادخل عدد الشقق";
 
 
 /*------------------------------add info screen*/
@@ -165,6 +167,13 @@
 "List for Sale Has been Submitted" = "تم رفع العقار بنجاح";
 "List for Rent Has been Submitted" = "تم رفع الاعلان";
 "Enter Vaild Email And Password" = "ادخل الايميل و الرقم السري";
+"Please Enter Size , Sale Price Per Meter and Rent Price" = "ادخل المساحة و سعر المتر و سعر الايجار";
+"Please Enter Rent Price" = "ادخل سعر الايجار";
+"Please Enter Size" =  "ادخل المساحة";
+"Please Enter Size and Sale Price Per Meter" = "ادخل المساحه و سعر المتر";
+"Please Enter Size And Rent Price" = "ادخل المساحة و السعر";
+"Please Enter Size" = "ادخل المساحة";
+
 
 "Zcd-sQ-4ee.title" = "بحث";
 "Images" = "صور";

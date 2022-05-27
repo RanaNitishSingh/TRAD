@@ -366,17 +366,24 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
             
         } else if ForSaleBool == true {
             if sizeTextView.text == "" && priceTextView.text == "" && totalPriceTextView.text == ""  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Size and Sale Price Per Meter ".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Size and Sale Price Per Meter".localizedStr(), VC: self, cancel_action: false)
                 Helper().showUniversalLoadingView(false)
+            } else if sizeTextView.text == "" && priceTextView.text == "" && totalPriceTextView.text != ""  {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Size and Sale Price Per Meter".localizedStr(), VC: self, cancel_action: false)
+                Helper().showUniversalLoadingView(false)
+                
             } else {
                 saveValuesToFirebase(Propertytype: Category + " for sale", Price: valueOftotalPrice ) }
             
         } else if ForRentBool == true {
             if forRentTextField.text  == "" && sizeTextView.text == "" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Rent Price And Size".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Size And Rent Price".localizedStr(), VC: self, cancel_action: false)
                 Helper().showUniversalLoadingView(false)
                 
-            } else {
+            } else if forRentTextField.text  != "" && sizeTextView.text == "" {
+                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Size".localizedStr(), VC: self, cancel_action: false)
+                Helper().showUniversalLoadingView(false) }
+            else {
                 saveValuesToFirebase(Propertytype: Category + " for rent", Price: forRentTextField.text ?? "") }
         } else {
             TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please select Rent or Sale".localizedStr(), VC: self, cancel_action: false)
