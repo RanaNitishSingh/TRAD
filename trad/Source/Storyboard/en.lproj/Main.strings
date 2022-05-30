@@ -749,6 +749,9 @@
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "wMH-Zd-qHP"; */
 "wMH-Zd-qHP.normalTitle" = "Continue";
 
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "LYz-yX-iDX"; */
+"LYz-yX-iDX.normalTitle" = "Logout";   
+
 /* Class = "UIButton"; normalTitle = "Owner"; ObjectID = "x1E-id-eyL"; */
 "x1E-id-eyL.normalTitle" = "Owner";
 
@@ -802,3 +805,12 @@
 
 /* Class = "UILabel"; text = "UsersAdmin"; ObjectID = "O2I-I4-47w"; */
 "O2I-I4-47w.text" = "UsersAdmin";
+
+/* Class = "UILabel"; text = "Signed as"; ObjectID = "Q2G-7v-XBh"; */
+"Q2G-7v-XBh.text" = "Signed as";
+
+/* Class = "UILabel"; text = "Signed as"; ObjectID = "PMm-4i-IOY"; */
+"PMm-4i-IOY.text" = "Signed as";
+
+
+

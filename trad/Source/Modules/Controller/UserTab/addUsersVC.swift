@@ -14,8 +14,8 @@ import FirebaseFirestore
 @available(iOS 13.0, *)
 class addUsersVC: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var lanuageLbl: UILabel!
-    @IBOutlet weak var switchBtn: UISwitch!
+   
+    @IBOutlet weak var loginUserLbl: UILabel!
     @IBOutlet weak var logoutBTN: UIButton!
     @IBOutlet weak var lblUserName: UITextField!
     @IBOutlet weak var lblUserEmail: UITextField!
@@ -34,7 +34,6 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
     var arrayUserPassword = [String]()
     var db: Firestore!
     var selectedAdmin: String = ""
-    var AdminList = ["Admin 1","Admin 2","Admin 3","Admin 4"]
     var UserType = String()
     var arrayUser = [String]()
     var arrayUserId = [String]()
@@ -91,13 +90,12 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
         userAdminNameLbl.layer.cornerRadius = 5
         userAdminNameLbl.layer.masksToBounds = true
         logoutBTN.layer.cornerRadius = 12
-        switchBtn.isHidden = true
-        lanuageLbl.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
         
-        
+        UserDefaults.standard.value(forKey: "user_Email")
+        UserDefaults.standard.value(forKey: "user_Password")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -126,11 +124,12 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
-      
+        UserDefaults.standard.value(forKey: "user_Email")
+        UserDefaults.standard.value(forKey: "user_Password")
     }
     
     @objc func keyboardWillShow(sender: NSNotification) {
-        self.view.frame.origin.y = -150 // Move view 150 points upward
+        self.view.frame.origin.y = -50 // Move view 150 points upward
     }
     
     @objc func keyboardWillHide(sender: NSNotification) {
@@ -138,8 +137,7 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
     }
     
     //MARK:-  Read User's data on Firebase
-    func ReadFireBaseUsersCollection(){
-        
+    func ReadFireBaseUsersCollection(){         
         db = Firestore.firestore()
         db.collection("Users").getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -147,21 +145,25 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
             } else {
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
-                    let datta = document.get("UserName") as! String ?? ""
-                    let userType = document.get("UserType") as! String ?? ""
-                    let adminName = document.get("AdminName") as! String ?? ""
-                    let userid  =  document.get ("uid") as! String ?? ""
-                    let countProperty = document.get ("propertyCount") as!  Int ?? 0
+                    let datta = document.get("UserName") as? String ?? ""
+                    let userType = document.get("UserType") as? String ?? ""
+                    let adminName = document.get("AdminName") as? String ?? ""
+                    let userid  =  document.get ("uid") as? String ?? ""
+                    let countProperty = document.get ("propertyCount") as?  Int ?? 0
+                    let userEmail = document.get("Email") as? String ?? ""
+                    let userPass = document.get("Password") as? String ?? ""
                     self.arrayUser.append(datta)
                     self.arrayUserType.append(userType)
                     self.arrayAdminName.append(adminName)
                     self.arrayUserId.append(userid)
                     self.arrayPropertCount.append(countProperty)
-                    self.userTableView.reloadData()
-                    
+                    self.arrayUseremail.append(userEmail)
+                    self.arrayUserPassword.append(userPass)
                 }
+                self.userTableView.reloadData()
             }
         }
+       
     }
     
     
@@ -172,63 +174,7 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
     }
     @objc func dismissKeyboard() {
         view.endEditing(true)}
-    
-    
 
-    @IBAction func actionSwitchBtn(_ sender: UISwitch) {
-        
-        if L102Language.currentAppleLanguage() == "en" {
-            L102Language.setAppleLAnguageTo(lang: "ar")
-            
-            
-            UserDefaults.standard.set(true, forKey: "switch")
-            UserDefaults.standard.set("ar", forKey: "CurrentLanguage")
-            UIView.appearance().semanticContentAttribute = .forceRightToLeft
-            Bundle.setLanguage("ar");
-            LocalizationSystem.sharedInstance.setLanguage(languageCode: "ar")
-            print("english")
-            show = false
-   
-            switchBtn.isOn = true
-            switchBtn.setOn(true, animated: true)
-            sender.isOn = true
-            
-            let  mainStory = UIStoryboard(name: "Main", bundle: nil)
-            let search = mainStory.instantiateViewController(withIdentifier: "addUsersVC") as! addUsersVC
-            UIView.beginAnimations("animation", context: nil)
-            UIView.setAnimationDuration(1.0)
-            self.navigationController!.pushViewController(search, animated: false)
-            UIView.setAnimationTransition(UIView.AnimationTransition.flipFromLeft, for: self.navigationController!.view, cache: false)
-            UIView.commitAnimations()
-            
-            
-        } else {
-            
-            var transition: UIView.AnimationOptions = .transitionFlipFromLeft
-            print("Ar")
-            L102Language.setAppleLAnguageTo(lang: "en")
-            transition = .transitionFlipFromRight
-            UserDefaults.standard.set(false, forKey: "switch")
-            UserDefaults.standard.set("en", forKey: "CurrentLanguage")
-            UIView.appearance().semanticContentAttribute = .forceLeftToRight
-            Bundle.setLanguage("en")
-            LocalizationSystem.sharedInstance.setLanguage(languageCode: "en")
-            switchBtn.isOn = true
-            switchBtn.setOn(true, animated: true)
-            sender.isOn = true
-            let  mainStory = UIStoryboard(name: "Main", bundle: nil)
-            let search = mainStory.instantiateViewController(withIdentifier: "addUsersVC") as! addUsersVC
-            UIView.beginAnimations("animation", context: nil)
-            UIView.setAnimationDuration(1.0)
-            self.navigationController!.pushViewController(search, animated: false)
-            UIView.setAnimationTransition(UIView.AnimationTransition.flipFromRight, for: self.navigationController!.view, cache: false)
-            UIView.commitAnimations()
-        
-        }
-    }
-    
-    
-    
     @IBAction func actionLogoutBtn(_ sender: Any) {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "loginUID")
@@ -274,7 +220,6 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
         let userDB = Firestore.firestore()
             .collection("Users")
             .document(UserDefaults.standard.value(forKey: "loginUID") as! String)
-        
         // Get data
         userDB.getDocument { (document, error) in
             guard let document = document, document.exists else {
@@ -288,6 +233,8 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
             self.uId  = user1?["uid"] as? String
             self.SubUid = user1?["subUid"] as? String
             self.AdminUid = user1?["adminUid"] as? String
+            self.loginUserLbl.text = self.userName
+            
         }
     }
     
@@ -295,15 +242,16 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
     //MARK:- Add New User's to FireBaseAuth and Firestore
     
     func AddNewUser(AdminName: String) {
+        
+        //userdefault username and password
         Auth.auth().createUser(withEmail: (lblUserEmail.text ?? ""), password: (lblUserPassword.text ?? "")) { (result, error) in
             if let _eror = error {
-                self.showAlert(message: _eror.localizedDescription )
+                self.showAlert(message: _eror.localizedDescription)
             } else {
-                self.showAlert(message: "user registered successfully" )
                 print(result?.user.uid)
                 //  var ref: DocumentReference? = nil
                 let userID = result?.user.uid
-                self.db.collection("Users").document(userID!).setData ([
+                self.db.collection("Users").document(userID!).setData([
                     "UserName":  self.lblUserName.text!,
                     "Email": self.lblUserEmail.text!,
                     "Password": self.lblUserPassword.text!,
@@ -319,11 +267,23 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
                     if let err = err {
                         print("Error adding document: \(err)")
                     } else {
-                        self.userTableView.reloadData()
                         print("Document added with ID: \(userID!)")
+                        Auth.auth().signIn(withEmail: UserDefaults.standard.value(forKey: "user_Email") as! String, password: UserDefaults.standard.value(forKey: "user_Password") as! String) { [weak self] authResult, error in
+                            if error != nil {
+                                if L102Language.currentAppleLanguage() == "ar" {
+                                    TRADSingleton.sharedInstance.showAlert(title: "خطأ", msg: "Enter Vaild Email And Password".localizedStr(), VC: self!, cancel_action: false)
+                                    Helper().showUniversalLoadingView(false)
+                               
+                                }else{
+                                    
+                                    TRADSingleton.sharedInstance.showAlert(title: "ERROR", msg: "Enter Vaild Email And Password".localizedStr(), VC: self!, cancel_action: false)
+                                    Helper().showUniversalLoadingView(false)
+                                }
+                            }
+                        }
+                     
                     }
                 }
-                
                 self.lblUserName.text?.removeAll()
                 self.lblUserEmail.text?.removeAll()
                 self.lblUserPassword.text?.removeAll()
@@ -332,6 +292,7 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
                 self.radioBtnUsers.isSelected = false
                 self.AdminTableView.isHidden =  true
                 self.selectedAdmin.removeAll()
+                self.showAlert(message: "User Registered Successfully")
             }
         }
     }
@@ -371,16 +332,13 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
             
         } else {
             AddNewUser(AdminName: self.selectedAdmin)
-            
         }
         
     }
     
     
     func fetchDatafromFirebase(){
-        
         Helper().showUniversalLoadingView(true)
-        
         let db = Firestore.firestore()
         db.collection("Users").getDocuments() { [self] (querySnapshot, err) in
             
@@ -391,10 +349,10 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
                     // 6
                     try? document.data(as: userData.self)
                 } ?? []
-                
                 self.UserData = self.mainArrayData
             }
             AdminTableView.reloadData()
+           // userTableView.reloadData()
             Helper().showUniversalLoadingView(false)
         }
     }
@@ -417,10 +375,8 @@ extension addUsersVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == userTableView {
-            
             let cell = userTableView.dequeueReusableCell(withIdentifier: "addUsersTableViewCell", for: indexPath) as! addUsersTableViewCell
             cell.userNameCellLBL.text = arrayUser[indexPath.row].localizedStr()
-            
             cell.userTypeLbl.text = arrayUserType[indexPath.row].localizedStr()
             cell.userAdminLbl.text = arrayAdminName[indexPath.row].localizedStr()
             print(self.arrayUser[indexPath.row])
@@ -430,8 +386,7 @@ extension addUsersVC : UITableViewDelegate, UITableViewDataSource {
             
             let Admincell = AdminTableView.dequeueReusableCell(withIdentifier: "AdminTableViewCell", for: indexPath) as! AdminTableViewCell
             if self.UserData[indexPath.row].uid == uId || self.UserData[indexPath.row].adminUid == uId  {
-                Admincell.AdminNameTableCellLBL.text = self.UserData[indexPath.row].UserName.localizedStr()
-                
+                Admincell.AdminNameTableCellLBL.text = self.UserData[indexPath.row].UserName.localizedStr() 
                 let backgroundView = UIView()
                 backgroundView.backgroundColor = #colorLiteral(red: 0, green: 0.5008728504, blue: 0.6056929231, alpha: 1)
                 Admincell.selectedBackgroundView = backgroundView
@@ -453,65 +408,71 @@ extension addUsersVC : UITableViewDelegate, UITableViewDataSource {
         else if tableView == userTableView {
             
             // userDataFetchfromFirebase()
-            
-            
             for item in UserData {
                 if item.UserName == arrayUser[indexPath.row]{
                     print(item.UserName)
                     print(arrayPropertCount[indexPath.row])
-                    
-                    let message = "Number of properties Added By"
-                    
+                    print(self.arrayUserId[indexPath.row])
+                    let message = "Number of properties Added By"                     
                     TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "\(message.localizedStr()) \(arrayUser[indexPath.row])  \(arrayPropertCount[indexPath.row]) ", VC: self, cancel_action: false)
-                    
-                    
-                }
+                                  }
             }
         }
+  
+        
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 40
+        if tableView == AdminTableView {
+            return 40
+        }
+        
+        else if tableView == userTableView {
+            return 40
+        }
+        return 20
         
     }
  
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//      if editingStyle == .delete {
-//        print("Deleted")
-//        self.UserData.remove(at: indexPath.row)
-//        self.userTableView.deleteRows(at: [indexPath], with: .fade)
-//      }
-//    }
     
-    
-    
-//    func tableView(_ tableView: UITableView, commit editingStyle:
-//                   UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//
-//        if tableView == userTableView {
-//        if editingStyle == .delete {
-//            for item in UserData {
-//                let postID = item.uid   //Assuming that you saving postID as a string.
-//            self.arrayUser.remove(at: indexPath.row)
-//            userTableView.deleteRows(at: [indexPath], with: .fade)
-//                db.collection("Users").whereField("uid", isEqualTo: postID).getDocuments() { (querySnapshot, err) in
-//                  if let err = err {
-//                    print("Error getting documents: \(err)")
-//                  } else {
-//                    for document in querySnapshot!.documents {
-//                      document.reference.delete()
-//                    }
-//                  }
-//                }
-//   }
-//  }
-//    }
-//
-//
-//    }
-}
+    func tableView(_ tableView: UITableView, commit editingStyle:
+                   UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if tableView == userTableView {
+        if editingStyle == .delete {
+           //Assuming that you saving postID as a string.
+            let postId = self.arrayUserId[indexPath.row]
+            print(postId)
+            self.arrayUser.remove(at: indexPath.row)
+            self.arrayUserType.remove(at: indexPath.row)
+            self.arrayAdminName.remove(at: indexPath.row)
+            self.arrayUserId.remove(at: indexPath.row)
+            self.arrayPropertCount.remove(at: indexPath.row)
+            self.userTableView.deleteRows(at: [indexPath], with: .fade)
+            self.userTableView.reloadData()
+            db.collection("Users").whereField("uid", isEqualTo: postId ).getDocuments() { (querySnapshot, err) in
+                  if let err = err {
+                    print("Error getting documents: \(err)")
+                  } else {
+                    for document in querySnapshot!.documents {
+                      document.reference.delete()
+                    
+                    
+                    }
+
+                }
+   }
+  }
+    }
+        
+        
+        
+        
+    }
+
+    }
+
 
 
 //MARK:- Name, email and Password Validation

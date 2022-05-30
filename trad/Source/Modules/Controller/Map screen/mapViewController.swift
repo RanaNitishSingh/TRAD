@@ -499,7 +499,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 let coordinate1 = CLLocation(latitude: lat!, longitude: long!)
                 distanceInMeters = coordinate0.distance(from: coordinate1)
                 print(distanceInMeters!)
-                let radious = 3218688 as CLLocationDistance?
+                let radious = 5 as CLLocationDistance?
                 if self.distanceInMeters! <= radious!{
                     Aproperties_1.append(item)
                 }
@@ -515,7 +515,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 let coordinate1 = CLLocation(latitude: lat!, longitude: long!)
                 distanceInMeters = coordinate0.distance(from: coordinate1)
                 print(distanceInMeters!)
-                let radious = 3218688 as CLLocationDistance?
+                let radious = 5 as CLLocationDistance?
                 if self.distanceInMeters! <= radious!{
                     Aproperties.append(item_search)
                 }
@@ -813,7 +813,7 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
                     let largeNumber = Int(self.Aproperties[indexPath.item].valueOftotalPrice.localizedStr())
                     let numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .decimal
-                    let formattedNumber = numberFormatter.string(from: NSNumber(value:largeNumber!))
+                    let formattedNumber = numberFormatter.string(from: NSNumber(value:largeNumber ?? 0))
                     cell.LblSAR.text = formattedNumber! + " " + "SAR".localizedStr()
                     let meter = " m² ";
                     cell.LblMeter.text = "📍" + self.Aproperties[indexPath.item].valueOfsizeTextView + meter .localizedStr()

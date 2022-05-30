@@ -70,7 +70,6 @@ extension ChosseCategoryVC: UITableViewDelegate, UITableViewDataSource{
 
 class ChooseCategoryTableViewCell: UITableViewCell{
     @IBOutlet var CategotyName: UILabel!
-    
     @IBOutlet var forwordImage: UIImageView!
     
     

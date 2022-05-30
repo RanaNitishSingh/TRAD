@@ -1303,7 +1303,11 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
    
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
         toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            if L102Language.currentAppleLanguage() == "ar" {
+                toolBar.items = [UIBarButtonItem.init(title: "تم", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            }else {
+                toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            }
         self.view.addSubview(toolBar)
     } else if !pickerView.isHidden {
                toolBar.removeFromSuperview()
@@ -1334,7 +1338,12 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
         toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            if L102Language.currentAppleLanguage() == "ar" {
+                toolBar.items = [UIBarButtonItem.init(title: "تم", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            }else {
+                toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            }
+         
         self.view.addSubview(toolBar)
     } else if !pickerView.isHidden {
                toolBar.removeFromSuperview()
@@ -1362,7 +1371,11 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
         toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            if L102Language.currentAppleLanguage() == "ar" {
+                toolBar.items = [UIBarButtonItem.init(title: "تم", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            }else {
+                toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            }
         self.view.addSubview(toolBar)
     } else if !pickerView.isHidden {
             toolBar.removeFromSuperview()
@@ -1392,7 +1405,11 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
         toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            if L102Language.currentAppleLanguage() == "ar" {
+                toolBar.items = [UIBarButtonItem.init(title: "تم", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            }else {
+                toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            }
         self.view.addSubview(toolBar)
         }else if !pickerView.isHidden {
             toolBar.removeFromSuperview()
@@ -1423,7 +1440,11 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             
             toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
             toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-            toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            if L102Language.currentAppleLanguage() == "ar" {
+                toolBar.items = [UIBarButtonItem.init(title: "تم", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            }else {
+                toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            }
             self.view.addSubview(toolBar)
             
         }else if !pickerView.isHidden {

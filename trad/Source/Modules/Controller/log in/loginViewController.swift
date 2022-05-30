@@ -14,6 +14,7 @@ import UserNotifications
 
 class loginViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var forgotPasswordBtn: UIButton!
     @IBOutlet var emailTextView: UITextField!
     @IBOutlet var passwordTextview: UITextField!
     @IBOutlet var LoginBtn: UIButton!
@@ -21,6 +22,7 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var signIntoContinue: UILabel!
     @IBOutlet var forgotPassword: UILabel!
     var CountData : [UserData] = []
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,13 +54,21 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillShow(sender: NSNotification) {
-         self.view.frame.origin.y = -258 // Move view 150 points upward
+         self.view.frame.origin.y = -180 // Move view 150 points upward
     }
 
     @objc func keyboardWillHide(sender: NSNotification) {
          self.view.frame.origin.y = 0 // Move view to original position
     }
 
+    
+    @IBAction func forgotPasswordAction(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier :"forgotPassword") as! forgotPassword
+        self.navigationController?.pushViewController(viewController, animated: true)
+        
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -77,9 +87,15 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         Helper().showUniversalLoadingView(true)
         Auth.auth().signIn(withEmail: emailTextView.text!, password: passwordTextview.text!) { [weak self] authResult, error in
             if error != nil {
-                TRADSingleton.sharedInstance.showAlert(title: "ERROR", msg: "Enter Vaild Email And Password".localizedStr(), VC: self!, cancel_action: false)
-                Helper().showUniversalLoadingView(false)
-                
+                if L102Language.currentAppleLanguage() == "ar" {
+                    TRADSingleton.sharedInstance.showAlert(title: "خطأ", msg: "Enter Vaild Email And Password".localizedStr(), VC: self!, cancel_action: false)
+                    Helper().showUniversalLoadingView(false)
+               
+                }else{
+                    
+                    TRADSingleton.sharedInstance.showAlert(title: "ERROR", msg: "Enter Vaild Email And Password".localizedStr(), VC: self!, cancel_action: false)
+                    Helper().showUniversalLoadingView(false)
+                }
                 
                 
             }else{

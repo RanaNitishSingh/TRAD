@@ -17,6 +17,9 @@
 /* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "6RC-kH-ODS"; */
 "6RC-kH-ODS.normalTitle" = "تسجيل الخروج";
 
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "LYz-yX-iDX"; */
+"LYz-yX-iDX.normalTitle" = "تسجيل الخروج";
+ 
 /* Class = "UIButton"; normalTitle = "Search"; ObjectID = "YSW-mm-25A"; */
 "YSW-mm-25A.normalTitle" = "بحث";
 
@@ -806,4 +809,14 @@
 
 /* Class = "UILabel"; text = "UsersAdmin"; ObjectID = "O2I-I4-47w"; */
 "O2I-I4-47w.text" = "المستخدم المدير";
+
+/* Class = "UILabel"; text = "Signed as"; ObjectID = "Q2G-7v-XBh"; */
+"Q2G-7v-XBh.text" = "المستخدم بإسم";
+
+/* Class = "UILabel"; text = "Signed as"; ObjectID = "PMm-4i-IOY"; */
+"PMm-4i-IOY.text" = "المستخدم بإسم";
+
+
+
+
 

@@ -14,6 +14,8 @@
 		520C95A927F461C9001C4AF5 /* pushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C95A727F461C9001C4AF5 /* pushNotificationManager.swift */; };
 		520C95AA27F461C9001C4AF5 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C95A827F461C9001C4AF5 /* PushNotificationSender.swift */; };
 		520C95AC27F4620D001C4AF5 /* FirebaseEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C95AB27F4620D001C4AF5 /* FirebaseEnums.swift */; };
+		52AA051F2844A8EA009D5505 /* forgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA051E2844A8EA009D5505 /* forgotPassword.swift */; };
+		52AA05212844ACCD009D5505 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA05202844ACCD009D5505 /* UIViewController+Extensions.swift */; };
 		52B3A7B527F33E0300D64F0B /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3A7B427F33E0300D64F0B /* Switcher.swift */; };
 		52B3AD6828338D9A00F0923B /* menuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3AD6728338D9A00F0923B /* menuTableViewCell.swift */; };
 		8819117427BA39DD005689FA /* showHideDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8819117327BA39DD005689FA /* showHideDataViewController.swift */; };
@@ -68,6 +70,8 @@
 		520C95A727F461C9001C4AF5 /* pushNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pushNotificationManager.swift; sourceTree = "<group>"; };
 		520C95A827F461C9001C4AF5 /* PushNotificationSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		520C95AB27F4620D001C4AF5 /* FirebaseEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseEnums.swift; sourceTree = "<group>"; };
+		52AA051E2844A8EA009D5505 /* forgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forgotPassword.swift; sourceTree = "<group>"; };
+		52AA05202844ACCD009D5505 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		52B3A7B427F33E0300D64F0B /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		52B3AD6728338D9A00F0923B /* menuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuTableViewCell.swift; sourceTree = "<group>"; };
 		8819117327BA39DD005689FA /* showHideDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showHideDataViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 		227F2FBB279E89DE000C8B48 /* helper */ = {
 			isa = PBXGroup;
 			children = (
+				52AA05202844ACCD009D5505 /* UIViewController+Extensions.swift */,
 				227F2FBC279E8A11000C8B48 /* loaderView.swift */,
 				52B3A7B427F33E0300D64F0B /* Switcher.swift */,
 			);
@@ -302,6 +307,7 @@
 			children = (
 				882DD3352648EF0A007783B8 /* ViewController.swift */,
 				883440B5264946E9003F3BE9 /* loginViewController.swift */,
+				52AA051E2844A8EA009D5505 /* forgotPassword.swift */,
 			);
 			path = "log in";
 			sourceTree = "<group>";
@@ -663,6 +669,8 @@
 				882DD3342648EF0A007783B8 /* SceneDelegate.swift in Sources */,
 				883F2706268AFAE300785627 /* markerWindow.swift in Sources */,
 				88B8F6A8264A4DD900356043 /* ChooseLocationVC.swift in Sources */,
+				52AA051F2844A8EA009D5505 /* forgotPassword.swift in Sources */,
+				52AA05212844ACCD009D5505 /* UIViewController+Extensions.swift in Sources */,
 				883ECA2F26E0956800F08433 /* StringExtension.swift in Sources */,
 				883912BA27ABA86800050547 /*  UIAlertView.swift in Sources */,
 				520C95A927F461C9001C4AF5 /* pushNotificationManager.swift in Sources */,

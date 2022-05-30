@@ -38,6 +38,12 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
     var ForSoldAndRented : Bool = false
     var viewIsVisibleConstraint: NSLayoutConstraint!
     var viewIsHiddenConstraint: NSLayoutConstraint!
+    @IBOutlet weak var userLogoutView: UIView!
+    @IBOutlet weak var userLable: UILabel!
+    @IBOutlet weak var logoutBtn: UIButton!
+    var User = ""
+    var Email = ""
+    var loginUserName = ""
     
     var propertySort = [String]()
     
@@ -62,7 +68,42 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
         selectedRentOrSale = "sale"
        // selectedCategory = "All"
         self.tabBarController?.tabBar.isHidden = false
+        self.userLogoutView.isHidden = true
+        self.getUserTab()
+        self.logoutBtn.layer.cornerRadius = 16
+       
     }
+    
+    
+    func getUserTab() {
+          //Get specific document from current user
+          let dataBase = Firestore.firestore()
+              .collection("Users")
+              .document(Auth.auth().currentUser?.uid ?? "")
+
+          // Get data
+        dataBase.getDocument { (document, error) in
+              guard let document = document, document.exists else {
+                  print("Document does not exist")
+                  return
+              }
+              let tabUserData = document.data()
+            self.User = tabUserData?["UserType"] as! String
+            self.Email = tabUserData?["Email"] as! String
+            self.loginUserName =  tabUserData?["UserName"] as! String
+            
+            if self.User != "Admin" {
+                self.userLogoutView.isHidden = false
+                self.userLable.text = self.loginUserName
+            }
+            
+            
+            
+            
+        }
+    
+    }
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -118,6 +159,24 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
         self.propertiesdata.sort { !$0.forSoldAndRented && $1.forSoldAndRented }
         tableView.reloadData()
     }
+    
+    
+    @IBAction func userLogoutAction(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "loginUID")
+        defaults.removeObject(forKey: "user_Email")
+        defaults.removeObject(forKey: "user_Password")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier :"ViewController") as! ViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
+        
+    }
+    
+    
+    
+    
+    
+    
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count > 0 {
