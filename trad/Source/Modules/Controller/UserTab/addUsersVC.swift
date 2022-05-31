@@ -323,12 +323,12 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
         }
         
         if UserType.isEmpty ==  true {
-            showAlert(message: "Please Select valid UserType ")
+            showAlert(message: "Please Select valid UserType".localizedStr())
         } else if UserType == "Admin"  {
             selectedAdmin.removeAll()
             AddNewUser(AdminName: "")
         } else if UserType == "User" && selectedAdmin.isEmpty == true {
-            showAlert(message: "Please select one of the admin")
+            showAlert(message: "Please select one of the admin".localizedStr())
             
         } else {
             AddNewUser(AdminName: self.selectedAdmin)

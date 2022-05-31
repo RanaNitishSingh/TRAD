@@ -214,4 +214,6 @@
 "max" = "الأعلى";
 "Signed as" = "المستخدم بإسم";
 "User Registered Successfully" = "تم تسجيل المستخدم بنجاح";
-
+"A password reset email has been sent" = "تم ارسال استعادة كلمة المرور الى ايميلك";
+"Please Select valid UserType" = "الرجاء اختيار نوع المستخدم";
+"Please select one of the admin" = "الرجاء اختيار آدمن";

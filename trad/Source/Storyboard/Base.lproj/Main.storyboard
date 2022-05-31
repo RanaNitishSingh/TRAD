@@ -4909,7 +4909,7 @@
                                 </constraints>
                                 <color key="tintColor" red="0.18227183820000001" green="0.62893432380000003" blue="0.74764496089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="ForgotPassword?">
+                                <buttonConfiguration key="configuration" style="plain" title="ForgotPassword">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -10670,8 +10670,8 @@
         <image name="play_icon" width="512" height="512"/>
         <image name="playground" width="512" height="512"/>
         <image name="plug" width="512" height="512"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus" width="32" height="32"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="price" width="512" height="512"/>
         <image name="room" width="512" height="512"/>
         <image name="shop" width="512" height="512"/>

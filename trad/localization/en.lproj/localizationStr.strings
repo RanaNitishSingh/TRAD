@@ -203,4 +203,6 @@
 "max" = "max";
 "Signed as" = "Signed as";
 "User Registered Successfully" = "User Registered Successfully";
-
+"A password reset email has been sent" = "A password reset email has been sent";
+"Please Select valid UserType" = "Please Select valid UserType";
+"Please select one of the admin" = "Please select one of the admin";

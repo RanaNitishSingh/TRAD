@@ -383,7 +383,7 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
     
     
     @IBAction func whatsappShareWithImages(_ sender: AnyObject) {
-        let message = self.Aproperties[0].Category + " https://tradapp-56582.web.app/?page=Properties&id=\(self.Aproperties[0].documentID)&language=\(language)"
+        let message = self.Aproperties[0].Category.localizedStr() + " https://tradapp-56582.web.app/?page=Properties&id=\(self.Aproperties[0].documentID)&language=\(language)"
         var queryCharSet = NSCharacterSet.urlQueryAllowed
         
         queryCharSet.remove(charactersIn: "+&")

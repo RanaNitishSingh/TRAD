@@ -41,14 +41,13 @@ class forgotPassword: UIViewController, UITextFieldDelegate {
     
     @IBAction func sendAction(_ sender: Any) {
         
-        let auth = Auth.auth()
-        
+        let auth = Auth.auth()         
         auth.sendPasswordReset(withEmail: emailTxtField.text!) { (error) in
             if let error = error {
-                TRADSingleton.sharedInstance.showAlert(title: "TRAD", msg: "Enter Vaild Email".localizedStr(), VC: self, cancel_action: false)
+                TRADSingleton.sharedInstance.showAlert(title: "TRAD", msg: "Enter Valid Email".localizedStr(), VC: self, cancel_action: false)
             }
             
-            TRADSingleton.sharedInstance.showAlert(title: "TRAD", msg: "A password reset email has been sent!".localizedStr(), VC: self, cancel_action: false)
+            TRADSingleton.sharedInstance.showAlert(title: "TRAD", msg: "A password reset email has been sent".localizedStr(), VC: self, cancel_action: false)
             self.navigationController?.popToRootViewController(animated: true)
        
         }

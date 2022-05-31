@@ -230,6 +230,9 @@
 /* Class = "UIButton"; normalTitle = "Login"; ObjectID = "ELM-ig-zQI"; */
 "ELM-ig-zQI.normalTitle" = "Login";
 
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "Zhv-ZD-t0g"; */
+"Zhv-ZD-t0g.normalTitle" = "Send";
+ 
 /* Class = "UILabel"; text = "# of living rooms"; ObjectID = "ErQ-Yf-he8"; */
 "ErQ-Yf-he8.text" = "# of living rooms";
 
@@ -325,6 +328,9 @@
 
 /* Class = "UILabel"; text = "Welcome"; ObjectID = "Na8-wS-iVT"; */
 "Na8-wS-iVT.text" = "Welcome";
+
+/* Class = "UILabel"; text = "Welcome"; ObjectID = "S6r-bu-IAa"; */
+"S6r-bu-IAa.text" = "Welcome";
 
 /* Class = "UILabel"; text = "150 m² "; ObjectID = "Ngn-fx-W4V"; */
 "Ngn-fx-W4V.text" = "150 m² ";
@@ -554,6 +560,9 @@
 /* Class = "UILabel"; text = "Forgot password?"; ObjectID = "ecA-HO-CgH"; */
 "ecA-HO-CgH.text" = "Forgot password";
 
+/* Class = "UILabel"; text = "ForgotPassword"; ObjectID = "yWB-j0-zcb"; */
+"yWB-j0-zcb.text" = "ForgotPassword";
+
 /* Class = "UILabel"; text = "Apartment for rent"; ObjectID = "ecI-Nn-Ahh"; */
 "ecI-Nn-Ahh.text" = "Apartment for rent";
 
@@ -754,6 +763,9 @@
 
 /* Class = "UIButton"; normalTitle = "Owner"; ObjectID = "x1E-id-eyL"; */
 "x1E-id-eyL.normalTitle" = "Owner";
+
+/* Class = "UIButton"; normalTitle = "ForgotPassword"; ObjectID = "yWB-j0-zcb"; */
+"yWB-j0-zcb.normalTitle" = "ForgotPassword";
 
 /* Class = "UILabel"; text = "it is long established fact that a reader will be distracted by the readable content of a page when looking at its layout."; ObjectID = "xB5-ka-6Uf"; */
 "xB5-ka-6Uf.text" = "it is long established fact that a reader will be distracted by the readable content of a page when looking at its layout.";
