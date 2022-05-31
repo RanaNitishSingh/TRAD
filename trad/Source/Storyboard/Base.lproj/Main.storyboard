@@ -4924,7 +4924,6 @@
                             <constraint firstItem="ijx-iC-Eo0" firstAttribute="trailing" secondItem="iBv-xu-fgX" secondAttribute="trailing" constant="24" id="EWu-2J-c8j"/>
                             <constraint firstItem="iBv-xu-fgX" firstAttribute="top" secondItem="7ad-Ed-gpc" secondAttribute="bottom" constant="40" id="EZN-te-oDw"/>
                             <constraint firstItem="Na8-wS-iVT" firstAttribute="top" secondItem="ijx-iC-Eo0" secondAttribute="top" constant="190" id="MWZ-tb-TAd"/>
-                            <constraint firstItem="yWB-j0-zcb" firstAttribute="leading" secondItem="ijx-iC-Eo0" secondAttribute="leading" constant="204" id="NJb-Ex-NMf"/>
                             <constraint firstItem="Na8-wS-iVT" firstAttribute="leading" secondItem="ijx-iC-Eo0" secondAttribute="leading" constant="24" id="Q1a-ee-tuR"/>
                             <constraint firstItem="ijx-iC-Eo0" firstAttribute="trailing" secondItem="ELM-ig-zQI" secondAttribute="trailing" constant="24" id="U87-Vl-V3V"/>
                             <constraint firstItem="7ad-Ed-gpc" firstAttribute="leading" secondItem="ijx-iC-Eo0" secondAttribute="leading" constant="24" id="YLN-63-vpA"/>
@@ -4951,11 +4950,11 @@
             </objects>
             <point key="canvasLocation" x="374" y="-18"/>
         </scene>
-        <!--Map-->
+        <!--All List-->
         <scene sceneID="2wN-3H-SQp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="0Rd-2g-7yl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="magnifyingglass" catalog="system" id="VqT-Uw-QXl">
+                    <tabBarItem key="tabBarItem" title="All List" image="list.bullet" catalog="system" id="VqT-Uw-QXl">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -10663,8 +10662,8 @@
         <image name="icons8-unchecked-checkbox-50" width="50" height="50"/>
         <image name="invisible" width="512" height="512"/>
         <image name="kitchen" width="512" height="512"/>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="menu1" width="512" height="512"/>
         <image name="person.2" catalog="system" width="128" height="81"/>
         <image name="play_icon" width="512" height="512"/>

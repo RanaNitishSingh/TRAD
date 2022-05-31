@@ -229,8 +229,8 @@
 /* Class = "UITabBarItem"; title = "My Properties"; ObjectID = "dtY-Wg-i51"; */
 "dtY-Wg-i51.title" = "قائمتي";
 
-/* Class = "UITabBarItem"; title = "Search"; ObjectID = "VqT-Uw-QXl"; */
-"VqT-Uw-QXl.title" = "الخريطة";
+/* Class = "UITabBarItem"; title = "All List"; ObjectID = "VqT-Uw-QXl"; */
+"VqT-Uw-QXl.title" = "جميع العروض";
 
 
 /* Class = "UITabBarItem"; title = "User's"; ObjectID = "zf5-Go-bNw"; */
