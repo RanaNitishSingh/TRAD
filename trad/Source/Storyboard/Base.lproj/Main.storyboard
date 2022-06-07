@@ -6111,7 +6111,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v6t-zj-LBO">
-                                <rect key="frame" x="15" y="64" width="384" height="40"/>
+                                <rect key="frame" x="13" y="69" width="384" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="02b-f1-hFi"/>
@@ -6168,21 +6168,34 @@
                                     <outlet property="delegate" destination="9zi-gb-Ocg" id="40m-HB-9UU"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hv-eX-KE9">
+                                <rect key="frame" x="20" y="33" width="37" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="F6X-gI-z1P"/>
+                                    <constraint firstAttribute="width" constant="37" id="etb-Zi-XAX"/>
+                                </constraints>
+                                <state key="normal" image="iconfinder_left_arrow_back_previous_navigation_3994376"/>
+                                <connections>
+                                    <action selector="backBtnAction:" destination="9zi-gb-Ocg" eventType="touchUpInside" id="r4u-Vq-dVx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OkJ-Ju-JLn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="QJV-w9-3nm" firstAttribute="trailing" secondItem="OkJ-Ju-JLn" secondAttribute="trailing" id="1VZ-n4-Cwe"/>
                             <constraint firstItem="QJV-w9-3nm" firstAttribute="leading" secondItem="OkJ-Ju-JLn" secondAttribute="leading" id="2rL-zg-dRA"/>
+                            <constraint firstItem="v6t-zj-LBO" firstAttribute="top" secondItem="3hv-eX-KE9" secondAttribute="bottom" constant="3" id="COg-Sx-JS9"/>
                             <constraint firstItem="OkJ-Ju-JLn" firstAttribute="trailing" secondItem="2yf-Ri-plq" secondAttribute="trailing" constant="13.5" id="CWh-O7-Csn"/>
-                            <constraint firstItem="2yf-Ri-plq" firstAttribute="top" secondItem="v6t-zj-LBO" secondAttribute="bottom" constant="10" id="GuT-LM-jwP"/>
-                            <constraint firstItem="v6t-zj-LBO" firstAttribute="top" secondItem="OkJ-Ju-JLn" secondAttribute="top" constant="20" id="HiE-Ox-Tso"/>
-                            <constraint firstItem="v6t-zj-LBO" firstAttribute="leading" secondItem="OkJ-Ju-JLn" secondAttribute="leading" constant="15" id="J0H-7R-KOR"/>
+                            <constraint firstItem="2yf-Ri-plq" firstAttribute="top" secondItem="v6t-zj-LBO" secondAttribute="bottom" constant="5" id="GuT-LM-jwP"/>
+                            <constraint firstItem="v6t-zj-LBO" firstAttribute="top" secondItem="OkJ-Ju-JLn" secondAttribute="top" constant="25" id="HiE-Ox-Tso"/>
+                            <constraint firstItem="v6t-zj-LBO" firstAttribute="leading" secondItem="OkJ-Ju-JLn" secondAttribute="leading" constant="13" id="J0H-7R-KOR"/>
                             <constraint firstItem="OkJ-Ju-JLn" firstAttribute="bottom" secondItem="nZP-TO-BGl" secondAttribute="bottom" id="JUd-bL-Eo0"/>
                             <constraint firstItem="QJV-w9-3nm" firstAttribute="top" secondItem="2yf-Ri-plq" secondAttribute="bottom" constant="8" id="M1j-no-UUu"/>
                             <constraint firstItem="nZP-TO-BGl" firstAttribute="top" secondItem="QJV-w9-3nm" secondAttribute="bottom" id="NVf-2j-c6V"/>
-                            <constraint firstItem="OkJ-Ju-JLn" firstAttribute="trailing" secondItem="v6t-zj-LBO" secondAttribute="trailing" constant="15" id="fKK-SE-UXy"/>
+                            <constraint firstItem="OkJ-Ju-JLn" firstAttribute="trailing" secondItem="v6t-zj-LBO" secondAttribute="trailing" constant="17" id="fKK-SE-UXy"/>
                             <constraint firstItem="OkJ-Ju-JLn" firstAttribute="trailing" secondItem="nZP-TO-BGl" secondAttribute="trailing" id="mdp-X0-eaE"/>
+                            <constraint firstItem="3hv-eX-KE9" firstAttribute="leading" secondItem="OkJ-Ju-JLn" secondAttribute="leading" constant="20" id="qUm-ex-MAB"/>
                             <constraint firstItem="2yf-Ri-plq" firstAttribute="leading" secondItem="OkJ-Ju-JLn" secondAttribute="leading" constant="13.5" id="rrG-4z-yYf"/>
                             <constraint firstItem="nZP-TO-BGl" firstAttribute="leading" secondItem="OkJ-Ju-JLn" secondAttribute="leading" id="txG-Yb-Zkq"/>
                         </constraints>
@@ -6190,6 +6203,7 @@
                     <navigationItem key="navigationItem" id="kF8-Hn-gux"/>
                     <connections>
                         <outlet property="SearchBar" destination="QJV-w9-3nm" id="26w-vf-Flm"/>
+                        <outlet property="backButton" destination="3hv-eX-KE9" id="P4n-hh-xf1"/>
                         <outlet property="btnStack" destination="2yf-Ri-plq" id="ScZ-s4-uUV"/>
                         <outlet property="categoriesCollectionView" destination="v6t-zj-LBO" id="x4a-KQ-nxh"/>
                         <outlet property="rentBtn" destination="bVs-Nd-He2" id="jIW-4P-ZQn"/>
@@ -10669,8 +10683,8 @@
         <image name="play_icon" width="512" height="512"/>
         <image name="playground" width="512" height="512"/>
         <image name="plug" width="512" height="512"/>
-        <image name="plus" width="32" height="32"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="plus" width="32" height="32"/>
         <image name="price" width="512" height="512"/>
         <image name="room" width="512" height="512"/>
         <image name="shop" width="512" height="512"/>

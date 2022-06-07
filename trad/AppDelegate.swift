@@ -20,7 +20,7 @@ let appDelegate = UIApplication.shared.delegate as! AppDelegate
 let googleApiKey = "AIzaSyDrpoJE-FXgMvHJx3Bw0rNNIXez2IGYyN8"
 //"AIzaSyB3bA7SKc32GplyHR5RZjFJTUxNIW4mBmo".
 //let googlePlaceApiKey = "AIzaSyBrNRrOgDJnokCGOsvTyC556MLJaLJQPsI"
-let gcmMessageIDKey =  "gcm.message_id"
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,29 +35,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey(googleApiKey)
         
         
-        
-        if UserDefaults.standard.bool(forKey: "LOGINSESSION"){
-            
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "MainTabBarController") as! BaseTabBarController
-            let navigationController = UINavigationController(rootViewController: newViewController)
-            navigationController.navigationBar.isHidden = true
-            
-            UIApplication.shared.windows.first?.rootViewController = navigationController
-            UIApplication.shared.windows.first?.makeKeyAndVisible()
+//        if UserDefaults.standard.bool(forKey: "LOGINSESSION"){
+//
+//            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//            let newViewController = storyBoard.instantiateViewController(withIdentifier: "MainTabBarController") as! BaseTabBarController
+//            let navigationController = UINavigationController(rootViewController: newViewController)
+//            navigationController.navigationBar.isHidden = true
+//
+//            UIApplication.shared.windows.first?.rootViewController = navigationController
+//            UIApplication.shared.windows.first?.makeKeyAndVisible()
             
             let uid = UserDefaults.standard.string(forKey: "MyUID") ?? "nil"
             let pushManager = PushNotificationManager(userID: "\(uid)")
             pushManager.registerForPushNotifications()
 
             
-        }
-        
+   //     }
 
+  
         return true
     }
-
     
+    
+
 
     // MARK: UISceneSession Lifecycle
 

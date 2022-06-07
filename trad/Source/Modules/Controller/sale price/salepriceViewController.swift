@@ -13,10 +13,6 @@ import FirebaseDatabase
 import FirebaseFirestore
 import FirebaseAuth
 
-
-
-
-
 class salepriceViewController: UIViewController, UISearchBarDelegate {
     
     //MARK:- IBOutlets
@@ -26,6 +22,7 @@ class salepriceViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet var rentBtn: UIButton!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet var btnStack: UIStackView!
+    @IBOutlet weak var backButton: UIButton!
     
     //MARK:- Variables
     var properties: [Propertiesdata] = []
@@ -58,10 +55,18 @@ class salepriceViewController: UIViewController, UISearchBarDelegate {
         hideKeyboardWhenTappedAround()
         selectedRentOrSale = "sale"
         self.hidesBottomBarWhenPushed = false
-        
         let userID = Auth.auth().currentUser?.uid
         print(userID!)
         UserDefaults.standard.set(userID, forKey: "MyUID")
+       
+        let meaasgeDetails =  UserDefaults.standard.value(forKey: "messageId")
+        if meaasgeDetails != nil{
+            self.backButton.isHidden = false
+        
+        }else {
+            self.backButton.isHidden = true
+        }
+        
         
     }
 
@@ -70,10 +75,26 @@ class salepriceViewController: UIViewController, UISearchBarDelegate {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
           self.fetchDatafromFirebase()
-            
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        let meaasgeDetails =  UserDefaults.standard.value(forKey: "messageId")
+        if meaasgeDetails != nil{
+            self.backButton.isHidden = false
+           
+        }else {
+            self.backButton.isHidden = true
+        }
   }
   
 
+    @IBAction func backBtnAction(_ sender: Any) {
+        let storyboard: UIStoryboard = (self.storyboard!)
+        let controller = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
+        self.navigationController?.pushViewController(controller, animated:    true)
+        UserDefaults.standard.removeObject(forKey: "messageId")
+        
+    }
+    
+    
     @IBAction func saleBtnAction(_ sender: Any) {
         if saleBtn.isSelected == true {
             return
@@ -477,8 +498,7 @@ extension salepriceViewController:UICollectionViewDelegate,UICollectionViewDataS
 
 
 
-class vcCell: UITableViewCell {
- 
+class vcCell: UITableViewCell {  
     @IBOutlet weak var houseImages: UIImageView!
     @IBOutlet weak var lblDays: UILabel!
     @IBOutlet weak var lblBuildingType: UILabel!

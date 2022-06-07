@@ -12,6 +12,7 @@ import FirebaseMessaging
 import UIKit
 import UserNotifications
 
+let gcmMessageIDKey =  "gcm.message_id"
 
 class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
     
@@ -126,6 +127,7 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
+    
       let userInfo = response.notification.request.content.userInfo
 
       // ...
@@ -135,10 +137,35 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
 
       // Print full message.
       print(userInfo)
-
+        
+        
+        // Print message ID.
+        
+            if let messageID = userInfo[gcmMessageIDKey] {
+              print("Message ID: \(messageID)")
+              UserDefaults.standard.set(messageID, forKey: "messageId")                  
+              movetoNextVc()
+            }
+        
+            // With swizzling disabled you must let Messaging know about the message, for Analytics
+            // Messaging.messaging().appDidReceiveMessage(userInfo)
+            // Print full message.
+            print(userInfo)
+        
       completionHandler()
     }
     
-    
 
+    private func movetoNextVc(){
+        guard let window = UIApplication.shared.keyWindow else{return}
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let Vc = storyBoard.instantiateViewController(withIdentifier: "salepriceViewController")
+        let nav = UINavigationController(rootViewController: Vc)
+        window.rootViewController = nav
+        window.makeKeyAndVisible()
+
+    }
+   
+      
 }
+

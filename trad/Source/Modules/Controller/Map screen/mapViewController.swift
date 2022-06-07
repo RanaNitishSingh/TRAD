@@ -98,6 +98,10 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         self.maxPriceRange.delegate = self
         self.minSizeRange.delegate = self
         self.maxSizeRange.delegate = self
+        let meaasgeDetails =  UserDefaults.standard.value(forKey: "messageId")
+        if meaasgeDetails == nil{
+        self.tabBarController?.tabBar.isHidden = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,7 +110,11 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         self.hideKeyboardWhenTappedAround()
         print(valueDropDown)
         print(propertytype)
-
+        let meaasgeDetails =  UserDefaults.standard.value(forKey: "messageId")
+        if meaasgeDetails == nil{
+        self.tabBarController?.tabBar.isHidden = false
+        }
+       
     }
 
     @objc func hideKeyboardWhenTappedAround() {
