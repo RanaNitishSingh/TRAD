@@ -10683,8 +10683,8 @@
         <image name="play_icon" width="512" height="512"/>
         <image name="playground" width="512" height="512"/>
         <image name="plug" width="512" height="512"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus" width="32" height="32"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="price" width="512" height="512"/>
         <image name="room" width="512" height="512"/>
         <image name="shop" width="512" height="512"/>
