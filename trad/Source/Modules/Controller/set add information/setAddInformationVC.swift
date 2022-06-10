@@ -21,9 +21,6 @@ import UserNotifications
 
 class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
-    
-    //MARK:- // Outlets:-
-    
     @IBOutlet weak var back: UIButton!
     @IBOutlet weak var forSaleView: UIView!
     @IBOutlet weak var sizeLbl: UILabel!
@@ -48,7 +45,6 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
     @IBOutlet var contactInfoLbl: UILabel!
     @IBOutlet var contactTextView: UITextView!
     var count : Int = 0
-    
     var ForSaleBool : Bool = false
     var ForRentBool : Bool = false
     var ForSoldAndRented : Bool = false
@@ -136,35 +132,17 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
         extraDetailTextView.layer.borderWidth = 1
         extraDetailTextView.layer.borderColor  = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         self.extraDetailTextView.addDoneButton(title: "Done".localizedStr(), target: self, selector: #selector(tapDone(sender:)))
-        
-        
         contactTextView.layer.cornerRadius = 6
         contactTextView.layer.borderWidth = 1
         contactTextView.layer.borderColor  = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         self.contactTextView.addDoneButton(title: "Done".localizedStr(), target: self, selector: #selector(tapDone(sender:)))
-        
-        
-        //        if Category == "Office for rent" || Category == "Room for rent" || Category == "Warehouse for rent" || Category == "Tent for rent" {
-        //            forSaleView.isHidden = true
-        //            forSaleCheckView.isHidden = true
-        //        }
-        //        if Category == "Office" || Category == "Room" || Category == "Warehouse" || Category == "Store" {
-        //           forSaleView.isHidden = true
-        //            forSaleCheckView.isHidden = true
-        //            forRentView.isHidden = false
-        //            forRentCheckImage.image = UIImage(named:"icons8-checked-checkbox-50.png")
-        //            ForRentBool = true
-        //        }
         hideKeyboardWhenTappedAround()
-        // welcomeName()
         
         if self.updateProperty.count == 0 {
-            
             sizeTextView.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             priceTextView.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             totalPriceTextView.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-            
-        } else {
+        }else {
             if updateProperty[0].Category == "\(Category)" + " for sale" {
                 forSaleCheckImage.image = UIImage(named:"icons8-checked-checkbox-50.png")
                 forSaleView.isHidden = false
@@ -184,13 +162,8 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
                 self.contactTextView.text = updateProperty[0].valueOfContactInfo
                 self.ForRentBool = true
             }
-            
-            
         }
-        
-        
     }
-    
     
     @objc func tapDone(sender: Any) {
         self.view.endEditing(true)
@@ -200,11 +173,9 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
         self.navigationController?.popViewController(animated: true)
     }
     
-    
     @objc private func textFieldDidChange(_ textField: UITextField) {
         let firstValue = sizeTextView.text!
-        let secondValue = priceTextView.text!
-        print(secondValue)
+        let secondValue = priceTextView.text!        
         let finalPrice = totalPriceTextView.text!
         let myInt1 = Int(firstValue) ?? 0
         let myInt2 = Int(secondValue) ?? 0
@@ -212,12 +183,8 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
         if textField == priceTextView {
             if   myInt1 != 0 && myInt2 != 0
             {
-                print(myInt2)
-                print(myInt1)
                 let result = myInt2 * myInt1
-                print(result)
                 totalPriceTextView.text = "\(result)"
-                print(totalPriceTextView.text!)
             }
         }
         else if textField == totalPriceTextView{
@@ -233,8 +200,6 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
         extraDetailTextView.endEditing(true)
         contactTextView.endEditing(true)
         return true }
-    
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -255,41 +220,28 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
         view.endEditing(true)
     }
     
-    
-    
-    
     @IBAction func forSaleBtnAction(_ sender: Any){
-        
         if ForSaleBool == false {
             forSaleCheckImage.image = UIImage(named:"icons8-checked-checkbox-50.png")
             forSaleView.isHidden = false
             ForSaleBool = true
-        }
-        else
-        {
+        }else {
             forSaleView.isHidden = true
             forSaleCheckImage.image = UIImage(named:"icons8-unchecked-checkbox-50.png")
-            
             ForSaleBool = false
         }
-        
     }
     
     @IBAction func forRent(_ sender: Any){
-        
         if ForRentBool == false {
             forRentView.isHidden = false
             forRentCheckImage.image = UIImage(named:"icons8-checked-checkbox-50.png")
             ForRentBool = true
-        }
-        else
-        {
+        }else {
             forRentView.isHidden = true
             forRentCheckImage.image = UIImage(named:"icons8-unchecked-checkbox-50.png")
-            //    forSaleLbl.text = "For Rent"
             ForRentBool = false
         }
-        
     }
     
     
@@ -298,11 +250,9 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
         let docRef = Firestore.firestore()
             .collection("Users")
             .document(UserDefaults.standard.value(forKey: "loginUID") as! String)
-        
         // Get data
         docRef.getDocument { (document, error) in
             guard let document = document, document.exists else {
-                print("Document does not exist")
                 return
             }
             let dataDescription = document.data()
@@ -316,16 +266,11 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
         }
     }
     
-    
-    
-    
     func userFetchDatafromFirebase(){
         
         Helper().showUniversalLoadingView(true)
-        
         let db = Firestore.firestore()
         db.collection("Users").getDocuments() { [self] (querySnapshot, err) in
-            
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -333,7 +278,6 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
                     // 6
                     try? document.data(as: UserData.self)
                 } ?? []
-                
                 self.userTokenData = self.mainArrayTokenData
             }
             Helper().showUniversalLoadingView(false)
@@ -342,21 +286,17 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
     
     
     @IBAction func continueAction(_ sender: Any)  {
-        
         Helper().showUniversalLoadingView(true)
         valueOfsizeTextView = sizeTextView.text ?? ""
         valueofPriceTextView = priceTextView.text ?? ""
         valueOftotalPrice = totalPriceTextView.text ?? ""
         valueofExtraDetail = extraDetailTextView.text ?? "".localizedStr()
         valueOfContactInfo = contactTextView.text ?? "".localizedStr()
-        
-        
-        
         if ForSaleBool == true && ForRentBool == true {
             if forRentTextField.text  == "" && sizeTextView.text == "" && priceTextView.text == "" && totalPriceTextView.text == "" {
                 TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Size , Sale Price Per Meter and Rent Price".localizedStr(), VC: self, cancel_action: false)
                 Helper().showUniversalLoadingView(false)
-            } else  if forRentTextField.text  == "" && sizeTextView.text != "" && priceTextView.text != "" && totalPriceTextView.text != "" {
+            } else if forRentTextField.text  == "" && sizeTextView.text != "" && priceTextView.text != "" && totalPriceTextView.text != "" {
                 TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Rent Price".localizedStr(), VC: self, cancel_action: false)
                 Helper().showUniversalLoadingView(false)
             } else {
@@ -389,13 +329,11 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
             TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please select Rent or Sale".localizedStr(), VC: self, cancel_action: false)
             Helper().showUniversalLoadingView(false)
         }
-        
     }
     
     
     
     func saveValuesToFirebase(Propertytype: String, Price: String) {
-        
         let db = Firestore.firestore()
         let userEmail = Auth.auth().currentUser?.email
         let newDocumentID = UUID().uuidString
@@ -462,44 +400,31 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
         
         self.count = countProperty
         if self.ForSaleBool == true && self.ForRentBool == true {
-        let countdata = ["propertyCount" : self.count + 2 ]
-        
-        if updateProperty.count == 0 {
-            
-            let UpdateRef =  db.collection("Users").document(UserDefaults.standard.value(forKey: "loginUID") as! String)
-            UpdateRef.updateData(countdata) { err in
-                if let err = err {
-                    print("Error adding document: \(err)")
-                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please try again".localizedStr(), VC: self, cancel_action: false)
-                    
-                } else {
-                    print("Document added with ID: \(UserDefaults.standard.value(forKey: "loginUID") as! String)")
-                    
-                }
-                
-            }
-        }
-        }else{
-            
-            let countdata = ["propertyCount" : self.count + 1]
-            
+            let countdata = ["propertyCount" : self.count + 2 ]
             if updateProperty.count == 0 {
-                
                 let UpdateRef =  db.collection("Users").document(UserDefaults.standard.value(forKey: "loginUID") as! String)
                 UpdateRef.updateData(countdata) { err in
                     if let err = err {
                         print("Error adding document: \(err)")
                         TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please try again".localizedStr(), VC: self, cancel_action: false)
-                        
                     } else {
                         print("Document added with ID: \(UserDefaults.standard.value(forKey: "loginUID") as! String)")
-                        
                     }
-                    
                 }
             }
-            
-            
+        }else{
+            let countdata = ["propertyCount" : self.count + 1]
+            if updateProperty.count == 0 {
+                let UpdateRef =  db.collection("Users").document(UserDefaults.standard.value(forKey: "loginUID") as! String)
+                UpdateRef.updateData(countdata) { err in
+                    if let err = err {
+                        print("Error adding document: \(err)")
+                        TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please try again".localizedStr(), VC: self, cancel_action: false)
+                    }else {
+                        print("Document added with ID: \(UserDefaults.standard.value(forKey: "loginUID") as! String)")
+                    }
+                }
+            }
         }
         
         if updateProperty.count == 0 {
@@ -508,15 +433,11 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
                 if let err = err {
                     print("Error adding document: \(err)")
                     TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please try again".localizedStr(), VC: self, cancel_action: false)
-                    
-                } else {
-                    print("Document added with ID: \(newDocumentID)")
-                    
+                }else {
                     if self.ForSaleBool == true && self.ForRentBool == true {
                         TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "List for Sale And Rent Has been Submitted".localizedStr(), VC: self, cancel_action: false)
                         self.tabBarController?.tabBar.isHidden = false
                         self.tabBarController?.selectedIndex = 0
-                        
                         for item in userTokenData {
                             let currentUserToken = Messaging.messaging().fcmToken
                             if item.deviceToken != currentUserToken && item.appLanguage != "ar" {
@@ -525,55 +446,40 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
                                 sale_rentNotification = "for sale and rent"
                                 let sender = PushNotificationSender()
                                 sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + Category + " " + self.sale_rentNotification)
-                                print(wantToSendNotification)
                             } else if item.deviceToken != currentUserToken && item.appLanguage != "en"{
                                 wantToSendNotification = item.deviceToken
                                 saleNotification = "اضاف"
                                 sale_rentNotification = "للبيع و للإجار"
                                 let sender = PushNotificationSender()
                                 if Category == "Land"{
-                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "أرض" + " " + self.sale_rentNotification)
-                                print(wantToSendNotification)
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "أرض" + " " + self.sale_rentNotification)
                                 } else if Category == "Villa"{
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "فيلا" + " " + self.sale_rentNotification)
-                                    print(wantToSendNotification)
-                                    }else if Category == "Floor"{
-                                        sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "دور" + " " + self.sale_rentNotification)
-                                        print(wantToSendNotification)
-                                        }else if Category == "Apartment"{
-                                            sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "شقة" + " " + self.sale_rentNotification)
-                                            print(wantToSendNotification)
-                                            }else if Category == "Building"{
-                                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "عمارة" + " " + self.sale_rentNotification)
-                                                print(wantToSendNotification)
-                                                }else if Category == "Esteraha"{
-                                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "استراحة" + " " + self.sale_rentNotification)
-                                                    print(wantToSendNotification)
-                                                    }else if Category == "Store"{
-                                                        sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "محل" + " " + self.sale_rentNotification)
-                                                        print(wantToSendNotification)
-                                                        }else if Category == "Farm"{
-                                                            sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "مزرعة" + " " + self.sale_rentNotification)
-                                                            print(wantToSendNotification)
-                                                            }else if Category == "Room"{
-                                                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "غرفة" + " " + self.sale_rentNotification)
-                                                                print(wantToSendNotification)
-                                                                }else if Category == "Office"{
-                                                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "مكتب" + " " + self.sale_rentNotification)
-                                                                    print(wantToSendNotification)
-                                                                    }else if Category == "Warehouse"{
-                                                                        sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "مستودع" + " " + self.sale_rentNotification)
-                                                                        print(wantToSendNotification)
-                                                                        }else if Category == "Furnished Apartment"{
-                                                                            sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "شقة مفروشة" + " " + self.sale_rentNotification)
-                                                                            print(wantToSendNotification)
-                                                                            }else if Category == "Tent"{
-                                                                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "مخيم" + " " + self.sale_rentNotification)
-                                                                                print(wantToSendNotification)
-                                                                                }
+                                }else if Category == "Floor"{
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "دور" + " " + self.sale_rentNotification)
+                                }else if Category == "Apartment"{
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "شقة" + " " + self.sale_rentNotification)
+                                }else if Category == "Building"{
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "عمارة" + " " + self.sale_rentNotification)
+                                }else if Category == "Esteraha"{
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "استراحة" + " " + self.sale_rentNotification)
+                                }else if Category == "Store"{
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "محل" + " " + self.sale_rentNotification)
+                                }else if Category == "Farm"{
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "مزرعة" + " " + self.sale_rentNotification)
+                                }else if Category == "Room"{
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "غرفة" + " " + self.sale_rentNotification)
+                                }else if Category == "Office"{
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "مكتب" + " " + self.sale_rentNotification)
+                                }else if Category == "Warehouse"{
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "مستودع" + " " + self.sale_rentNotification)
+                                }else if Category == "Furnished Apartment"{
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "شقة مفروشة" + " " + self.sale_rentNotification)
+                                }else if Category == "Tent"{
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + "مخيم" + " " + self.sale_rentNotification)
+                                }
                             }
-                            }
-                     
+                        }
                         Helper().showUniversalLoadingView(false)
                     } else if self.ForSaleBool == true  {
                         Helper().showUniversalLoadingView(false)
@@ -587,53 +493,39 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
                                 saleNotification = "added"
                                 let sender = PushNotificationSender()
                                 sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + Propertytype)
-                                print(wantToSendNotification)
                             } else if item.deviceToken != currentUserToken && item.appLanguage != "en"{
                                 wantToSendNotification = item.deviceToken
                                 saleNotification = "اضاف"
                                 let sender = PushNotificationSender()
                                 if Propertytype == "Land for sale"{
-                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "أرض للبيع")
-                                print(wantToSendNotification)
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "أرض للبيع")
                                 }else if Propertytype == "Villa for sale" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "فيلا للبيع")
                                 }else if Propertytype == "Floor for sale" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "دور للبيع")
-                                }
-                                else if Propertytype == "Apartment for sale" {
+                                }else if Propertytype == "Apartment for sale" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "شقة للبيع")
-                                }
-                                else if Propertytype == "Building for sale" {
+                                }else if Propertytype == "Building for sale" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "عمارة للبيع")
-                                }
-                                else if Propertytype == "Esteraha for sale" {
+                                }else if Propertytype == "Esteraha for sale" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "استراحه للبيع")
-                                }
-                                else if Propertytype == "Farm for sale" {
+                                }else if Propertytype == "Farm for sale" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مزرعة للبيع")
-                                }
-                                else if Propertytype == "Tent for sale" {
+                                }else if Propertytype == "Tent for sale" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مخيم للبيع")
-                                }
-                                else if Propertytype == "Room for sale" {
+                                }else if Propertytype == "Room for sale" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "غرفة للبيع")
-                                }
-                                else if Propertytype == "Office for sale" {
+                                }else if Propertytype == "Office for sale" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مكتب للبيع")
-                                }
-                                else if Propertytype == "Warehouse for sale" {
+                                }else if Propertytype == "Warehouse for sale" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مستودع للبيع")
-                                }
-                                else if Propertytype == "Furnished Apartment for sale" {
+                                }else if Propertytype == "Furnished Apartment for sale" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "شقة مفروشة للبيع")
-                                }
-                                else if Propertytype == "Store for sale" {
+                                }else if Propertytype == "Store for sale" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "محل للايجار")
                                 }
-                                
                             }
-                            }
-                    
+                        }
                         Helper().showUniversalLoadingView(false)
                     } else if self.ForRentBool == true  {
                         Helper().showUniversalLoadingView(false)
@@ -647,68 +539,45 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
                                 saleNotification = "added"
                                 let sender = PushNotificationSender()
                                 sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + " " + Propertytype)
-                                print(wantToSendNotification)
                             } else if item.deviceToken != currentUserToken && item.appLanguage != "en"{
                                 wantToSendNotification = item.deviceToken
                                 saleNotification = "اضاف"
                                 let sender = PushNotificationSender()
                                 if Propertytype == "Land for rent"{
-                                sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "ارض للايجار")
-                                print(wantToSendNotification)
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "ارض للايجار")
                                 }else if Propertytype == "Villa for rent" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "فيلا للايجار")
                                 }else if Propertytype == "Floor for rent" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "دور للايجار")
-                                }
-                                else if Propertytype == "Apartment for rent" {
+                                }else if Propertytype == "Apartment for rent" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "شقة للايجار")
-                                }
-                                else if Propertytype == "Building for rent" {
+                                }else if Propertytype == "Building for rent" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "عمارة للايجار")
-                                }
-                                else if Propertytype == "Esteraha for rent" {
+                                }else if Propertytype == "Esteraha for rent" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "استراحة للايجار")
-                                }
-                                else if Propertytype == "Farm for rent" {
+                                }else if Propertytype == "Farm for rent" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مزرعة للايجار")
-                                }
-                                else if Propertytype == "Tent for rent" {
+                                }else if Propertytype == "Tent for rent" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مخيم للايجار")
-                                }
-                                else if Propertytype == "Room for rent" {
+                                }else if Propertytype == "Room for rent" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "غرفة للايجار")
-                                }
-                                else if Propertytype == "Office for rent" {
+                                }else if Propertytype == "Office for rent" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مكتب للايجار")
-                                }
-                                else if Propertytype == "Warehouse for rent" {
+                                }else if Propertytype == "Warehouse for rent" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "مستودع للايجار")
-                                }
-                                else if Propertytype == "Furnished Apartment for rent" {
+                                }else if Propertytype == "Furnished Apartment for rent" {
                                     sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "شقة مفروشة للايجار")
-                                }
-                                else if Propertytype == "Store for rent" {
-                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "محل للايجار")
-                                }
-                                
+                                }else if Propertytype == "Store for rent" {
+                                    sender.sendPushNotification(to: wantToSendNotification, title: "Trad", body: self.userName! + " " + self.saleNotification + "  " + "محل للايجار")                                 }
                             }
-                            }
-                        
-                        
-                        
-                        
-                        
-                        
+                        }
                         Helper().showUniversalLoadingView(false)
                     } else {
                         TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please select Rent or Sale".localizedStr(), VC: self, cancel_action: false)
                         Helper().showUniversalLoadingView(false)
-                        
                     }
                 }
             }
-            
-            
         } else {
             Helper().showUniversalLoadingView(true)
             let UpdateRef = db.collection("Properties").document(updateProperty[0].documentID)
@@ -716,35 +585,27 @@ class setAddInformationVC: UIViewController, UITextFieldDelegate, UITextViewDele
                 if let err = err {
                     print("Error adding document: \(err)")
                     TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please try again".localizedStr(), VC: self, cancel_action: false)
-                    
                 } else {
-                    print("Document added with ID: \(self.updateProperty[0].documentID)")
                     if self.ForSaleBool && self.ForRentBool == true &&  self.categoryindex == 0 &&  self.categoryindex == 1 {
-                        
                         TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "List for Sale And Rent Has been Submitted".localizedStr(), VC: self, cancel_action: false)
                         let controller = self.storyboard!.instantiateViewController(withIdentifier: "MainTabBarController")
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { self.navigationController?.pushViewController(controller, animated: true) }
                         Helper().showUniversalLoadingView(false)
                     } else if self.ForSaleBool == true  {
-                        
                         TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "List for Sale Has been Submitted".localizedStr(), VC: self, cancel_action: false)
                         let controller = self.storyboard!.instantiateViewController(withIdentifier: "MainTabBarController")
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { self.navigationController?.pushViewController(controller, animated: true) }
                         Helper().showUniversalLoadingView(false)
                     } else if self.ForRentBool == true  {
-                        
                         TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "List for Rent Has been Submitted".localizedStr(), VC: self, cancel_action: false)
                         let controller = self.storyboard!.instantiateViewController(withIdentifier: "MainTabBarController")
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { self.navigationController?.pushViewController(controller, animated: true) }
                         Helper().showUniversalLoadingView(false)
-                        
-                    } else {
-                        
+                    }else {
                         TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please select Rent or Sale".localizedStr(), VC: self, cancel_action: false)
                         Helper().showUniversalLoadingView(false)
                     }
-                }
-                
+                }                 
             }
         }
     }

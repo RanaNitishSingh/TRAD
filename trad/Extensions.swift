@@ -19,22 +19,18 @@ extension UIView
         self.layer.shadowRadius = 6
     }
     
-    func createGradientLayer(myColor1: UIColor, myColor2: UIColor) {
-            
+    func createGradientLayer(myColor1: UIColor, myColor2: UIColor) {             
         var gradientLayer: CAGradientLayer!
         gradientLayer = CAGradientLayer()
-     
         gradientLayer.frame = self.bounds
-     
         gradientLayer.colors = [myColor1, myColor2]
-     
         self.layer.addSublayer(gradientLayer)
     }
 }
 
 func setRootViewController(viewController: UIViewController) {
-        let navController = UINavigationController(rootViewController: viewController)
-        navController.isNavigationBarHidden = true
+    let navController = UINavigationController(rootViewController: viewController)
+    navController.isNavigationBarHidden = true
     if #available(iOS 13.0, *) {
         if appDelegate.window == nil {
             //Create New Window here
@@ -45,9 +41,7 @@ func setRootViewController(viewController: UIViewController) {
     }
     UIApplication.shared.windows.first?.rootViewController = navController
     UIApplication.shared.windows.first?.makeKeyAndVisible()
-//        appDelegate.window?.rootViewController = navController
-//        appDelegate.window?.makeKeyAndVisible()
-    }
+}
 
 func setTabBarController() {
     let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -56,4 +50,4 @@ func setTabBarController() {
     vc.tabBar.layer.masksToBounds = true
     vc.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     setRootViewController(viewController: vc)
-    }
+}

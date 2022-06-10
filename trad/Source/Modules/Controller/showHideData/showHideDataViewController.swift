@@ -22,7 +22,7 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
     @IBOutlet var rentBtn: UIButton!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet var btnStack: UIStackView!
-     var numberOfCell = 0
+    var numberOfCell = 0
     //MARK:- Variables
     var propertiesdata: [Propertiesdata] = []
     var mainArrayPropertiesdata : [Propertiesdata] = []
@@ -44,7 +44,6 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
     var User = ""
     var Email = ""
     var loginUserName = ""
-    
     var propertySort = [String]()
     
     
@@ -66,54 +65,40 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
         self.dataFetchfromFirebase()
         hideKeyboardWhenTappedAround()
         selectedRentOrSale = "sale"
-       // selectedCategory = "All"
         self.tabBarController?.tabBar.isHidden = false
         self.userLogoutView.isHidden = true
         self.getUserTab()
         self.logoutBtn.layer.cornerRadius = 16
-       
     }
     
-    
     func getUserTab() {
-          //Get specific document from current user
-          let dataBase = Firestore.firestore()
-              .collection("Users")
-              .document(Auth.auth().currentUser?.uid ?? "")
-
-          // Get data
+        //Get specific document from current user
+        let dataBase = Firestore.firestore()
+            .collection("Users")
+            .document(Auth.auth().currentUser?.uid ?? "")
+        // Get data
         dataBase.getDocument { (document, error) in
-              guard let document = document, document.exists else {
-                  print("Document does not exist")
-                  return
-              }
-              let tabUserData = document.data()
+            guard let document = document, document.exists else {
+                print("Document does not exist")
+                return
+            }
+            let tabUserData = document.data()
             self.User = tabUserData?["UserType"] as! String
             self.Email = tabUserData?["Email"] as! String
             self.loginUserName =  tabUserData?["UserName"] as! String
-            
             if self.User != "Admin" {
                 self.userLogoutView.isHidden = false
                 self.userLable.text = self.loginUserName
             }
-            
-            
-            
-            
         }
-    
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.tabBar.isHidden = false
-        //self.getDocument()
         self.dataFetchfromFirebase()
     }
     
-   
     @IBAction func saleBtnAction(_ sender: Any) {
         if saleBtn.isSelected == true {
             return
@@ -155,7 +140,7 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
         df.dateFormat = "dd-MM-yyyy h:mm:ss a"
         df.amSymbol = "AM"
         df.pmSymbol = "PM"
-       self.propertiesdata.sort {df.date(from: $0.createdDate)! > df.date(from: $1.createdDate)!}
+        self.propertiesdata.sort {df.date(from: $0.createdDate)! > df.date(from: $1.createdDate)!}
         self.propertiesdata.sort { !$0.forSoldAndRented && $1.forSoldAndRented }
         tableView.reloadData()
     }
@@ -172,18 +157,11 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
         
     }
     
-    
-    
-    
-    
-    
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count > 0 {
             filtereddata = self.propertiesdata.filter {
                 ($0.plateNo).lowercased().contains(searchText.lowercased())
             }
-            print(filtereddata)
             searching = !filtereddata.isEmpty
             searching = true
         }
@@ -192,21 +170,26 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
         }
         self.tableView.reloadData()
     }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         SearchBar.endEditing(true)
     }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         SearchBar.endEditing(true)
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
+    
     @objc func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -215,8 +198,7 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
         Helper().showUniversalLoadingView(true)
         let db = Firestore.firestore()
         db.collection("Properties")
-          .getDocuments() { [self] (querySnapshot, err) in
-                
+            .getDocuments() { [self] (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
@@ -224,41 +206,37 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
                         // 6
                         try? document.data(as: Propertiesdata.self)
                     } ?? []
-                    
                     let df = DateFormatter()
                     df.dateFormat = "dd-MM-yyyy h:mm:ss a"
                     df.amSymbol = "AM"
                     df.pmSymbol = "PM"
-                    
                     if selectedRentOrSale == "sale" {
-                        
                         self.propertiesdata = self.mainArrayPropertiesdata.filter { data in
                             return data.Category.contains("\(selectedCategory) for sale")
                         }
-                    
+                        
                     }else if selectedRentOrSale == "rent"{
                         self.propertiesdata = self.mainArrayPropertiesdata.filter { data in
                             return data.Category.contains("\(selectedCategory) for rent")
                         }
-                       
+                        
                     }else {
                         self.propertiesdata = self.mainArrayPropertiesdata.filter { data in
                             return data.Category.contains("for sale")
                         }
-                                            
+                        
                     }
                     self.propertiesdata.sort {df.date(from: $0.createdDate)! > df.date(from: $1.createdDate)!}
                     self.propertiesdata.sort { !$0.forSoldAndRented && $1.forSoldAndRented }
-                  
+                    
                     tableView.reloadData()
                     Helper().showUniversalLoadingView(false)
                 }
             }
     }
-
+    
     
     @objc func btnAction(_ sender: UIButton) {
-        
         var superview = sender.superview
         while let view = superview, !(view is showCell) {
             superview = view.superview
@@ -271,19 +249,15 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
             print("failed to get index path for cell containing button")
             return
         }
-        // We've got the index path for the cell that contains the button, now do something with it.
-        print("button is in row \(indexPath.row)")
         
+        // We've got the index path for the cell that contains the button, now do something with it.
         let post = self.propertiesdata[indexPath.row]
-        print(post.documentID)
         Helper().showUniversalLoadingView(true)
         if post.forSoldAndRented == false && self.propertiesdata[indexPath.row].documentID == post.documentID  {
-            
             ForSoldAndRented = true
             let db = Firestore.firestore()
             let someData = ["forSoldAndRented" :  ForSoldAndRented
             ] as [String : Any]
-            
             let UpdateRef = db.collection("Properties").document(post.documentID)
             UpdateRef.updateData(someData) { err in
                 if let err = err {
@@ -291,28 +265,19 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
                     TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please try again".localizedStr(), VC: self, cancel_action: false)
                     Helper().showUniversalLoadingView(false)
                 } else {
-                    print("Document Updated: \(post.documentID)")
                     TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "List Updated".localizedStr(), VC: self, cancel_action: false)
                     cell.forRentAndSoldImg.image = UIImage(named:"icons8-checked-checkbox-50.png")
                     self.propertiesdata.remove(at: indexPath.row)
-                    
-                    //self.tableView.deleteRows(at: [indexPath], with: .fade)
-                 
-                    
                     self.dataFetchfromFirebase()
                     Helper().showUniversalLoadingView(false)
                 }
-                
             }
-            
-        } else {
-            
+        }else {
             ForSoldAndRented = false
             let db = Firestore.firestore()
             let someData = [
                 "forSoldAndRented" :  ForSoldAndRented
             ] as [String : Any]
-            
             let UpdateRef = db.collection("Properties").document(post.documentID)
             UpdateRef.updateData(someData) { err in
                 if let err = err {
@@ -320,18 +285,14 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
                     TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please try again".localizedStr(), VC: self, cancel_action: false)
                     Helper().showUniversalLoadingView(false)
                 } else {
-                    print("Document Updated: \(post.documentID)")
                     TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "List Updated".localizedStr(), VC: self, cancel_action: false)
                     cell.forRentAndSoldImg.image = UIImage(named:"icons8-unchecked-checkbox-50.png")
                     self.dataFetchfromFirebase()
                     Helper().showUniversalLoadingView(false)
                 }
             }
-            
         }
-        
     }
-    
 }
 
 extension showHideDataViewController: UITableViewDelegate, UITableViewDataSource {
@@ -345,22 +306,15 @@ extension showHideDataViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "showCell", for: indexPath) as! showCell
         cell.selectionStyle = .none
-        
-        
-//         let userID = Auth.auth().currentUser?.uid
-//        print(userID)
-//
         if propertiesdata[indexPath.row].userUid ==  UserDefaults.standard.value(forKey: "loginUID") as! String {
             if searching {
-                
                 let DateandTime = self.filtereddata[indexPath.item].createdDate.components(separatedBy: " ")
-                    cell.lblDays.text = String(DateandTime[0]).replacedArabicDigitsWithEnglish
+                cell.lblDays.text = String(DateandTime[0]).replacedArabicDigitsWithEnglish
                 cell.lblBuildingType.text = self.filtereddata[indexPath.item].Category.localizedStr()
                 let largeNumber = Int(self.filtereddata[indexPath.item].valueOftotalPrice.localizedStr())
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
                 let formattedNumber = numberFormatter.string(from: NSNumber(value:largeNumber!))
-                
                 cell.LblSAR.text = formattedNumber! + " " + "SAR".localizedStr()
                 cell.bathroomTubLbl.text = self.filtereddata[indexPath.item].bathrooms.localizedStr()
                 let meter = " m² ";
@@ -369,44 +323,39 @@ extension showHideDataViewController: UITableViewDelegate, UITableViewDataSource
                 cell.LblDescription.text = self.filtereddata[indexPath.item].valueofExtraDetail.localizedStr()
                 cell.houseImages.sd_setImage(with: URL(string:self.filtereddata[indexPath.item].ImageUrl.first ?? ""), placeholderImage: #imageLiteral(resourceName: "simple_home"))
                 
-                
                 if filtereddata[indexPath.row].bathrooms == "" {
                     cell.bathroomTubLbl.isHidden = true
                     cell.bathTubIMG.isHidden = true
-               
                 }else{
                     cell.bathroomTubLbl.isHidden = false
                     cell.bathTubIMG.isHidden = false
                     cell.bathroomTubLbl.text = self.filtereddata[indexPath.item].bathrooms.localizedStr()
-               }
+                }
                 
                 if filtereddata[indexPath.row].bedrooms == "" {
                     cell.BedLbl.isHidden = true
                     cell.bedIMG.isHidden = true
-               
                 }else{
                     cell.BedLbl.isHidden = false
                     cell.bedIMG.isHidden = false
                     cell.BedLbl.text = self.filtereddata[indexPath.item].bedrooms.localizedStr()
-               }
+                }
                 
                 
                 if filtereddata[indexPath.row].eetwidth == "" {
                     cell.streetWidthLbl.isHidden = true
                     cell.streetWidthImg.isHidden = true
-               
                 }else{
                     cell.streetWidthLbl.isHidden = false
                     cell.streetWidthImg.isHidden = false
                     let meterwidth = " m ";
                     cell.streetWidthLbl.text = self.filtereddata[indexPath.item].eetwidth +  meterwidth.localizedStr()
-               }
-            
+                }
+                
                 if filtereddata[indexPath.row].streetdirection == "" {
                     cell.streetImg.isHidden = true
                     cell.streetLbl.isHidden = true
                     cell.streetView.isHidden = true
-                   
                 }else{
                     cell.streetView.isHidden = false
                     cell.streetImg.isHidden = false
@@ -416,10 +365,9 @@ extension showHideDataViewController: UITableViewDelegate, UITableViewDataSource
                 
                 
                 if self.filtereddata[indexPath.item].purpose == "Commercial&Residential" .localizedStr() {
-                cell.purposeLbl.text = "Res. & Comm.".localizedStr()
+                    cell.purposeLbl.text = "Res. & Comm.".localizedStr()
                 } else{
                     cell.purposeLbl.text = self.filtereddata[indexPath.item].purpose.localizedStr()
-                  
                 }
                 
                 
@@ -432,66 +380,53 @@ extension showHideDataViewController: UITableViewDelegate, UITableViewDataSource
                 }
                 
                 cell.forRentAndSoldBtn?.addTarget(self, action: #selector(showHideDataViewController.btnAction(_:)), for: .touchUpInside)
+            }else {
                 
-                
-            }else{
-                
-                print(self.propertiesdata[0].ImageUrl.count)
                 let DateandTime = self.propertiesdata[indexPath.item].createdDate.components(separatedBy: " ")
-                    cell.lblDays.text = String(DateandTime[0]).replacedArabicDigitsWithEnglish
+                cell.lblDays.text = String(DateandTime[0]).replacedArabicDigitsWithEnglish
                 cell.lblBuildingType.text = self.propertiesdata[indexPath.item].Category.localizedStr()
                 let largeNumber = Int(self.propertiesdata[indexPath.item].valueOftotalPrice.localizedStr()) ?? 0
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
-                
                 let formattedNumber = numberFormatter.string(from: NSNumber(value: largeNumber))
                 cell.LblSAR.text = formattedNumber! + " " + "SAR".localizedStr()
-                
                 let meter = " m² ";
                 cell.LblMeter.text = "📍" + self.propertiesdata[indexPath.item].valueOfsizeTextView + meter.localizedStr()
-                
                 cell.LblDescription.text = self.propertiesdata[indexPath.item].valueofExtraDetail.localizedStr()
                 cell.houseImages.sd_setImage(with: URL(string:self.propertiesdata[indexPath.item].ImageUrl.first ?? ""), placeholderImage: #imageLiteral(resourceName: "simple_home"))
-                
-                
                 
                 if propertiesdata[indexPath.row].bathrooms == "" || propertiesdata[indexPath.row].bathrooms == "0"{
                     cell.bathroomTubLbl.isHidden = true
                     cell.bathTubIMG.isHidden = true
-               
                 }else{
                     cell.bathroomTubLbl.isHidden = false
                     cell.bathTubIMG.isHidden = false
                     cell.bathroomTubLbl.text = self.propertiesdata[indexPath.item].bathrooms.localizedStr()
-               }
+                }
                 
                 if propertiesdata[indexPath.row].bedrooms == "" || propertiesdata[indexPath.row].bedrooms == "0" {
                     cell.BedLbl.isHidden = true
                     cell.bedIMG.isHidden = true
-               
                 }else{
                     cell.BedLbl.isHidden = false
                     cell.bedIMG.isHidden = false
                     cell.BedLbl.text = self.propertiesdata[indexPath.item].bedrooms.localizedStr()
-               }
-                
+                }
                 
                 if propertiesdata[indexPath.row].eetwidth == "" {
                     cell.streetWidthLbl.isHidden = true
                     cell.streetWidthImg.isHidden = true
-               
                 }else{
                     cell.streetWidthLbl.isHidden = false
                     cell.streetWidthImg.isHidden = false
                     let meterwidth = " m ";
                     cell.streetWidthLbl.text = self.propertiesdata[indexPath.item].eetwidth +  meterwidth.localizedStr()
-               }
-            
+                }
+                
                 if propertiesdata[indexPath.row].streetdirection == "" {
                     cell.streetImg.isHidden = true
                     cell.streetLbl.isHidden = true
                     cell.streetView.isHidden = true
-                   
                 }else{
                     cell.streetView.isHidden = false
                     cell.streetImg.isHidden = false
@@ -499,13 +434,10 @@ extension showHideDataViewController: UITableViewDelegate, UITableViewDataSource
                     cell.streetLbl.text = self.propertiesdata[indexPath.item].streetdirection.localizedStr()
                 }
                 
-              
-               
                 if self.propertiesdata[indexPath.item].purpose == "Commercial&Residential" .localizedStr() {
-                cell.purposeLbl.text = "Res. & Comm.".localizedStr()
+                    cell.purposeLbl.text = "Res. & Comm.".localizedStr()
                 } else{
                     cell.purposeLbl.text = self.propertiesdata[indexPath.item].purpose.localizedStr()
-                  
                 }
                 
                 if propertiesdata[indexPath.row].forSoldAndRented == true {
@@ -514,18 +446,11 @@ extension showHideDataViewController: UITableViewDelegate, UITableViewDataSource
                 else
                 {
                     cell.forRentAndSoldImg.image = UIImage(named:"icons8-unchecked-checkbox-50.png")
-                    
                 }
-                
                 cell.forRentAndSoldBtn.addTarget(self, action: #selector(showHideDataViewController.btnAction(_:)), for: .touchUpInside)
-                
             }
-            
-            
         }else{
-            
             cell.isHidden = true
-            
         }
         tableView.keyboardDismissMode = .onDrag
         cell.isUserInteractionEnabled = true
@@ -537,28 +462,20 @@ extension showHideDataViewController: UITableViewDelegate, UITableViewDataSource
         return true
     }
     
-    
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var rowHeight:CGFloat = 0.0
         if propertiesdata[indexPath.row].userUid == UserDefaults.standard.value(forKey: "loginUID") as! String  {
-            
             rowHeight = 200
         }
         else
         {
             rowHeight = 0.0
         }
-        
         return rowHeight
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-       
         let viewController = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! detailViewController
-        
         if searching {
             viewController.Aproperties = [(filtereddata[indexPath.row])]
             self.navigationController?.pushViewController(viewController, animated: true)
@@ -566,20 +483,15 @@ extension showHideDataViewController: UITableViewDelegate, UITableViewDataSource
             viewController.Aproperties = [(propertiesdata[indexPath.row])]
             self.navigationController?.pushViewController(viewController, animated: true)
         }
-        
-       
     }
-    
-    
-    
 }
 
-extension showHideDataViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
-    
+extension showHideDataViewController:
+                                            
+    UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return displayArraycategories.count
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "forSaleCollectionViewCell", for: indexPath) as! forSaleCollectionViewCell
@@ -615,9 +527,9 @@ extension showHideDataViewController: UICollectionViewDelegate,UICollectionViewD
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-           return -10
-       }
-   
+        return -10
+    }
+    
 }
 
 class showCell: UITableViewCell {
@@ -637,10 +549,8 @@ class showCell: UITableViewCell {
     @IBOutlet var streetWidthLbl: UILabel!
     @IBOutlet var purposeLbl: UILabel!
     @IBOutlet var forRentAndSoldBtn: UIButton!
-    
     @IBOutlet var streetWidthImg: UIImageView!
     @IBOutlet var forRentAndSoldImg: UIImageView!
-    
     @IBOutlet var descriptionView: UIView!
     @IBOutlet var streetView: UIView!
     @IBOutlet var streetLbl: UILabel!
@@ -648,16 +558,10 @@ class showCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
     }
-    
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-    }
-    
-    
+    }      
 }
 
 

@@ -41,12 +41,10 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
     @IBOutlet weak var BtnLeftArrow: UIButton!
     @IBOutlet weak var ImgLeftArrow: UIImageView!
     @IBOutlet weak var LblSar: UILabel!
-    //  @IBOutlet weak var ImagescollectionView: UICollectionView!
     @IBOutlet var ImagescollectionView: UICollectionView!
     @IBOutlet weak var pageImageController: UIPageControl!
     @IBOutlet weak var LblHouseDescription: UILabel!
     @IBOutlet weak var pageView: UIPageControl!
-    //@IBOutlet weak var copyBtn: UIButton!
     @IBOutlet var imagesTableView: UITableView!
     
     //MARK:- UIVIEWs:-
@@ -83,7 +81,6 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
     @IBOutlet weak var roomssliderView: UIView!
     @IBOutlet weak var familysectionViewBool: UIView!
     @IBOutlet weak var valueOfsizeTextView: UIView!
-    //    @IBOutlet weak var valueofExtraDetailLBL: UILabel!
     @IBOutlet weak var valueofPriceTextView: UIView!
     @IBOutlet weak var valueOftotalPrice: UIView!
     @IBOutlet weak var TotalpriceView: UIView!
@@ -121,19 +118,15 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
     @IBOutlet weak var LblCreatedDate: UILabel!
     @IBOutlet weak var LblPurposeView: UILabel!
     @IBOutlet var createdDateLbl: UILabel!
-    
-    
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var LblTreesView: UILabel!
     @IBOutlet weak var LblwellsView: UILabel!
     @IBOutlet weak var LblExtraDetailView: UILabel!
     @IBOutlet var textExtraDetailView: UITextView!
     @IBOutlet var contactInfoLbl: UILabel!
-    
     @IBOutlet var LblContact: UILabel!
     @IBOutlet var hideView: UIView!
     @IBOutlet var fullImageView: UIImageView!
-    
     @IBOutlet var imagesBtn: UIButton!
     @IBOutlet var videosBtn: UIButton!
     @IBOutlet var imageVideoCount: UILabel!
@@ -141,8 +134,6 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
     @IBOutlet var mapView: GMSMapView!
     @IBOutlet var editButton: UIButton!
     @IBOutlet var dateRefreshBtn: UIButton!
-    
-    
     var editDetailsVC = setFilterVC()
     var positioncount = Int()
     var largeimgs = String()
@@ -169,58 +160,41 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
         ImagescollectionView.dataSource = self
         imagesTableView.delegate = self
         imagesTableView.dataSource = self
-        
         pageView.numberOfPages = self.Aproperties[0].ImageUrl.count + self.Aproperties[0].videoUrl.count
         pageView.currentPage = 0
-        
         self.LblHouseDescription.text = self.Aproperties[0].Category.localizedStr()
         self.createdDateVIew.isHidden = true
-        
-        //        let DateandTime = self.Aproperties[0].createdDate.components(separatedBy: " ")
-        //
-        //        if L102Language.currentAppleLanguage() == "ar" {
-        //            LblCreatedDate.text = String(DateandTime[0])
-        //        }else{
-        //            LblCreatedDate.text = String(DateandTime[0]).replacedArabicDigitsWithEnglish
-        //        }
         hideView.isHidden = true
         imagesBtn.isSelected = true
         ImagesBtnAction(self)
         LblPlateNumber.text = self.Aproperties[0].plateNo.localizedStr()
         showMarker()
-        
         for employee in Aproperties {
             userUidArray.append(employee.userUid)
             adminUidArray.append(employee.adminUid)
             masterUidArray.append(employee.masterUid)
         }
-        
-        
         if userUidArray == Auth.auth().currentUser?.uid {
-            
             contactInfoLbl.isHidden = false
             contactInfoView.isHidden = false
             LblContact.isHidden = false
             editButton.isHidden = false
-            
-        } else if adminUidArray == Auth.auth().currentUser?.uid {
+        }else if adminUidArray == Auth.auth().currentUser?.uid {
             contactInfoLbl.isHidden = false
             contactInfoView.isHidden = false
             LblContact.isHidden = false
             editButton.isHidden = false
-        } else if adminUidArray == Auth.auth().currentUser?.uid {
-            
+        }else if adminUidArray == Auth.auth().currentUser?.uid {
             contactInfoLbl.isHidden = false
             contactInfoView.isHidden = false
             LblContact.isHidden = false
             editButton.isHidden = false
         }else if masterUidArray == Auth.auth().currentUser?.uid {
-            
             contactInfoLbl.isHidden = false
             contactInfoView.isHidden = false
             LblContact.isHidden = false
             editButton.isHidden = false
-        } else if  masterUidArray == Auth.auth().currentUser?.uid {
+        }else if  masterUidArray == Auth.auth().currentUser?.uid {
             contactInfoLbl.isHidden = false
             contactInfoView.isHidden = false
             LblContact.isHidden = false
@@ -232,14 +206,10 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             editButton.isHidden = true
         }
         UpdatedDate()
-        print(language)
-        
-        
-        
     }
-   
+    
     override func viewWillAppear(_: Bool) {
-            super.viewWillAppear(true)
+        super.viewWillAppear(true)
         UpdatedDate()
     }
     
@@ -254,7 +224,6 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
         let marker = GMSMarker()
         marker.map = mapView
         marker.position = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
-        //marker.icon = GMSMarker
         marker.isFlat = true
         marker.userData = self.Aproperties[0]
         bounds = bounds.includingCoordinate(marker.position)
@@ -273,15 +242,12 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
         let camera = GMSCameraUpdate.setTarget(newPoint)
         mapView.animate(with: camera)
         if (UIApplication.shared.canOpenURL(NSURL(string:"comgooglemaps://")! as URL)) {
-            // UIApplication.shared.open(NSURL(string: "comgooglemaps://?saddr=&daddr=\(marker.position.latitude),\(marker.position.longitude)&directionsmode=driving")! as URL)
-            
             UIApplication.shared.open(URL.init(string: "comgooglemaps://?saddr=&daddr=\(marker.position.latitude),\(marker.position.longitude)&directionsmode=driving")!, options: [:], completionHandler: nil)
             
-        } else {
+        }else {
             NSLog("Can't use comgooglemaps://");
             let url = URL(string: "http://maps.apple.com/maps?saddr=&daddr=\(marker.position.latitude),\(marker.position.longitude)")
             UIApplication.shared.open(url!)
-            
         }
         return true
     }
@@ -304,9 +270,9 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
         let ImageCount = self.Aproperties[0].ImageUrl.count
         let img = "Images".localizedStr()
         imageVideoCount.text = "\(img)(\(ImageCount))"
-        print(imageVideoCount!)
         imagesTableView.reloadData()
     }
+    
     @IBAction func VideosBtnAction(_ sender: Any) {
         imagesBtn.isSelected = false
         videosBtn.isSelected = true
@@ -317,38 +283,30 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
         let videoCount = self.Aproperties[0].videoUrl.count
         let vdo = "Videos".localizedStr()
         imageVideoCount.text = "\(vdo)(\(videoCount))"
-        print(imageVideoCount!)
         imagesTableView.reloadData()
     }
     
     @IBAction func largeImageAction(_ sender: UIButton) { hideView.isHidden = false}
+    
     @IBAction func imageBackBtn(_ sender: Any) {
         hideView.isHidden = true
     }
     
     @IBAction func dateRefreshBtnAction(_ sender: Any) {
-        
-        print(Aproperties[0].documentID)
         let db = Firestore.firestore()
         let someData = ["createdDate" :  Date().getFormattedDate().localizedStr()
         ] as [String : Any]
-        
         let UpdateRef = db.collection("Properties").document(Aproperties[0].documentID)
         UpdateRef.updateData(someData) { err in
             if let err = err {
                 print("Error adding document: \(err)")
-               
                 Helper().showUniversalLoadingView(false)
-                
-            } else {
-                print("Document Updated: \(self.Aproperties[0].documentID)")
+            }else {
                 let DateandTime = self.UserData1[0].createdDate.components(separatedBy: " ")
-
                 if L102Language.currentAppleLanguage() == "ar" {
                     self.createdDateLbl.text = String(DateandTime[0])
                 }else{
                     self.createdDateLbl.text = String(DateandTime[0]).replacedArabicDigitsWithEnglish
-                    
                     
                 }
                 self.UpdatedDate()
@@ -358,34 +316,27 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
     }
     
     func UpdatedDate(){
-            
-            Helper().showUniversalLoadingView(true)
-            
-            let db = Firestore.firestore()
-            db.collection("Properties").getDocuments() { [self] (querySnapshot, err) in
-                
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    self.mainArrayData1 = querySnapshot?.documents.reversed().compactMap { document in
-                        // 6
-                        try? document.data(as: Propertiesdata.self)
-                    } ?? []
-                    
-                    self.UserData1 = self.mainArrayData1
-                }
-                
-                //AdminTableView.reloadData()
-                Helper().showUniversalLoadingView(false)
+        Helper().showUniversalLoadingView(true)
+        let db = Firestore.firestore()
+        db.collection("Properties").getDocuments() { [self] (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                self.mainArrayData1 = querySnapshot?.documents.reversed().compactMap { document in
+                    // 6
+                    try? document.data(as: Propertiesdata.self)
+                } ?? []
+                self.UserData1 = self.mainArrayData1
             }
+            Helper().showUniversalLoadingView(false)
         }
+    }
     
     
     
     @IBAction func whatsappShareWithImages(_ sender: AnyObject) {
         let message = self.Aproperties[0].Category.localizedStr() + " https://tradapp-56582.web.app/?page=Properties&id=\(self.Aproperties[0].documentID)&language=\(language)"
         var queryCharSet = NSCharacterSet.urlQueryAllowed
-        
         queryCharSet.remove(charactersIn: "+&")
         if let escapedString = message.addingPercentEncoding(withAllowedCharacters: queryCharSet) {
             if let whatsappURL = URL(string: "whatsapp://send?text=\(escapedString)") {
@@ -402,13 +353,12 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
     
     
     @objc func changeImage() {
-        
         if counter < self.Aproperties[0].ImageUrl.count {
             let index = IndexPath.init(item: counter, section: 0)
             self.ImagescollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
             pageView.currentPage = counter
             counter += 1
-        } else {
+        }else {
             counter = 0
             let index = IndexPath.init(item: counter, section: 0)
             self.ImagescollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: false)
@@ -423,8 +373,6 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
         numberFormatter.numberStyle = .decimal
         let formattedNumber = numberFormatter.string(from: NSNumber(value:largeNumber))
         self.LblSar.text = (formattedNumber ?? "") + " " + "SAR".localizedStr()
-        
-        
         self.levelView.isHidden = true
         self.extraspaceViewBool.isHidden = true
         self.CategoryView.isHidden = true
@@ -467,10 +415,7 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
         self.treesView.isHidden = true
         self.valueofPriceTextView.isHidden = true
         
-        
-        
         if self.Aproperties[0].Category == "Apartment for rent" || self.Aproperties[0].Category == "Apartment for sale"{
-            
             self.FamilyTypeView.isHidden = false
             self.DailyMonthlyView.isHidden = false
             self.BedroomView.isHidden = false
@@ -501,9 +446,7 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             LblStreetDirectionView.text = self.Aproperties[0].streetdirection.localizedStr()
             LblPropertySourceView.text = self.Aproperties[0].propertySource.localizedStr()
             
-            
-        }
-        else if self.Aproperties[0].Category == "Villa for rent" || self.Aproperties[0].Category == "Villa for sale"{
+        }else if self.Aproperties[0].Category == "Villa for rent" || self.Aproperties[0].Category == "Villa for sale"{
             self.StreetDirectionView.isHidden = false
             self.PropertySourceView.isHidden = false
             self.BedroomView.isHidden = false
@@ -514,7 +457,6 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             self.valueofPriceTextView.isHidden = false
             self.valueOfsizeTextView.isHidden = false
             self.AgeView.isHidden = false
-            
             //MARK:- Labels//:-
             LblStreetDirectionView.text = self.Aproperties[0].streetdirection.localizedStr()
             LblPropertySourceView.text = self.Aproperties[0].propertySource.localizedStr()
@@ -531,11 +473,7 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             LblValueofSize.text = self.Aproperties[0].valueOfsizeTextView.localizedStr() + " m² "
             contactInfoLbl.text = self.Aproperties[0].valueOfContactInfo.localizedStr()
             
-        }
-        
-        
-        else if self.Aproperties[0].Category == "Floor for rent" || self.Aproperties[0].Category == "Floor for sale"{
-            
+        }else if self.Aproperties[0].Category == "Floor for rent" || self.Aproperties[0].Category == "Floor for sale"{
             self.StreetDirectionView.isHidden = false
             self.PropertySourceView.isHidden = false
             self.BedroomView.isHidden = false
@@ -551,16 +489,12 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             LblBedroomView.text = self.Aproperties[0].bedrooms.localizedStr()
             LblBathroomView.text = self.Aproperties[0].bathrooms.localizedStr()
             LblLivingRoomView.text = self.Aproperties[0].livingrooms.localizedStr()
-            
             LblLevel.text =  self.Aproperties[0].level.localizedStr()
             LblAgeView.text = self.Aproperties[0].age.localizedStr()
             textExtraDetailView.text = self.Aproperties[0].valueofExtraDetail.localizedStr()
             contactInfoLbl.text = self.Aproperties[0].valueOfContactInfo.localizedStr()
             
-        }
-        
-        else if self.Aproperties[0].Category == "Building for rent" || self.Aproperties[0].Category == "Building for sale" {
-            
+        }else if self.Aproperties[0].Category == "Building for rent" || self.Aproperties[0].Category == "Building for sale" {
             self.StreetDirectionView.isHidden = false
             self.PropertySourceView.isHidden = false
             self.purposeView.isHidden = false
@@ -572,9 +506,7 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             self.StoresView.isHidden = false
             self.valueofPriceTextView.isHidden = false
             self.valueOfsizeTextView.isHidden = false
-            
             //MARK:- Labels//:-
-            
             LblStreetDirectionView.text = self.Aproperties[0].streetdirection.localizedStr()
             LblPropertySourceView.text = self.Aproperties[0].propertySource.localizedStr()
             LblPurposeView.text = self.Aproperties[0].purpose.localizedStr()
@@ -588,10 +520,7 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             LblValueofSize.text = self.Aproperties[0].valueOfsizeTextView.localizedStr() + " m² "
             contactInfoLbl.text = self.Aproperties[0].valueOfContactInfo.localizedStr()
             
-            
-        }
-        
-        else if self.Aproperties[0].Category == "Esteraha for rent" || self.Aproperties[0].Category == "Esteraha for sale"{
+        }else if self.Aproperties[0].Category == "Esteraha for rent" || self.Aproperties[0].Category == "Esteraha for sale"{
             
             self.DailyMonthlyView.isHidden = false
             self.LivingRoomView.isHidden = false
@@ -609,7 +538,6 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             self.familysectionViewBool.isHidden = false
             self.StreetDirectionView.isHidden = true
             self.PropertySourceView.isHidden = true
-            
             //MARK:- Labels//:-
             LblDailyMonthlyView.text = self.Aproperties[0].dailyormonthlyoryearly.localizedStr()
             LblBathroomView.text = self.Aproperties[0].bathrooms.localizedStr()
@@ -620,9 +548,8 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             textExtraDetailView.text = self.Aproperties[0].valueofExtraDetail.localizedStr()
             contactInfoLbl.text = self.Aproperties[0].valueOfContactInfo.localizedStr()
             LblPropertySourceView.text = self.Aproperties[0].propertySource.localizedStr()
-        }
-        
-        else if self.Aproperties[0].Category == "Store for rent" || self.Aproperties[0].Category == "Store for sale" {
+            
+        }else if self.Aproperties[0].Category == "Store for rent" || self.Aproperties[0].Category == "Store for sale" {
             self.StreetDirectionView.isHidden = false
             self.PropertySourceView.isHidden = false
             self.StreetWidthView.isHidden = false
@@ -635,10 +562,7 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             textExtraDetailView.text = self.Aproperties[0].valueofExtraDetail.localizedStr()
             contactInfoLbl.text = self.Aproperties[0].valueOfContactInfo.localizedStr()
             
-        }
-        else if self.Aproperties[0].Category == "Farm for rent" || self.Aproperties[0].Category == "Farm for sale" {
-            
-            self.PropertySourceView.isHidden = false
+        }else if self.Aproperties[0].Category == "Farm for rent" || self.Aproperties[0].Category == "Farm for sale" { self.PropertySourceView.isHidden = false
             self.treesView.isHidden = false
             self.wellsView.isHidden = false
             self.valueofPriceTextView.isHidden = false
@@ -651,10 +575,8 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             LblValueofSize.text = self.Aproperties[0].valueOfsizeTextView.localizedStr() + " m² "
             contactInfoLbl.text = self.Aproperties[0].valueOfContactInfo.localizedStr()
             LblPropertySourceView.text = self.Aproperties[0].propertySource.localizedStr()
-        }
-        
-        else if self.Aproperties[0].Category == "Land for rent" || self.Aproperties[0].Category == "Land for sale" {
             
+        }else if self.Aproperties[0].Category == "Land for rent" || self.Aproperties[0].Category == "Land for sale" {
             self.StreetDirectionView.isHidden = false
             self.PropertySourceView.isHidden = false
             self.purposeView.isHidden = false
@@ -667,9 +589,7 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             textExtraDetailView.text = self.Aproperties[0].valueofExtraDetail.localizedStr()
             contactInfoLbl.text = self.Aproperties[0].valueOfContactInfo.localizedStr()
             
-        }
-        else if self.Aproperties[0].Category == "Room for rent" || self.Aproperties[0].Category == "Room for sale" {
-            
+        }else if self.Aproperties[0].Category == "Room for rent" || self.Aproperties[0].Category == "Room for sale" {
             self.DailyMonthlyView.isHidden = false
             self.AgeView.isHidden = false
             self.FurnishedviewBool.isHidden = false
@@ -681,14 +601,13 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             textExtraDetailView.text = self.Aproperties[0].valueofExtraDetail.localizedStr()
             contactInfoLbl.text = self.Aproperties[0].valueOfContactInfo.localizedStr()
             LblPropertySourceView.text = self.Aproperties[0].propertySource.localizedStr()
-        }
-        else if self.Aproperties[0].Category == "Office for rent" || self.Aproperties[0].Category == "Office for sale" {
+            
+        }else if self.Aproperties[0].Category == "Office for rent" || self.Aproperties[0].Category == "Office for sale" {
             self.StreetDirectionView.isHidden = false
             self.PropertySourceView.isHidden = false
             self.StreetWidthView.isHidden = false
             self.FurnishedviewBool.isHidden = false
             self.AgeView.isHidden = false
-            
             //MARK:- Labels//:-
             LblStreetDirectionView.text = self.Aproperties[0].streetdirection.localizedStr()
             LblPropertySourceView.text = self.Aproperties[0].propertySource.localizedStr()
@@ -698,8 +617,7 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             contactInfoLbl.text = self.Aproperties[0].valueOfContactInfo.localizedStr()
             
         }
-        else if self.Aproperties[0].Category == "Tent for rent" || self.Aproperties[0].Category == "Tent for sale"  {
-            
+        else if self.Aproperties[0].Category == "Tent for rent" || self.Aproperties[0].Category == "Tent for sale" {
             self.DailyMonthlyView.isHidden = false
             self.familysectionViewBool.isHidden = false
             self.PropertySourceView.isHidden = false
@@ -708,8 +626,8 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             textExtraDetailView.text = self.Aproperties[0].valueofExtraDetail.localizedStr()
             contactInfoLbl.text = self.Aproperties[0].valueOfContactInfo.localizedStr()
             LblPropertySourceView.text = self.Aproperties[0].propertySource.localizedStr()
-        }
-        else if self.Aproperties[0].Category == "Warehouse for rent" || self.Aproperties[0].Category == "Warehouse for sale" {
+            
+        }else if self.Aproperties[0].Category == "Warehouse for rent" || self.Aproperties[0].Category == "Warehouse for sale" {
             self.StreetDirectionView.isHidden = false
             self.PropertySourceView.isHidden = false
             self.StreetWidthView.isHidden = false
@@ -722,16 +640,13 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             textExtraDetailView.text = self.Aproperties[0].valueofExtraDetail.localizedStr()
             contactInfoLbl.text = self.Aproperties[0].valueOfContactInfo.localizedStr()
             
-        }
-        else if self.Aproperties[0].Category == "Store for rent" || self.Aproperties[0].Category == "Store for sale" {
-            
+        }else if self.Aproperties[0].Category == "Store for rent" || self.Aproperties[0].Category == "Store for sale" {
             self.StreetDirectionView.isHidden = false
             self.PropertySourceView.isHidden = false
             self.StreetWidthView.isHidden = false
             self.AgeView.isHidden = false
             self.valueofPriceTextView.isHidden = false
             self.valueOfsizeTextView.isHidden = false
-            
             //MARK:- Labels//:-
             LblStreetDirectionView.text = self.Aproperties[0].streetdirection.localizedStr()
             LblPropertySourceView.text = self.Aproperties[0].propertySource.localizedStr()
@@ -742,8 +657,7 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             LblValueofSize.text = self.Aproperties[0].valueOfsizeTextView.localizedStr() + " m²"
             contactInfoLbl.text = self.Aproperties[0].valueOfContactInfo.localizedStr()
             
-        }
-        else if self.Aproperties[0].Category == "Furnished Apartment for rent" || self.Aproperties[0].Category == "Furnished Apartment for sale" {
+        }else if self.Aproperties[0].Category == "Furnished Apartment for rent" || self.Aproperties[0].Category == "Furnished Apartment for sale" {
             self.StreetDirectionView.isHidden = false
             self.PropertySourceView.isHidden = false
             self.BedroomView.isHidden = false
@@ -756,7 +670,7 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             self.ExtraUnitBoolView.isHidden = false
             self.CarentEranceView.isHidden = false
             self.LiftBoolView.isHidden = false
-            
+            //MARK:- Labels//:-
             LblStreetDirectionView.text = self.Aproperties[0].streetdirection.localizedStr()
             LblPropertySourceView.text = self.Aproperties[0].streetdirection.localizedStr()
             LblBedroomView.text = self.Aproperties[0].bedrooms.localizedStr()
@@ -767,8 +681,8 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
             LblAgeView.text = self.Aproperties[0].age.localizedStr()
             contactInfoLbl.text = self.Aproperties[0].valueOfContactInfo.localizedStr()
             textExtraDetailView.text = self.Aproperties[0].valueofExtraDetail.localizedStr()
-            
         }
+        
         self.InternalStairsView.isHidden = !self.Aproperties[0].internalstairs
         self.DriverRoomView.isHidden = !self.Aproperties[0].driverroom
         self.MaidRoomView.isHidden = !self.Aproperties[0].maidroom
@@ -787,15 +701,12 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
         self.footballspaceViewBool.isHidden = !self.Aproperties[0].footballspace
         self.volleyballspaceViewBool.isHidden = !self.Aproperties[0].volleyballspace
         self.playgroundViewBool.isHidden = !self.Aproperties[0].playground
-        
         let DateandTime = self.Aproperties[0].createdDate.components(separatedBy: " ")
-        
         if L102Language.currentAppleLanguage() == "ar" {
             createdDateLbl.text = String(DateandTime[0])
         }else{
             createdDateLbl.text = String(DateandTime[0]).replacedArabicDigitsWithEnglish
         }
-        
         let submit = "Submitted By"
         self.userNameLbl.text = submit.localizedStr() + " " +  self.Aproperties[0].userName.localizedStr()
     }
@@ -823,23 +734,17 @@ extension detailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCollectionViewCell", for: indexPath) as! detailCollectionViewCell
-        
-        
-        
         if indexPath.section == 0{
             print(self.Aproperties[0].ImageUrl)
             cell.playPauseBtn.isHidden = true
             cell.imageView?.sd_imageIndicator = SDWebImageActivityIndicator.gray
             cell.imageView?.sd_setImage(with: URL(string:self.Aproperties[0].ImageUrl[indexPath.row]))
-            
         } else {
-            
             cell.imageView?.sd_imageIndicator = SDWebImageActivityIndicator.gray
             cell.imageView?.sd_setImage(with: URL(string:self.Aproperties[0].ImageUrl[indexPath.row]))
             cell.playPauseBtn.isHidden = false
             cell.largeImageBtn.isHidden = true
         }
-        
         return cell
     }
     
@@ -850,12 +755,10 @@ extension detailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     
-    func playVideo(url: URL) {
+    func playVideo(url: URL) {         
         let player = AVPlayer(url: url)
-        
         let vc = AVPlayerViewController()
         vc.player = player
-        
         self.present(vc, animated: true) { vc.player?.play() }
     }
     

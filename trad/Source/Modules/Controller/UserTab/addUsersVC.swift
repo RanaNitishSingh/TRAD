@@ -14,7 +14,6 @@ import FirebaseFirestore
 @available(iOS 13.0, *)
 class addUsersVC: UIViewController, UITextFieldDelegate {
     
-   
     @IBOutlet weak var loginUserLbl: UILabel!
     @IBOutlet weak var logoutBTN: UIButton!
     @IBOutlet weak var lblUserName: UITextField!
@@ -90,8 +89,8 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
         userAdminNameLbl.layer.cornerRadius = 5
         userAdminNameLbl.layer.masksToBounds = true
         logoutBTN.layer.cornerRadius = 12
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
         
         UserDefaults.standard.value(forKey: "user_Email")
@@ -100,7 +99,6 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.tabBarController?.tabBar.isHidden = false
         fetchDatafromFirebase()
         getData()
         self.userTableView.delegate = self
@@ -121,9 +119,10 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
         userAdminNameLbl.layer.cornerRadius = 5
         userAdminNameLbl.layer.masksToBounds = true
         logoutBTN.layer.cornerRadius = 12
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+        
         UserDefaults.standard.value(forKey: "user_Email")
         UserDefaults.standard.value(forKey: "user_Password")
     }
@@ -137,7 +136,7 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
     }
     
     //MARK:-  Read User's data on Firebase
-    func ReadFireBaseUsersCollection(){         
+    func ReadFireBaseUsersCollection(){
         db = Firestore.firestore()
         db.collection("Users").getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -163,7 +162,7 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
                 self.userTableView.reloadData()
             }
         }
-       
+        
     }
     
     
@@ -172,9 +171,10 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)}
-
+    
     @IBAction func actionLogoutBtn(_ sender: Any) {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "loginUID")
@@ -184,7 +184,7 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
         let viewController = storyboard.instantiateViewController(withIdentifier :"ViewController") as! ViewController
         self.navigationController?.pushViewController(viewController, animated: true)
     }
- 
+    
     @IBAction func radioActionAdmin(_ sender: UIButton) {
         if sender.isSelected {
             sender.isSelected = false
@@ -193,7 +193,6 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
             // selectedAdmin.removeAll()
         } else {
             self.UserType = "Admin"
-            print(UserType)
             self.AdminTableView.isHidden =  true
             sender.isSelected = true
             radioBtnUsers.isSelected = false
@@ -203,12 +202,10 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
         if sender.isSelected {
             sender.isSelected = false
             radioBtnAdmin.isSelected = false
-            // UserType.removeAll()
             selectedAdmin.removeAll()
         } else {
             self.UserType = "User"
             self.AdminTableView.isHidden =  false
-            print(UserType)
             sender.isSelected = true
             radioBtnAdmin.isSelected = false
         }}
@@ -223,7 +220,6 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
         // Get data
         userDB.getDocument { (document, error) in
             guard let document = document, document.exists else {
-                print("Document does not exist")
                 return
             }
             let user1 = document.data()
@@ -234,7 +230,6 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
             self.SubUid = user1?["subUid"] as? String
             self.AdminUid = user1?["adminUid"] as? String
             self.loginUserLbl.text = self.userName
-            
         }
     }
     
@@ -242,14 +237,11 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
     //MARK:- Add New User's to FireBaseAuth and Firestore
     
     func AddNewUser(AdminName: String) {
-        
         //userdefault username and password
         Auth.auth().createUser(withEmail: (lblUserEmail.text ?? ""), password: (lblUserPassword.text ?? "")) { (result, error) in
             if let _eror = error {
                 self.showAlert(message: _eror.localizedDescription)
             } else {
-                print(result?.user.uid)
-                //  var ref: DocumentReference? = nil
                 let userID = result?.user.uid
                 self.db.collection("Users").document(userID!).setData([
                     "UserName":  self.lblUserName.text!,
@@ -267,21 +259,17 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
                     if let err = err {
                         print("Error adding document: \(err)")
                     } else {
-                        print("Document added with ID: \(userID!)")
                         Auth.auth().signIn(withEmail: UserDefaults.standard.value(forKey: "user_Email") as! String, password: UserDefaults.standard.value(forKey: "user_Password") as! String) { [weak self] authResult, error in
                             if error != nil {
                                 if L102Language.currentAppleLanguage() == "ar" {
                                     TRADSingleton.sharedInstance.showAlert(title: "خطأ", msg: "Enter Vaild Email And Password".localizedStr(), VC: self!, cancel_action: false)
                                     Helper().showUniversalLoadingView(false)
-                               
                                 }else{
-                                    
                                     TRADSingleton.sharedInstance.showAlert(title: "ERROR", msg: "Enter Vaild Email And Password".localizedStr(), VC: self!, cancel_action: false)
                                     Helper().showUniversalLoadingView(false)
                                 }
                             }
                         }
-                     
                     }
                 }
                 self.lblUserName.text?.removeAll()
@@ -303,22 +291,22 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
               let email = lblUserEmail.text,
               let password = lblUserPassword.text
         else  {return}
+        
         let isValidateName = self.validation.validateName(name: name)
         if (isValidateName == false) {
             showAlert(message: "Enter Valid UserName".localizedStr())
-            print("Incorrect Name")
             return
         }
+        
         let isValidateEmail = self.validation.validateEmailId(emailID: email)
         if (isValidateEmail == false) {
             showAlert(message: "Enter Valid Email".localizedStr())
-            print("Incorrect Email")
             return
         }
+        
         let isValidatePass = self.validation.validatePassword(password: password)
         if (isValidatePass == false) {
             showAlert(message: "Password minimum 8 characters at least 1 Alphabet , 1 Special Character and 1 Number".localizedStr())
-            print("Incorrect Pass")
             return
         }
         
@@ -341,7 +329,6 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
         Helper().showUniversalLoadingView(true)
         let db = Firestore.firestore()
         db.collection("Users").getDocuments() { [self] (querySnapshot, err) in
-            
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -352,7 +339,6 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
                 self.UserData = self.mainArrayData
             }
             AdminTableView.reloadData()
-           // userTableView.reloadData()
             Helper().showUniversalLoadingView(false)
         }
     }
@@ -379,14 +365,13 @@ extension addUsersVC : UITableViewDelegate, UITableViewDataSource {
             cell.userNameCellLBL.text = arrayUser[indexPath.row].localizedStr()
             cell.userTypeLbl.text = arrayUserType[indexPath.row].localizedStr()
             cell.userAdminLbl.text = arrayAdminName[indexPath.row].localizedStr()
-            print(self.arrayUser[indexPath.row])
             return cell
             
         }else{
             
             let Admincell = AdminTableView.dequeueReusableCell(withIdentifier: "AdminTableViewCell", for: indexPath) as! AdminTableViewCell
             if self.UserData[indexPath.row].uid == uId || self.UserData[indexPath.row].adminUid == uId  {
-                Admincell.AdminNameTableCellLBL.text = self.UserData[indexPath.row].UserName.localizedStr() 
+                Admincell.AdminNameTableCellLBL.text = self.UserData[indexPath.row].UserName.localizedStr()
                 let backgroundView = UIView()
                 backgroundView.backgroundColor = #colorLiteral(red: 0, green: 0.5008728504, blue: 0.6056929231, alpha: 1)
                 Admincell.selectedBackgroundView = backgroundView
@@ -402,76 +387,54 @@ extension addUsersVC : UITableViewDelegate, UITableViewDataSource {
         
         if tableView == AdminTableView {
             selectedAdmin = self.UserData[indexPath.row].UserName
-            print(selectedAdmin)
-        }
-        
-        else if tableView == userTableView {
-            
-            // userDataFetchfromFirebase()
+        }else if tableView == userTableView {
             for item in UserData {
                 if item.UserName == arrayUser[indexPath.row]{
-                    print(item.UserName)
-                    print(arrayPropertCount[indexPath.row])
-                    print(self.arrayUserId[indexPath.row])
-                    let message = "Number of properties Added By"                     
+                    let message = "Number of properties Added By"
                     TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "\(message.localizedStr()) \(arrayUser[indexPath.row])  \(arrayPropertCount[indexPath.row]) ", VC: self, cancel_action: false)
-                                  }
+                }
             }
         }
-  
-        
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         if tableView == AdminTableView {
             return 40
-        }
-        
-        else if tableView == userTableView {
+        }else if tableView == userTableView {
             return 40
         }
         return 20
-        
     }
- 
+    
     
     func tableView(_ tableView: UITableView, commit editingStyle:
                    UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if tableView == userTableView {
-        if editingStyle == .delete {
-           //Assuming that you saving postID as a string.
-            let postId = self.arrayUserId[indexPath.row]
-            print(postId)
-            self.arrayUser.remove(at: indexPath.row)
-            self.arrayUserType.remove(at: indexPath.row)
-            self.arrayAdminName.remove(at: indexPath.row)
-            self.arrayUserId.remove(at: indexPath.row)
-            self.arrayPropertCount.remove(at: indexPath.row)
-            self.userTableView.deleteRows(at: [indexPath], with: .fade)
-            self.userTableView.reloadData()
-            db.collection("Users").whereField("uid", isEqualTo: postId ).getDocuments() { (querySnapshot, err) in
-                  if let err = err {
-                    print("Error getting documents: \(err)")
-                  } else {
-                    for document in querySnapshot!.documents {
-                      document.reference.delete()
-                    
-                    
+            if editingStyle == .delete {
+                //Assuming that you saving postID as a string.
+                let postId = self.arrayUserId[indexPath.row]
+                self.arrayUser.remove(at: indexPath.row)
+                self.arrayUserType.remove(at: indexPath.row)
+                self.arrayAdminName.remove(at: indexPath.row)
+                self.arrayUserId.remove(at: indexPath.row)
+                self.arrayPropertCount.remove(at: indexPath.row)
+                self.userTableView.deleteRows(at: [indexPath], with: .fade)
+                self.userTableView.reloadData()
+                db.collection("Users").whereField("uid", isEqualTo: postId ).getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            document.reference.delete()
+                        }
                     }
-
                 }
-   }
-  }
+            }
+        }            
     }
-        
-        
-        
-        
-    }
-
-    }
+    
+}
 
 
 

@@ -8,7 +8,7 @@
 import UIKit
 
 class PlusNavigationController: UINavigationController {
-
+    
     open override var childForStatusBarHidden: UIViewController? {
         return self.topViewController
     }

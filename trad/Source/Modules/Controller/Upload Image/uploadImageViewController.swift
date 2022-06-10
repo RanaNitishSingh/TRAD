@@ -28,7 +28,6 @@ class uploadImageViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet var progressLbl: UILabel!
     @IBOutlet var propertyType: UILabel!
     @IBOutlet var hideBtn: UIButton!
-    
     var CategoryDetail =  String()
     var categoryindex =  Int()
     var arrayOfImagesAndVideos = [Any]()
@@ -47,7 +46,6 @@ class uploadImageViewController: UIViewController, UIImagePickerControllerDelega
         imagesCollectionView.delegate = self
         imagesCollectionView.dataSource = self
         self.tabBarController?.tabBar.isHidden = true
-        
         uploadImageBtn.layer.cornerRadius = 24
         uploadImageBtn.layer.borderWidth = 1
         uploadImageBtn.layer.borderColor = #colorLiteral(red: 0, green: 0.5008728504, blue: 0.6056929231, alpha: 1)
@@ -67,23 +65,24 @@ class uploadImageViewController: UIViewController, UIImagePickerControllerDelega
         continueBtn.setTitle("continueBtn".localizedStr(), for: .normal)
         imageUrlArray.removeAll()
         videoUrlArray.removeAll()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         MBProgressHUD.hide(for: self.view, animated: true)
         progressView.isHidden = true
         progressUIV.isHidden = true
         hideBtn.isHidden = true
         imageUrlArray.removeAll()
         videoUrlArray.removeAll()
+        
     }
     
     
     @IBAction func backBtn(_ sender: Any) {
-       
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func hideBtnAction(_ sender: Any) {
         let snackbar = TTGSnackbar.init(message: "please wait picture being uploaded", duration: TTGSnackbarDuration.short)
         snackbar.show()
@@ -93,7 +92,7 @@ class uploadImageViewController: UIViewController, UIImagePickerControllerDelega
         if arrayOfImagesAndVideos.contains(where: { $0 is URL }){
             let alert = UIAlertController(title: "TRAD", message: "You upload only one video", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: {_ in
-                                            self.uploadImg()} ))
+                self.uploadImg()} ))
             self.present(alert, animated: true, completion: nil)
         }else{
             imagePicker.delegate = self
@@ -104,13 +103,14 @@ class uploadImageViewController: UIViewController, UIImagePickerControllerDelega
             imagePicker.mediaTypes = [kUTTypeMovie as String, kUTTypeImage as String]
             imagePicker.cameraCaptureMode = .photo // Default media type .photo vs .video
             present(imagePicker, animated: true, completion: nil)
+            
         }
     }
+    
     func uploadImg(){
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
         imagePicker.showsCameraControls = true
-        //
         imagePicker.mediaTypes = [kUTTypeImage as String]
         imagePicker.cameraCaptureMode = .photo
         present(imagePicker, animated: true, completion: nil)
@@ -123,12 +123,9 @@ class uploadImageViewController: UIViewController, UIImagePickerControllerDelega
         presentImagePicker(
             vc, animated: true,
             select: { (asset: PHAsset) -> Void in
-                print("Selected: \(asset)")
-                
                 PHImageManager.default().requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFit, options: nil) { (image, info) in
-                    //            self.imageDAta = image!
-                        print("selected dataa 4566 \(String(describing: image))")
-                  
+                    print("selected dataa 4566 \(String(describing: image))")
+                    
                 }
             }, deselect: { (asset: PHAsset) -> Void in
                 print("Deselected: \(asset)")
@@ -157,13 +154,6 @@ class uploadImageViewController: UIViewController, UIImagePickerControllerDelega
     
     
     
-    
-
-    
-    
-    
-    
-    
     func compressImage(assets: UIImage) -> UIImage {
         let imageData = UIImage(named:"background.jpg")!.jpegData(compressionQuality: 0.2)
         let image = UIImage(data: imageData!)
@@ -171,6 +161,7 @@ class uploadImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func uploadVideoAction(_ sender: Any) {
+        
         if arrayOfImagesAndVideos.contains(where: { $0 is URL }){
             let alert = UIAlertController(title: "TRAD", message: "You upload only one video", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -184,7 +175,6 @@ class uploadImageViewController: UIViewController, UIImagePickerControllerDelega
             imagePicker.videoQuality = UIImagePickerController.QualityType.type640x480
             imagePicker.isEditing = true
             present(imagePicker, animated: true, completion: nil)
-            
         }
     }
     
@@ -199,7 +189,6 @@ class uploadImageViewController: UIViewController, UIImagePickerControllerDelega
             let originalImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
             self.arrayOfImagesAndVideos.append(originalImage)
             self.imagesCollectionView.reloadData()
-            
         case kUTTypeMovie:
             // Handle video selection result
             print("Selected media is video")
@@ -222,30 +211,30 @@ class uploadImageViewController: UIViewController, UIImagePickerControllerDelega
         vc.ImagesArray = imageUrlArray
         vc.videosArray = videoUrlArray
         vc.categoryindex = categoryindex
-        self.navigationController?.pushViewController(vc, animated: true)}
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     func sameScreen(){
         MBProgressHUD.hide(for: self.view, animated: true)
     }
+    
     @IBAction func ContinueAction(_ sender: Any) {
         self.PhassetToImage()
         if arrayOfImagesAndVideos.isEmpty == true {
             let alert = UIAlertController(title: "TRAD", message: "Are you Sure Do not Want To Upload images or Video".localizedStr(), preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Yes".localizedStr(), style: UIAlertAction.Style.cancel, handler: {_ in
-                                            self.NextScreen()}))
+                self.NextScreen()}))
             alert.addAction(UIAlertAction(title: "No".localizedStr(), style: UIAlertAction.Style.default, handler: {_ in
-                                            self.sameScreen()} ))
+                self.sameScreen()} ))
             self.present(alert, animated: true, completion: nil)
         }
     }
     
     func PhassetToImage(){
-        
         if arrayOfImagesAndVideos.count > 0{
             print(arrayOfImagesAndVideos.count)
             for (i,arrayimages) in arrayOfImagesAndVideos.enumerated() {
                 self.myGroup.enter()
-                
                 if let imageItem = arrayimages as? UIImage {
                     let optionss = PHImageRequestOptions()
                     optionss.deliveryMode = .highQualityFormat
@@ -272,7 +261,6 @@ class uploadImageViewController: UIViewController, UIImagePickerControllerDelega
                             print(array[0])
                             self.progressLbl.text = "\(array[0])%"
                         }
-                        
                     }
                     storage.child("\(imagename)").putData(data, metadata: metaData) { (meta, error) in
                         if let err = error {
@@ -286,45 +274,35 @@ class uploadImageViewController: UIViewController, UIImagePickerControllerDelega
                                     
                                 } else {
                                     print("Image sent")
-                                    
                                     let urlString = url?.absoluteString
                                     self.imageUrlArray.append(urlString!)
                                     self.myGroup.leave()
                                 }
                             }
                         }
-                        
                     }
-                }
-                else {
+                }else {
                     let options = PHVideoRequestOptions ()
                     options.version = .original
                     let localVideoUrl = arrayimages
-                    print (localVideoUrl)
-                    
                     let videoData = try! Data(contentsOf: localVideoUrl as! URL, options: .mappedIfSafe)
-                    
-                    print(videoData.count)
                     let storage = Storage.storage().reference()
                     let metaData = StorageMetadata()
                     metaData.contentType = "video/mp4"
                     let videoName = String.random()
                     let uploadTask = storage.child("\(videoName)").putData(videoData, metadata: metaData)
                     uploadTask.observe(.progress) { snapshot in
-                        
                         if i == self.arrayOfImagesAndVideos.count-1{
                             let percentComplete = 100 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
                             self.progressView.isHidden = false
                             self.progressUIV.isHidden = false
                             self.hideBtn.isHidden = false
                             self.progressView.progress = Float(snapshot.progress!.completedUnitCount) / Float(snapshot.progress!.totalUnitCount)
-                            
                             let per = "\(percentComplete)"
                             let array = per.components(separatedBy: ".")
                             print(array[0])
                             self.progressLbl.text = "\(array[0])%"
                         }
-                        
                     }
                     storage.child("\(videoName)").putData(videoData, metadata: metaData) { (meta, error) in
                         if let err = error {
@@ -359,10 +337,13 @@ extension String {
         for _ in 0..<length {
             let randomValue = arc4random_uniform(UInt32(base.count))
             randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"}
-        return randomString}}
+        return randomString
+    }
+}
 
 
 extension uploadImageViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return  self.arrayOfImagesAndVideos.count
     }
@@ -377,6 +358,7 @@ extension uploadImageViewController: UICollectionViewDelegate, UICollectionViewD
         }
         return cell
     }
+    
     @objc func btnActionCancel(sender : UIButton) {
         let indexPath = IndexPath(row:sender.tag, section: 0)
         arrayOfImagesAndVideos.remove(at: indexPath.item)
@@ -386,7 +368,6 @@ extension uploadImageViewController: UICollectionViewDelegate, UICollectionViewD
 }
 
 class imagesCollectionViewCell: UICollectionViewCell{
-    
     @IBOutlet var images: UIImageView!
     @IBOutlet var cancelbtn: UIButton!
 }

@@ -14,23 +14,15 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
     
     var pickerView = UIPickerView()
     var arrayAge = [" ","New","1 year","2 year","3 year","4 year","5 year","6 year","7 year","8 year","9 year","10 year","11 year","12 year","13 year","14 year","15 year","16 year","17 year","18 year","19 year","20 year","21 year","22 year","23 year","24 year","25 year","26 year","27 year","28 year","29 year","30 year","31 year","32 year","33 year","34 year","35+ year"]
-    
     var arrayLevel = [" " ,"0","1 ","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
-    
     var arrayEetwidth = [" ","5","8","10","12","15","18","20","25","28","30","36","40","60","80","100"]
-    
-    
     var arrayStreetData = [" ","North","East","West","South","Northeast","Southeast","southwest","Northwest","3 streets", "4 streets"]
-    
-   // var arrayPropertySource = ["Owner","Agent","Government"]
     var arrayPropertySource = [" ","0","1","2"]
-    
     var toolBar = UIToolbar()
     var levelCheck = ""
     var StreetCheck = ""
     var latitude = CLLocationDegrees()
     var longitude = CLLocationDegrees()
-    
     @IBOutlet var backgroundscrollview: UIScrollView!
     @IBOutlet var backgroundstackview: UIStackView!
     @IBOutlet var streetDirectionCollectionView: UICollectionView!
@@ -70,18 +62,14 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
     @IBOutlet var viewforOfTrees: UIView!
     @IBOutlet var viewforOfRooms: UIView!
     @IBOutlet weak var streetDirectionView: UIView!
-    
     @IBOutlet var propertySourceView: UIView!
     @IBOutlet var propertySourceBtn: UIButton!
-    
     @IBOutlet weak var streetDirectionBtn: UIButton!
     @IBOutlet var singleBtn: UIButton!
     @IBOutlet var familyBtn: UIButton!
     @IBOutlet var dailyBtn: UIButton!
     @IBOutlet var monthlyBtn: UIButton!
     @IBOutlet var yearlyBtn: UIButton!
-    
-   
     @IBOutlet var bedRoomsValueLbl: UILabel!
     @IBOutlet var apartmentsValueLbl: UILabel!
     @IBOutlet var livingRoomsValueLbl: UILabel!
@@ -89,24 +77,20 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
     @IBOutlet var storesValueLbl: UILabel!
     @IBOutlet var streeetWidthvalueLbl: UILabel!
     @IBOutlet var ofRoomsValue: UILabel!
-    
     @IBOutlet var bedRoomSlide: UISlider!
     @IBOutlet var apartmentsSlide: UISlider!
     @IBOutlet var livingRoomsSlide: UISlider!
     @IBOutlet var bathRoomsSlide: UISlider!
     @IBOutlet var storesSlide: UISlider!
     @IBOutlet var ofRoomsSlider: UISlider!
-    
     @IBOutlet var residentialBtn: UIButton!
     @IBOutlet var commercialBtn: UIButton!
     @IBOutlet var bothBtn: UIButton!
-    
     @IBOutlet var levelBtn: UIButton!
     @IBOutlet var ageBtn: UIButton!
     @IBOutlet var levelLbl: UILabel!
     @IBOutlet var ageLbl: UILabel!
     @IBOutlet var streetBtn: UIButton!
-    
     @IBOutlet var ofWellsTextfield: UITextField!
     @IBOutlet var ofTreeTextfield: UITextField!
     @IBOutlet var propertyType: UILabel!
@@ -132,9 +116,7 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
     @IBOutlet var airConditionerSwitch: UISwitch!
     @IBOutlet var plateNumberText: UITextField!
     @IBOutlet weak var plateNumberView: UIView!
-    
     var updatePropertyData: [Propertiesdata] = []
-    
     let step:Float = 1
     var valueForsingleorfamily = ""
     var valueFordailyormonthlyoryearly = ""
@@ -182,30 +164,19 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         if self.updatePropertyData.count == 0 {
             self.propertyType.text = CategoryDetail2.localizedStr()
             self.updateview()
-            
             if self.propertyType.text == "Land".localizedStr() || self.propertyType.text == "Building".localizedStr() {
-                
                 valueForpurpose = "Residential"
-               
-            } else if self.propertyType.text == "Apartment".localizedStr() {
+            }else if self.propertyType.text == "Apartment".localizedStr() {
                 valueForsingleorfamily = "Family"
                 valueFordailyormonthlyoryearly = "Yearly"
-                
-            } else  if self.propertyType.text == "Room".localizedStr()  ||  self.propertyType.text == "Esteraha".localizedStr() {
-              
+            }else if self.propertyType.text == "Room".localizedStr()  ||  self.propertyType.text == "Esteraha".localizedStr() {
                 valueFordailyormonthlyoryearly = "Yearly"
-                
             }else {
-                
                 valueForsingleorfamily = ""
                 valueFordailyormonthlyoryearly = ""
                 valueForpurpose = ""
             }
-            
-        
-            
-            
-        } else {
+        }else {
             self.tabBarController?.tabBar.isHidden = true
             self.propertyType.text = updatePropertyData[0].selectCategory.localizedStr()
             self.CategoryDetail2 = updatePropertyData[0].selectCategory
@@ -235,8 +206,6 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             self.plateNumberText.text = updatePropertyData[0].plateNo
         }
         self.continueBtn.layer.cornerRadius = 24
-       // self.streetDirectionCollectionView.delegate = self
-      //  self.streetDirectionCollectionView.dataSource = self
         self.residentialBtn.layer.borderWidth = 1
         self.residentialBtn.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         self.residentialBtn.layer.cornerRadius = 16
@@ -249,53 +218,38 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         plateNumberText.delegate = self
         self.pickerView.isHidden = true
         self.hideKeyboardWhenTappedAround()
-       // if let flowLayout = streetDirectionCollectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-        //    flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-            ofWellsTextfield.delegate = self
-            ofTreeTextfield.delegate = self
-      //  }
+        ofWellsTextfield.delegate = self
+        ofTreeTextfield.delegate = self
         singleBtn.setTitle("singleBtn".localizedStr(), for: .normal)
         familyBtn.setTitle("familyBtn".localizedStr(), for: .normal)
         dailyBtn.setTitle("dailyBtn".localizedStr(), for: .normal)
         monthlyBtn.setTitle("monthlyBtn".localizedStr(), for: .normal)
         yearlyBtn.setTitle("yearlyBtn".localizedStr(), for: .normal)
         continueBtn.setTitle("continueBtn".localizedStr(), for: .normal)
-        
-        
-        
-        
-        
-        
-    
     }
-    
-    
-   
-  
     
     override func viewWillAppear(_ animated: Bool) {
         self.backgroundscrollview.contentSize = CGSize(width:self.view.frame.size.width, height: self.backgroundstackview.frame.size.height)
         
-    
     }
     
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         ofWellsTextfield.endEditing(true)
         ofTreeTextfield.endEditing(true)
         plateNumberText.endEditing(true)
-        return false }
+        return false
+    }
     
     @objc func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
     
     func typeProperty() {
         if updatePropertyData[0].purpose == "Residential"{
@@ -312,9 +266,7 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             commercialBtn.layer.borderWidth = 1
             bothBtn.layer.borderWidth = 1
             valueForpurpose = "Residential"
-            
-        } else if updatePropertyData[0].purpose == "Commercial" {
-            
+        }else if updatePropertyData[0].purpose == "Commercial" {
             residentialBtn.isSelected = false
             commercialBtn.isSelected = true
             bothBtn.isSelected = false
@@ -328,11 +280,7 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             commercialBtn.layer.borderWidth = 0
             bothBtn.layer.borderWidth = 1
             valueForpurpose = "Commercial"
-            
-            
-        } else if updatePropertyData[0].purpose == "Commercial&Residential" {
-            
-            
+        }else if updatePropertyData[0].purpose == "Commercial&Residential" {
             residentialBtn.isSelected = false
             commercialBtn.isSelected = false
             bothBtn.isSelected = true
@@ -347,14 +295,9 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             bothBtn.layer.borderWidth = 0
             valueForpurpose = "Commercial&Residential"
         }
-        
-        
     }
     
-    
-    
     func  sliderBedButtons() {
-        
         self.bedRoomSlide.minimumValue = 0
         self.bedRoomSlide.maximumValue = 7
         if updatePropertyData[0].bedrooms != "0" {
@@ -369,13 +312,11 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
                 let slideValue = Int(self.bedRoomSlide.value)
                 self.bedRoomsValueLbl.text = "\(String(describing: slideValue))"
                 self.valueForbedrooms = "\(slideValue)"
-                
             }
         }
         
         self.apartmentsSlide.minimumValue = 0
         self.apartmentsSlide.maximumValue = 4
-        
         if updatePropertyData[0].apartment != "0" {
             if CategoryDetail2 == "Villa"{
                 self.apartmentsSlide.setValue((updatePropertyData[0].apartment).floatValue, animated: true)
@@ -390,35 +331,26 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             }
         }
         
-        
         self.livingRoomsSlide.minimumValue = 0
         self.livingRoomsSlide.maximumValue = 5
-        
         if updatePropertyData[0].livingrooms != "0" {
-            
             self.livingRoomsSlide.setValue((updatePropertyData[0].livingrooms).floatValue, animated: true)
             let slideValue = Int(self.livingRoomsSlide.value)
             self.livingRoomsValueLbl.text = "\(String(describing: slideValue))"
             self.valueForlivingrooms = "\(slideValue)"
-            
         }
         
         self.bathRoomsSlide.minimumValue = 0
         self.bathRoomsSlide.maximumValue = 5
-        
         if updatePropertyData[0].bathrooms != "0" {
-            
             self.bathRoomsSlide.setValue((updatePropertyData[0].bathrooms).floatValue, animated: true)
             let slideValue = Int(self.bathRoomsSlide.value)
             self.bathRoomsValueLbl.text = "\(String(describing: slideValue))"
             self.valueForbathrooms = "\(slideValue)"
-            
         }
- 
         
         self.storesSlide.minimumValue = 0
         self.storesSlide.maximumValue = 5
-        
         if updatePropertyData[0].stores != "0" {
             
             self.storesSlide.setValue((updatePropertyData[0].stores).floatValue, animated: true)
@@ -429,34 +361,23 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         
         self.ofRoomsSlider.minimumValue = 0
         self.ofRoomsSlider.maximumValue = 15
-        
         if updatePropertyData[0].OfRooms != "0" {
-            
             self.ofRoomsSlider.setValue((updatePropertyData[0].OfRooms).floatValue, animated: true)
             let slideValue = Int(self.ofRoomsSlider.value)
             self.ofRoomsValue.text = "\(String(describing: slideValue))"
             self.valueForOfRooms = "\(slideValue)"
         }
-        
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
     func checkSlider() {
         if updatePropertyData[0].internalstairs == true {
-                internalStraisSwitch.setOn(updatePropertyData[0].internalstairs, animated : true)
-                valueForinternalstairs = true
-            }else{
-                internalStraisSwitch.setOn(updatePropertyData[0].internalstairs, animated : true)
-                valueForinternalstairs = false
-            }
-          
+            internalStraisSwitch.setOn(updatePropertyData[0].internalstairs, animated : true)
+            valueForinternalstairs = true
+        }else{
+            internalStraisSwitch.setOn(updatePropertyData[0].internalstairs, animated : true)
+            valueForinternalstairs = false
+        }
+        
         if updatePropertyData[0].driverroom == true{
             driverRoomSwitch.setOn(updatePropertyData[0].driverroom, animated : true)
             valueFordriverroom = true
@@ -587,8 +508,6 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
     }
     
     
-    
-    
     func updateview(){
         self.viewforsingleorfamily.isHidden = true
         self.viewfordailyormonthlyoryearly.isHidden = true
@@ -614,7 +533,6 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         self.viewforduplex.isHidden = true
         self.viewfortype.isHidden = true
         self.viewforairconditioner.isHidden = true
-       // self.streetDirectionCollectionView.isHidden = true
         self.streetDirectionView.isHidden = true
         self.propertySourceView.isHidden = true
         self.viewforstores.isHidden = true
@@ -622,17 +540,14 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         self.viewforvolleyballspace.isHidden = true
         self.viewforplayground.isHidden = true
         self.viewforfamilysection.isHidden = true
-       // self.streetDirectionLblView.isHidden = true
         self.viewforOfWells.isHidden = true
         self.viewforOfTrees.isHidden = true
         self.viewforOfRooms.isHidden = true
         
         
         if CategoryDetail2 == "Apartment"{
-            
             self.propertySourceView.isHidden = false
             self.streetDirectionView.isHidden = false
-           // self.streetDirectionLblView.isHidden = false
             self.viewforsingleorfamily.isHidden = false
             self.viewfordailyormonthlyoryearly.isHidden = false
             self.viewforbedrooms.isHidden = false
@@ -647,12 +562,9 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             self.viewforlift.isHidden = false
             self.viewforairconditioner.isHidden = false
             self.viewstreetwidth.isHidden = false
-            
-        }
-        else if CategoryDetail2 == "Villa" {
+        }else if CategoryDetail2 == "Villa" {
             self.propertySourceView.isHidden = false
             self.streetDirectionView.isHidden = false
-           // self.streetDirectionLblView.isHidden = false
             self.viewforbedrooms.isHidden = false
             self.viewforappartments.isHidden = false
             self.viewforlivingrooms.isHidden = false
@@ -673,22 +585,14 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             self.viewforlift.isHidden = false
             self.viewforduplex.isHidden = false
             self.viewforairconditioner.isHidden = false
-            
-        }
-        else if CategoryDetail2 == "Land" {
+        }else if CategoryDetail2 == "Land" {
             self.propertySourceView.isHidden = false
             self.streetDirectionView.isHidden = false
-           // self.streetDirectionLblView.isHidden = false
             self.viewstreetwidth.isHidden = false
             self.viewfortype.isHidden = false
-            
-            
-        }
-        
-        else if CategoryDetail2 == "Floor" {
+        }else if CategoryDetail2 == "Floor" {
             self.propertySourceView.isHidden = false
             self.streetDirectionView.isHidden = false
-          //  self.streetDirectionLblView.isHidden = false
             self.viewforbedrooms.isHidden = false
             self.viewforlivingrooms.isHidden = false
             self.viewforbathrooms.isHidden = false
@@ -697,13 +601,9 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             self.viewforfurnished.isHidden = false
             self.viewforcarentrance.isHidden = false
             self.viewforairconditioner.isHidden = false
-            
-        }
-        
-        else if CategoryDetail2 == "Building" {
+        }else if CategoryDetail2 == "Building" {
             self.propertySourceView.isHidden = false
             self.streetDirectionView.isHidden = false
-           // self.streetDirectionLblView.isHidden = false
             self.viewfortype.isHidden = false
             self.viewforappartments.isHidden = false
             self.viewstreetwidth.isHidden = false
@@ -711,11 +611,7 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             self.viewforfurnished.isHidden = false
             self.viewforstores.isHidden = false
             self.viewforOfRooms.isHidden = false
-            
-            
-        }
-        
-        else if CategoryDetail2 == "Esteraha" {
+        }else if CategoryDetail2 == "Esteraha" {
             self.viewfordailyormonthlyoryearly.isHidden = false
             self.viewforlivingrooms.isHidden = false
             self.viewforbathrooms.isHidden = false
@@ -726,64 +622,44 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             self.viewforfootballspace.isHidden = false
             self.viewforvolleyballspace.isHidden = false
             self.viewforplayground.isHidden = false
-            //self.viewforroomsslider.isHidden = false
             self.viewforfamilysection.isHidden = false
             self.viewforage.isHidden = false
             self.viewforOfRooms.isHidden = false
             self.propertySourceView.isHidden = false
-            
-        }
-        
-        else if CategoryDetail2 == "Store" {
+        }else if CategoryDetail2 == "Store" {
             self.propertySourceView.isHidden = false
             self.streetDirectionView.isHidden = false
-           // self.streetDirectionLblView.isHidden = false
             self.viewstreetwidth.isHidden = false
             self.viewforage.isHidden = false
-        }
-        else if CategoryDetail2 == "Farm" {
+        }else if CategoryDetail2 == "Farm" {
             self.viewforOfWells.isHidden = false
             self.viewforOfTrees.isHidden = false
             self.viewfortent.isHidden = false
             self.propertySourceView.isHidden = false
-        }
-        
-        else if CategoryDetail2 == "Room" {
+        }else if CategoryDetail2 == "Room" {
             self.viewfordailyormonthlyoryearly.isHidden = false
             self.viewforage.isHidden = false
             self.viewforfurnished.isHidden = false
             self.viewforkitchen.isHidden = false
             self.propertySourceView.isHidden = false
-            
-        }
-        else if CategoryDetail2 == "Office" {
+        }else if CategoryDetail2 == "Office" {
             self.propertySourceView.isHidden = false
             self.streetDirectionView.isHidden = false
-           // self.streetDirectionLblView.isHidden = false
             self.viewstreetwidth.isHidden = false
             self.viewforage.isHidden = false
             self.viewforfurnished.isHidden = false
-            
-        }
-        else if CategoryDetail2 == "Tent" {
+        }else if CategoryDetail2 == "Tent" {
             self.propertySourceView.isHidden = false
             self.viewfordailyormonthlyoryearly.isHidden = false
             self.viewforfamilysection.isHidden = false
-            
-        }
-        else if CategoryDetail2 == "Warehouse" {
+        }else if CategoryDetail2 == "Warehouse" {
             self.propertySourceView.isHidden = false
             self.streetDirectionView.isHidden = false
-          //  self.streetDirectionLblView.isHidden = false
             self.viewstreetwidth.isHidden = false
             self.viewforage.isHidden = false
-            
-        }
-        
-        else if CategoryDetail2 == "Furnished Apartment" {
+        }else if CategoryDetail2 == "Furnished Apartment" {
             self.propertySourceView.isHidden = false
             self.streetDirectionView.isHidden = false
-           // self.streetDirectionLblView.isHidden = false
             self.viewforbedrooms.isHidden = false
             self.viewforlivingrooms.isHidden = false
             self.viewforbathrooms.isHidden = false
@@ -801,7 +677,6 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
     
     
     func singleorfamily() {
-        
         if updatePropertyData[0].singleorfamily == "Single" {
             singleBtn.isSelected = true
             familyBtn.isSelected = false
@@ -811,7 +686,6 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             familyBtn.backgroundColor = .white
             valueForsingleorfamily = "Single".localizedStr()
         } else if updatePropertyData[0].singleorfamily == "Family" {
-            
             singleBtn.isSelected = false
             familyBtn.isSelected = true
             singleBtn.setTitleColor(#colorLiteral(red: 0, green: 0.5008728504, blue: 0.6056929231, alpha: 1), for: .normal)
@@ -819,7 +693,6 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             familyBtn.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .selected)
             familyBtn.backgroundColor = #colorLiteral(red: 0, green: 0.5008728504, blue: 0.6056929231, alpha: 1)
             valueForsingleorfamily = "Family".localizedStr()
-            
         } }
     
     @IBAction func singleBtnAction(_ sender: Any) {
@@ -842,8 +715,6 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         valueForsingleorfamily = "Family"
     }
     
-    
-    
     func dailyormonthlyoryearly() {
         if updatePropertyData[0].dailyormonthlyoryearly == "Daily" {
             dailyBtn.isSelected = true
@@ -856,8 +727,7 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             yearlyBtn.setTitleColor(#colorLiteral(red: 0, green: 0.5008728504, blue: 0.6056929231, alpha: 1), for: .normal)
             yearlyBtn.backgroundColor = .white
             valueFordailyormonthlyoryearly = "Daily"
-        } else if updatePropertyData[0].dailyormonthlyoryearly == "Monthly" {
-            
+        }else if updatePropertyData[0].dailyormonthlyoryearly == "Monthly" {
             dailyBtn.isSelected = false
             monthlyBtn.isSelected = true
             yearlyBtn.isSelected = false
@@ -868,9 +738,7 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             yearlyBtn.setTitleColor(#colorLiteral(red: 0, green: 0.5008728504, blue: 0.6056929231, alpha: 1), for: .normal)
             yearlyBtn.backgroundColor = .white
             valueFordailyormonthlyoryearly = "Monthly"
-            
-        } else if updatePropertyData[0].dailyormonthlyoryearly == "Yearly" {
-            
+        }else if updatePropertyData[0].dailyormonthlyoryearly == "Yearly" {
             dailyBtn.isSelected = false
             monthlyBtn.isSelected = false
             yearlyBtn.isSelected = true
@@ -933,7 +801,6 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
                 bedRoomsValueLbl.text = "7+"
             }
             valueForbedrooms = "\(currentValue)"
-            
         } else if CategoryDetail2 == "Floor" || CategoryDetail2 == "Small house" {
             let roundedStepValue = round(sender.value / step) * step
             bedRoomSlide.value = roundedStepValue
@@ -956,7 +823,6 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             apartmentsSlide.value = roundedStepValue
             apartmentsSlide.minimumValue = 0
             apartmentsSlide.maximumValue = 4
-            
             let currentValue = Int(apartmentsSlide.value)
             apartmentsValueLbl.text = "\(currentValue)"
             valueForappartments = "\(currentValue)"
@@ -970,6 +836,7 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             valueForappartments = "\(currentValue)"
         }
     }
+    
     @IBAction func livingRoomsSlider(_ sender: UISlider) {
         let roundedStepValue = round(sender.value / step) * step
         livingRoomsSlide.value = roundedStepValue
@@ -981,8 +848,8 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             livingRoomsValueLbl.text = "5+"
         }
         valueForlivingrooms = "\(currentValue)"
-        
     }
+    
     @IBAction func bathRoomsSlider(_ sender: UISlider) {
         let roundedStepValue = round(sender.value / step) * step
         bathRoomsSlide.value = roundedStepValue
@@ -995,6 +862,7 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         }
         valueForbathrooms = "\(currentValue)"
     }
+    
     @IBAction func storesSlider(_ sender: UISlider) {
         let roundedStepValue = round(sender.value / step) * step
         storesSlide.value = roundedStepValue
@@ -1007,17 +875,7 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         }
         valueForstores = "\(currentValue)"
     }
-//    @IBAction func streetWidthSlider(_ sender: UISlider) {
-//
-//        let roundedStepValue = round(sender.value / step) * step
-//        streetwidthSlide.value = roundedStepValue
-//        streetwidthSlide.minimumValue = 0
-//        streetwidthSlide.maximumValue = 100
-//        let currentValue = Int(streetwidthSlide.value)
-//        streeetWidthvalueLbl.text = "\(currentValue) m"
-//        valueForstreetwidth = "\(currentValue)"
-//        // }
-//    }
+    
     @IBAction func ofRoomsSliderr(_ sender: UISlider) {
         let roundedStepValue = round(sender.value / step) * step
         ofRoomsSlider.value = roundedStepValue
@@ -1027,209 +885,185 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         ofRoomsValue.text = "\(currentValue)"
         valueForOfRooms = "\(currentValue)"
     }
+    
     @IBAction func internalStairSwitch(_ sender: Any) {
-        
         if internalStraisSwitch.isOn {
             valueForinternalstairs = true
             internalStraisSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForinternalstairs = false
             internalStraisSwitch.setOn(false, animated:true)
-            print("off")
-          }
-        
-        
-        
+        }
     }
+    
     @IBAction func driverRoomSwitch(_ sender: Any) {
-        
         if driverRoomSwitch.isOn {
             valueFordriverroom = true
             driverRoomSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForinternalstairs = false
             driverRoomSwitch.setOn(false, animated:true)
-            print("off")
-          }
-        
+        }
     }
+    
     @IBAction func maidRoomSwitch(_ sender: Any) {
         if maidRoomSwitch.isOn {
             valueFormaidroom = true
             maidRoomSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueFormaidroom = false
             maidRoomSwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
+    
     @IBAction func poolSwitch(_ sender: Any) {
         if poolSwitch.isOn {
             valueForpool = true
             poolSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForpool = false
             poolSwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
+    
     @IBAction func furnishedSwitch(_ sender: Any) {
         if furnishedSwitch.isOn {
             valueForfurnished = true
             furnishedSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForfurnished = false
             furnishedSwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
+    
     @IBAction func tentSwitch(_ sender: Any) {
         if tentSwitch.isOn {
             valueFortent = true
             tentSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueFortent = false
             tentSwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
+    
     @IBAction func extraSpaceSwitch(_ sender: Any) {
         if extraSpaceSwitch.isOn {
             valueForextraspace = true
             extraSpaceSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForextraspace = false
             extraSpaceSwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
+    
     @IBAction func kitchenSwitch(_ sender: Any) {
         if kitchenSwitch.isOn {
             valueForkitchen = true
             kitchenSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForkitchen = false
             kitchenSwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
+    
     @IBAction func extraUnitSwitch(_ sender: Any) {
         if extraUnitSwitch.isOn {
             valueForextraunit = true
             extraUnitSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForextraunit = false
             extraUnitSwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
+    
     @IBAction func carEntranceSwitch(_ sender: Any) {
         if carEnterSwitch.isOn {
             valueForcarentrance = true
             carEnterSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForcarentrance = false
             carEnterSwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
+    
     @IBAction func basementSwitch(_ sender: Any) {
         if basmentSwitch.isOn {
             valueForbasement = true
             basmentSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForbasement = false
             basmentSwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
+    
     @IBAction func liftSwitch(_ sender: Any) {
         if liftSwitch.isOn {
             valueForlift = true
             liftSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForlift = false
             liftSwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
+    
     @IBAction func duplexSwitch(_ sender: Any) {
         if duplexSwitch.isOn {
             valueForduplex = true
             duplexSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForduplex = false
             duplexSwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
+    
     @IBAction func airConditionerSwitch(_ sender: Any) {
         if airConditionerSwitch.isOn {
             valueForairconditioner = true
             airConditionerSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForairconditioner = false
             airConditionerSwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
+    
     @IBAction func foortballSpaceSwitch(_ sender: Any) {
         if footballSwitch.isOn {
             valueForfootballspace = true
             footballSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForfootballspace = false
             footballSwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
+    
     @IBAction func vollyballSpaceSwitch(_ sender: Any) {
         if vollyBallSwitch.isOn {
             valueForvolleyballspace = true
             vollyBallSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForvolleyballspace = false
             vollyBallSwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
+    
     @IBAction func playgroundSwitch(_ sender: Any) {
         if playgroundSwitch.isOn {
             valueForplayground = true
             playgroundSwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForplayground = false
             playgroundSwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
+    
     @IBAction func familySectionSwitch(_ sender: Any) {
         if familySwitch.isOn {
             valueForfamilysection = true
             familySwitch.setOn(true, animated:true)
-            print("on")
-          } else {
+        } else {
             valueForfamilysection = false
             familySwitch.setOn(false, animated:true)
-            print("off")
-          }
+        }
     }
     
     @IBAction func residentialBtnAction(_ sender: Any) {
@@ -1246,8 +1080,8 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         commercialBtn.layer.borderWidth = 1
         bothBtn.layer.borderWidth = 1
         valueForpurpose = "Residential"
-      
     }
+    
     @IBAction func commercialBtnAction(_ sender: Any) {
         residentialBtn.isSelected = false
         commercialBtn.isSelected = true
@@ -1262,8 +1096,8 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         commercialBtn.layer.borderWidth = 0
         bothBtn.layer.borderWidth = 1
         valueForpurpose = "Commercial"
-        
     }
+    
     @IBAction func bothBtnAction(_ sender: Any) {
         residentialBtn.isSelected = false
         commercialBtn.isSelected = false
@@ -1278,149 +1112,134 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
         commercialBtn.layer.borderWidth = 1
         bothBtn.layer.borderWidth = 0
         valueForpurpose = "Commercial&Residential"
-        
     }
     
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-    
     @IBAction func streetBtnAction(_ sender: Any) {
         if pickerView.isHidden{
-         pickerView.isHidden = false
-        levelCheck = "eetwidth"
-        pickerView = UIPickerView.init()
-        self.pickerView.dataSource = self
-        self.pickerView.delegate = self
-        pickerView.backgroundColor = UIColor.white
-        pickerView.setValue(UIColor.black, forKey: "textColor")
-        pickerView.autoresizingMask = .flexibleWidth
-        pickerView.contentMode = .center
-        pickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
-        self.view.addSubview(pickerView)
-   
-        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            pickerView.isHidden = false
+            levelCheck = "eetwidth"
+            pickerView = UIPickerView.init()
+            self.pickerView.dataSource = self
+            self.pickerView.delegate = self
+            pickerView.backgroundColor = UIColor.white
+            pickerView.setValue(UIColor.black, forKey: "textColor")
+            pickerView.autoresizingMask = .flexibleWidth
+            pickerView.contentMode = .center
+            pickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+            self.view.addSubview(pickerView)
+            
+            toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+            toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             if L102Language.currentAppleLanguage() == "ar" {
                 toolBar.items = [UIBarButtonItem.init(title: "تم", style: .done, target: self, action: #selector(onDoneButtonTapped))]
             }else {
                 toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
             }
-        self.view.addSubview(toolBar)
-    } else if !pickerView.isHidden {
-               toolBar.removeFromSuperview()
-               pickerView.removeFromSuperview()
-               pickerView.isHidden = true
-               toolBar.isHidden = true
-               
-           }
-   
-    }
-    
-  
- 
-     
-    @IBAction func levelBtnAction(_ sender: Any) {
-        if pickerView.isHidden{
-         pickerView.isHidden = false
-        levelCheck = "level"
-        pickerView = UIPickerView.init()
-        self.pickerView.dataSource = self
-        self.pickerView.delegate = self
-        pickerView.backgroundColor = UIColor.white
-        pickerView.setValue(UIColor.black, forKey: "textColor")
-        pickerView.autoresizingMask = .flexibleWidth
-        pickerView.contentMode = .center
-        pickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
-        self.view.addSubview(pickerView)
-        
-        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-            if L102Language.currentAppleLanguage() == "ar" {
-                toolBar.items = [UIBarButtonItem.init(title: "تم", style: .done, target: self, action: #selector(onDoneButtonTapped))]
-            }else {
-                toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
-            }
-         
-        self.view.addSubview(toolBar)
-    } else if !pickerView.isHidden {
-               toolBar.removeFromSuperview()
-               pickerView.removeFromSuperview()
-               pickerView.isHidden = true
-               toolBar.isHidden = true
-               
-           }
-    }
-
-    
-    @IBAction func propertySourceBtnAction(_ sender: Any) {
-        if pickerView.isHidden{
-         pickerView.isHidden = false
-        levelCheck = "propertySource"
-        pickerView = UIPickerView.init()
-        self.pickerView.dataSource = self
-        self.pickerView.delegate = self
-        pickerView.backgroundColor = UIColor.white
-        pickerView.setValue(UIColor.black, forKey: "textColor")
-        pickerView.autoresizingMask = .flexibleWidth
-        pickerView.contentMode = .center
-        pickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
-        self.view.addSubview(pickerView)
-        
-        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-            if L102Language.currentAppleLanguage() == "ar" {
-                toolBar.items = [UIBarButtonItem.init(title: "تم", style: .done, target: self, action: #selector(onDoneButtonTapped))]
-            }else {
-                toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
-            }
-        self.view.addSubview(toolBar)
-    } else if !pickerView.isHidden {
+            self.view.addSubview(toolBar)
+        } else if !pickerView.isHidden {
             toolBar.removeFromSuperview()
             pickerView.removeFromSuperview()
             pickerView.isHidden = true
             toolBar.isHidden = true
-            
         }
     }
-  
     
-  
     
-    @IBAction func ageBtnAction(_ sender: Any) {
+    @IBAction func levelBtnAction(_ sender: Any) {
         if pickerView.isHidden{
-         pickerView.isHidden = false
-        levelCheck = "age"
-        pickerView = UIPickerView.init()
-        self.pickerView.dataSource = self
-        self.pickerView.delegate = self
-        pickerView.backgroundColor = UIColor.white
-        pickerView.setValue(UIColor.black, forKey: "textColor")
-        pickerView.autoresizingMask = .flexibleWidth
-        pickerView.contentMode = .center
-        pickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
-        self.view.addSubview(pickerView)
-        
-        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            pickerView.isHidden = false
+            levelCheck = "level"
+            pickerView = UIPickerView.init()
+            self.pickerView.dataSource = self
+            self.pickerView.delegate = self
+            pickerView.backgroundColor = UIColor.white
+            pickerView.setValue(UIColor.black, forKey: "textColor")
+            pickerView.autoresizingMask = .flexibleWidth
+            pickerView.contentMode = .center
+            pickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+            self.view.addSubview(pickerView)
+            
+            toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+            toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             if L102Language.currentAppleLanguage() == "ar" {
                 toolBar.items = [UIBarButtonItem.init(title: "تم", style: .done, target: self, action: #selector(onDoneButtonTapped))]
             }else {
                 toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
             }
-        self.view.addSubview(toolBar)
+            self.view.addSubview(toolBar)
         }else if !pickerView.isHidden {
             toolBar.removeFromSuperview()
             pickerView.removeFromSuperview()
             pickerView.isHidden = true
             toolBar.isHidden = true
-            
         }
-    
     }
-  
+    
+    
+    @IBAction func propertySourceBtnAction(_ sender: Any) {
+        if pickerView.isHidden{
+            pickerView.isHidden = false
+            levelCheck = "propertySource"
+            pickerView = UIPickerView.init()
+            self.pickerView.dataSource = self
+            self.pickerView.delegate = self
+            pickerView.backgroundColor = UIColor.white
+            pickerView.setValue(UIColor.black, forKey: "textColor")
+            pickerView.autoresizingMask = .flexibleWidth
+            pickerView.contentMode = .center
+            pickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+            self.view.addSubview(pickerView)
+            
+            toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+            toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            if L102Language.currentAppleLanguage() == "ar" {
+                toolBar.items = [UIBarButtonItem.init(title: "تم", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            }else {
+                toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            }
+            self.view.addSubview(toolBar)
+        } else if !pickerView.isHidden {
+            toolBar.removeFromSuperview()
+            pickerView.removeFromSuperview()
+            pickerView.isHidden = true
+            toolBar.isHidden = true
+        }
+    }
+    
+    @IBAction func ageBtnAction(_ sender: Any) {
+        if pickerView.isHidden{
+            pickerView.isHidden = false
+            levelCheck = "age"
+            pickerView = UIPickerView.init()
+            self.pickerView.dataSource = self
+            self.pickerView.delegate = self
+            pickerView.backgroundColor = UIColor.white
+            pickerView.setValue(UIColor.black, forKey: "textColor")
+            pickerView.autoresizingMask = .flexibleWidth
+            pickerView.contentMode = .center
+            pickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+            self.view.addSubview(pickerView)
+            
+            toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+            toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            if L102Language.currentAppleLanguage() == "ar" {
+                toolBar.items = [UIBarButtonItem.init(title: "تم", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            }else {
+                toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            }
+            self.view.addSubview(toolBar)
+        }else if !pickerView.isHidden {
+            toolBar.removeFromSuperview()
+            pickerView.removeFromSuperview()
+            pickerView.isHidden = true
+            toolBar.isHidden = true
+        }
+    }
+    
     
     
     
@@ -1453,9 +1272,8 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             pickerView.isHidden = true
             toolBar.isHidden = true
         }
-     
     }
-  
+    
     
     @objc func onDoneButtonTapped() {
         toolBar.removeFromSuperview()
@@ -1467,7 +1285,6 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
     
     
     func postToNextScreen() {
-        
         let vc = storyboard?.instantiateViewController(withIdentifier: "setAddInformationVC") as! setAddInformationVC
         vc.Category = CategoryDetail2
         vc.singleorfamily = valueForsingleorfamily
@@ -1518,246 +1335,170 @@ class setFilterVC: UIViewController,UITextFieldDelegate,UICollectionViewDelegate
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             self.navigationController?.pushViewController(vc, animated: true)
-        }}
-    
-    @IBAction func continueAction(_ sender: Any) {
-        
-        if updatePropertyData.count != 0 {
-            
-            postToNextScreen()
-            
-            
-            
-        }else{
-        if CategoryDetail2 == "Villa" {
-            if valueForbedrooms.isEmpty == true || valueForbedrooms == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bed rooms".localizedStr(), VC: self, cancel_action: false)
-                
-            }  else if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
-                
-            }  else if valueForPropertySource.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
-                
-            } else if valueForbathrooms.isEmpty == true  || valueForbathrooms == "0"{
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
-                
-            } else if plateNumberText.text!.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
-                
-            }else if valueForstreetwidth.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
-                
-            } else { postToNextScreen() }
-            
-        } else if CategoryDetail2 == "Land" {
-            if valueForstreetdirection.isEmpty == true   {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
-                
-            }  else if valueForPropertySource.isEmpty == true   {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
-                
-            } else if plateNumberText.text!.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
-                
-            }else if valueForstreetwidth.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
-                
-            }else {
-                postToNextScreen()
-                
-            }
-
-        }
-        else if CategoryDetail2 == "Apartment"{
-            if valueForbedrooms.isEmpty == true || valueForbedrooms == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bed rooms".localizedStr(), VC: self, cancel_action: false)
-            }
-            
-            else  if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
-                
-            }  else if valueForPropertySource.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
-                
-            } else if plateNumberText.text!.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
-                
-            }else if valueForstreetwidth.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
-                
-            }else if valueForbathrooms.isEmpty == true  || valueForbathrooms == "0"{
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
-                
-            }  else { postToNextScreen() }
-            
-        } else if CategoryDetail2 == "Building"{
-            if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
-                
-            } else if valueForappartments.isEmpty == true  || valueForappartments == "0"{
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of apartment".localizedStr(), VC: self, cancel_action: false)
-                
-            } else if valueForPropertySource.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
-                
-            }else if valueForage.isEmpty == true || valueForage == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter age".localizedStr(), VC: self, cancel_action: false)
-                
-            } else if plateNumberText.text!.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
-                
-            } else if valueForstreetwidth.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
-                
-            }else {
-                postToNextScreen() }
-        }
-        
-        else if CategoryDetail2 ==  "Esteraha" {
-            
-            if valueForbathrooms.isEmpty == true || valueForbathrooms == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
-                
-            }else  if valueForage.isEmpty == true || valueForage == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter age".localizedStr(), VC: self, cancel_action: false)
-            }
-            else if plateNumberText.text!.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
-                
-            }else if valueForstreetwidth.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
-                
-            }else if valueForPropertySource.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
-                
-            }
-            
-            
-            else { postToNextScreen() }
-            
-        } else if CategoryDetail2 == "Farm" {
-           
-            if plateNumberText.text!.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
-                
-            }else if valueForPropertySource.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
-                
-            } else { postToNextScreen()}
-           
-            
-        } else if CategoryDetail2 == "Store" {
-            
-            if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
-                
-            }  else if valueForPropertySource.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
-                
-            }else if valueForstreetwidth.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
-                
-            }else if plateNumberText.text!.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
-                
-            } else { postToNextScreen() }
-        } else if CategoryDetail2 == "Floor" {
-            
-            
-            if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
-                
-            }  else if valueForPropertySource.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
-                
-            } else if valueForbedrooms.isEmpty == true || valueForbedrooms == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg:  "Please Enter bed rooms".localizedStr(), VC: self, cancel_action: false)
-                
-            } else if valueForbathrooms.isEmpty == true || valueForbathrooms == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
-                
-            }else if plateNumberText.text!.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
-                
-            } else { postToNextScreen() }
-            
-        } else if CategoryDetail2 == "Room" {
-            
-            if valueFordailyormonthlyoryearly.isEmpty == true || valueFordailyormonthlyoryearly == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Duration".localizedStr(), VC: self, cancel_action: false)
-            } else if plateNumberText.text!.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
-            }else if valueForPropertySource.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
-                
-            } else { postToNextScreen() }
-        }
-        
-        else if CategoryDetail2 == "Office" {
-            if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
-                
-            }  else if valueForPropertySource.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
-                
-            } else if plateNumberText.text!.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
-            } else if valueForstreetwidth.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
-                
-            }
-            else { postToNextScreen() }}
-        
-        else if CategoryDetail2 == "Warehouse" {
-            if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
-                
-            }  else if valueForPropertySource.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
-                
-            }else if plateNumberText.text!.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
-            } else if valueForstreetwidth.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
-                
-            }else { postToNextScreen() }
-            
-        }
-            else if CategoryDetail2 == "Furnished Apartment" {
-            if valueForbedrooms.isEmpty == true || valueForbedrooms == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bed rooms".localizedStr(), VC: self, cancel_action: false)
-            } else if valueForbathrooms.isEmpty == true || valueForbathrooms == "0" {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
-                
-            } else if valueForstreetdirection.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
-                
-            }  else if valueForPropertySource.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
-                
-            }else if plateNumberText.text!.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
-            } else if valueForstreetwidth.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
-                
-            } else { postToNextScreen() }
-        }
-        else if CategoryDetail2 == "Tent"{
-            
-            if valueForPropertySource.isEmpty == true  {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
-                
-            }else if plateNumberText.text!.isEmpty == true {
-                TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
-            }else{
-                postToNextScreen()
-            }
-          
-                }
         }
     }
     
+    @IBAction func continueAction(_ sender: Any) {
+        if updatePropertyData.count != 0 {
+            postToNextScreen()
+        }else{
+            if CategoryDetail2 == "Villa" {
+                if valueForbedrooms.isEmpty == true || valueForbedrooms == "0" {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bed rooms".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForstreetdirection.isEmpty == true  {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForPropertySource.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForbathrooms.isEmpty == true  || valueForbathrooms == "0"{
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
+                }else if plateNumberText.text!.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForstreetwidth.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
+                } else { postToNextScreen() }
+                
+            }else if CategoryDetail2 == "Land" {
+                if valueForstreetdirection.isEmpty == true   {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForPropertySource.isEmpty == true   {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                }else if plateNumberText.text!.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForstreetwidth.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
+                }else {
+                    postToNextScreen()
+                }
+                
+            }else if CategoryDetail2 == "Apartment"{
+                if valueForbedrooms.isEmpty == true || valueForbedrooms == "0" {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bed rooms".localizedStr(), VC: self, cancel_action: false)
+                }else  if valueForstreetdirection.isEmpty == true  {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForPropertySource.isEmpty == true  {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                }else if plateNumberText.text!.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForstreetwidth.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForbathrooms.isEmpty == true  || valueForbathrooms == "0"{
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
+                }else { postToNextScreen() }
+                
+            }else if CategoryDetail2 == "Building"{
+                if valueForstreetdirection.isEmpty == true  {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForappartments.isEmpty == true  || valueForappartments == "0"{
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of apartment".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForPropertySource.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForage.isEmpty == true || valueForage == "0" {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter age".localizedStr(), VC: self, cancel_action: false)
+                }else if plateNumberText.text!.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForstreetwidth.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
+                }else{postToNextScreen() }
+                
+            }else if CategoryDetail2 ==  "Esteraha" {
+                if valueForbathrooms.isEmpty == true || valueForbathrooms == "0" {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForage.isEmpty == true || valueForage == "0" {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter age".localizedStr(), VC: self, cancel_action: false)
+                }else if plateNumberText.text!.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForstreetwidth.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForPropertySource.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                }else { postToNextScreen() }
+                
+            }else if CategoryDetail2 == "Farm" {
+                if plateNumberText.text!.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForPropertySource.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                }else {postToNextScreen()}
+                
+            }else if CategoryDetail2 == "Store" {
+                if valueForstreetdirection.isEmpty == true  {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForPropertySource.isEmpty == true  {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForstreetwidth.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
+                }else if plateNumberText.text!.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                }else { postToNextScreen() }
+                
+            }else if CategoryDetail2 == "Floor" {
+                if valueForstreetdirection.isEmpty == true  {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForPropertySource.isEmpty == true  {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForbedrooms.isEmpty == true || valueForbedrooms == "0" {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg:  "Please Enter bed rooms".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForbathrooms.isEmpty == true || valueForbathrooms == "0" {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
+                }else if plateNumberText.text!.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                }else { postToNextScreen() }
+                
+            }else if CategoryDetail2 == "Room" {
+                if valueFordailyormonthlyoryearly.isEmpty == true || valueFordailyormonthlyoryearly == "0" {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Duration".localizedStr(), VC: self, cancel_action: false)
+                } else if plateNumberText.text!.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForPropertySource.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                }else { postToNextScreen() }
+                
+            }else if CategoryDetail2 == "Office" {
+                if valueForstreetdirection.isEmpty == true  {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForPropertySource.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                }else if plateNumberText.text!.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForstreetwidth.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
+                }else { postToNextScreen()}
+                
+            }else if CategoryDetail2 == "Warehouse" {
+                if valueForstreetdirection.isEmpty == true  {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForPropertySource.isEmpty == true  {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                }else if plateNumberText.text!.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForstreetwidth.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
+                }else {postToNextScreen()}
+                
+            }else if CategoryDetail2 == "Furnished Apartment" {
+                if valueForbedrooms.isEmpty == true || valueForbedrooms == "0" {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bed rooms".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForbathrooms.isEmpty == true || valueForbathrooms == "0" {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter # of bath rooms".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForstreetdirection.isEmpty == true  {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Direction".localizedStr(), VC: self, cancel_action: false)
+                }else if valueForPropertySource.isEmpty == true  {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                }else if plateNumberText.text!.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                } else if valueForstreetwidth.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Street Width".localizedStr(), VC: self, cancel_action: false)
+                }else {postToNextScreen()}
+                
+            }else if CategoryDetail2 == "Tent"{
+                if valueForPropertySource.isEmpty == true  {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Property Source".localizedStr(), VC: self, cancel_action: false)
+                }else if plateNumberText.text!.isEmpty == true {
+                    TRADSingleton.sharedInstance.showAlert(title: TRADSingleton.sharedInstance.appName, msg: "Please Enter Plate Number".localizedStr(), VC: self, cancel_action: false)
+                }else{postToNextScreen()}
+            }
+        }
+    }
 }
 
 //MARK: - extension Pickerview method
@@ -1776,8 +1517,9 @@ extension setFilterVC: UIPickerViewDelegate, UIPickerViewDataSource {
         else if levelCheck == "propertySource"{return arrayPropertySource.count}
         return 0
     }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if  levelCheck == "level"{            
+        if  levelCheck == "level"{
             let levelArray = arrayLevel[row]
             levelLbl.text = "\(levelArray)"
             return levelArray
@@ -1801,6 +1543,7 @@ extension setFilterVC: UIPickerViewDelegate, UIPickerViewDataSource {
         }
         return ""
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if  levelCheck == "level"{
             levelLbl.text = arrayLevel[row]
@@ -1810,135 +1553,21 @@ extension setFilterVC: UIPickerViewDelegate, UIPickerViewDataSource {
             ageLbl.text = arrayAge[row].localizedStr()
             valueForage = arrayAge[row]
             
-        } else if  levelCheck == "eetwidth"{
+        }else if  levelCheck == "eetwidth"{
             streeetWidthvalueLbl.text = arrayEetwidth[row].localizedStr()
             valueForstreetwidth = arrayEetwidth[row]
             
-    } else if  levelCheck == "streetdirection"{
-        streetDirectionLbl.text = arrayStreetData[row].localizedStr()
+        }else if  levelCheck == "streetdirection"{
+            streetDirectionLbl.text = arrayStreetData[row].localizedStr()
             valueForstreetdirection = arrayStreetData[row]
-        
-    } else if  levelCheck == "propertySource"{
-        propertySourceLbl.text = arrayPropertySource[row].localizedStr()
+            
+        }else if  levelCheck == "propertySource"{
+            propertySourceLbl.text = arrayPropertySource[row].localizedStr()
             valueForPropertySource = arrayPropertySource[row]
-        
+            
+        }
     }
 }
-}
-
-//extension setFilterVC:UICollectionViewDelegate,UICollectionViewDataSource{
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return arrauStreetData.count
-//    }
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "streetDirectionCollVieCell", for: indexPath) as! streetDirectionCollVieCell
-//        cell.contentView.layer.cornerRadius = 18
-//        cell.contentView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//        cell.contentView.layer.borderWidth = 1
-//
-//        if updatePropertyData.count != 0 {
-//            if updatePropertyData[0].streetdirection == arrauStreetData[indexPath.row] && valueForstreetdirection.isEmpty == true {
-//                cell.isSelected = true
-//                cell.contentView.backgroundColor = #colorLiteral(red: 0, green: 0.5008728504, blue: 0.6056929231, alpha: 1)
-//                cell.contentView.layer.cornerRadius = 18
-//                cell.contentView.layer.borderWidth = 0
-//                cell.nameLbl.textColor = .white
-//                cell.nameLbl.text = arrauStreetData[indexPath.row].localizedStr()
-//                valueForstreetdirection = arrauStreetData[indexPath.item]
-//
-//            } else if valueForstreetdirection == arrauStreetData[indexPath.row] && valueForstreetdirection.isEmpty == false {
-//                cell.isSelected = true
-//                cell.contentView.backgroundColor = #colorLiteral(red: 0, green: 0.5008728504, blue: 0.6056929231, alpha: 1)
-//                cell.contentView.layer.cornerRadius = 18
-//                cell.contentView.layer.borderWidth = 0
-//                cell.nameLbl.textColor = .white
-//                cell.nameLbl.text = arrauStreetData[indexPath.row].localizedStr()
-//                valueForstreetdirection = arrauStreetData[indexPath.item]
-//             } else {
-//
-//                cell.nameLbl.text = arrauStreetData[indexPath.row].localizedStr()
-//
-//             }
-//          } else {
-//            cell.nameLbl.text = arrauStreetData[indexPath.row].localizedStr()
-//
-//        }
-//        return cell
-//     }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 1.0, left: 6.0, bottom: 1.0, right: 6.0)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "streetDirectionCollVieCell", for: indexPath) as! streetDirectionCollVieCell
-//        cell.nameLbl = UILabel(frame: CGRect.zero)
-//        cell.nameLbl.text = arrauStreetData[indexPath.item]
-//        cell.nameLbl.sizeToFit()
-//        return CGSize(width:  cell.nameLbl.frame.width + 36, height: 32)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//      let cell = collectionView.cellForItem(at: indexPath) as! streetDirectionCollVieCell
-             
-//        if updatePropertyData.count != 0 {
-//            if updatePropertyData[0].streetdirection == arrauStreetData[indexPath.row] && valueForstreetdirection.isEmpty == true {
-//                    cell.isSelected = true
-//                    cell.contentView.backgroundColor = #colorLiteral(red: 0, green: 0.5008728504, blue: 0.6056929231, alpha: 1)
-//                    cell.contentView.layer.cornerRadius = 18
-//                    cell.contentView.layer.borderWidth = 0
-//                    cell.nameLbl.textColor = .white
-//                 self.streetDirectionCollectionView.reloadData()
-//            } else if valueForstreetdirection == arrauStreetData[indexPath.row] && valueForstreetdirection.isEmpty == false {
-//                cell.isSelected = true
-//                cell.contentView.backgroundColor = #colorLiteral(red: 0, green: 0.5008728504, blue: 0.6056929231, alpha: 1)
-//                cell.contentView.layer.cornerRadius = 18
-//                cell.contentView.layer.borderWidth = 0
-//                cell.nameLbl.textColor = .white
-//                self.streetDirectionCollectionView.reloadData()
-//             } else {
-//
-//                cell.isSelected = true
-//                cell.contentView.backgroundColor = #colorLiteral(red: 0, green: 0.5008728504, blue: 0.6056929231, alpha: 1)
-//                cell.contentView.layer.cornerRadius = 18
-//                cell.contentView.layer.borderWidth = 0
-//                cell.nameLbl.textColor = .white
-//                self.streetDirectionCollectionView.reloadData()
-//             }
-//          }else {
-//
-//            cell.isSelected = true
-//            cell.contentView.backgroundColor = #colorLiteral(red: 0, green: 0.5008728504, blue: 0.6056929231, alpha: 1)
-//            cell.contentView.layer.cornerRadius = 18
-//            cell.contentView.layer.borderWidth = 0
-//            cell.nameLbl.textColor = .white
-//
-//         }
-//
-//        print("Collection view at row \(collectionView.tag) selected index path \(indexPath)")
-//        print(cell.nameLbl.text!)
-//        valueForstreetdirection = arrauStreetData[indexPath.item]
-        
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath) as! streetDirectionCollVieCell
-//
-//        if cell.isSelected == false {
-//            cell.contentView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//            cell.contentView.layer.cornerRadius = 18
-//            cell.contentView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//            cell.contentView.layer.borderWidth = 1
-//            cell.nameLbl.textColor = .black
-//        }
-//    }
-//
-//
-//}
 
 extension String {
     var floatValue: Float {
@@ -1954,7 +1583,7 @@ extension UILabel {
     
     
     func connect(with textField:UITextField){
-           textField.addTarget(self, action: #selector(UILabel.input(textField:)), for: .editingChanged)
-       }
+        textField.addTarget(self, action: #selector(UILabel.input(textField:)), for: .editingChanged)
+    }
 }
 

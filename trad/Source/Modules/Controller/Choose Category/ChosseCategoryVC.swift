@@ -14,12 +14,10 @@ class ChosseCategoryVC: UIViewController {
     @IBOutlet var ChooseCategoryTableView: UITableView!
     //    var arrMenuItemNames = [String]()
     var arrCategories = ["Villa for sale","Land for sale","Floor for sale","Apartment for sale","Building for sale","Estaraha for sale","Store for sale","Farm for sale","Room for sale","Office for rent","Warehouse for sale","Furnished Apartment for sale","Tent for sale"]
-    
     var displayArraycategories = ["Villa","Land","Floor","Apartment","Building","Esteraha","Store","Farm","Room","Office","Warehouse","Furnished Apartment","Tent"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         ChooseCategoryTableView.delegate = self
         ChooseCategoryTableView.dataSource = self
     }
@@ -27,55 +25,42 @@ class ChosseCategoryVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
-        
     }
     
     @IBAction func backbtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
 }
 
 extension ChosseCategoryVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        return arrCategories.count;
         return displayArraycategories.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ChooseCategoryTableView.dequeueReusableCell(withIdentifier: "ChooseCategoryTableViewCell", for: indexPath) as! ChooseCategoryTableViewCell
-        //          cell.CategotyName.text = arrCategories[indexPath.row]
         cell.CategotyName.text = displayArraycategories[indexPath.row].localizedStr()
         if L102Language.currentAppleLanguage() == "ar" {
-            
             cell.forwordImage?.image =  cell.forwordImage?.image?.imageFlippedForRightToLeftLayoutDirection()
-            print("yes")
         }
-        
-        
-        
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "uploadImageViewController") as! uploadImageViewController
         vc.CategoryDetail =  displayArraycategories[indexPath.row]
         vc.categoryindex = indexPath.row
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
 }
 
 class ChooseCategoryTableViewCell: UITableViewCell{
     @IBOutlet var CategotyName: UILabel!
     @IBOutlet var forwordImage: UIImageView!
-    
-    
-    
-    
-    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

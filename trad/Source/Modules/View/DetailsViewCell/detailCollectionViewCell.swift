@@ -11,8 +11,6 @@ class detailCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var playPauseBtn: UIButton!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet var largeImageBtn: UIButton!
-
-    
+    @IBOutlet var largeImageBtn: UIButton!   
     
 }

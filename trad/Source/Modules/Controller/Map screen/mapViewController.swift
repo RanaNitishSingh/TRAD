@@ -18,7 +18,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     @IBOutlet weak var mapCenterPinImage: UIImageView!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet var currentLocationBtn: UIButton!
-    @IBOutlet weak var searchBtn: UIButton!    
+    @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var dropDownSearchView: UIView!
     @IBOutlet weak var minPriceRange: UITextField!
     @IBOutlet weak var maxPriceRange: UITextField!
@@ -27,7 +27,6 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     @IBOutlet weak var searchPropertyBtn: UIButton!
     @IBOutlet weak var propertySourceLbl: UILabel!
     @IBOutlet weak var propertySourceBtn: UIButton!
-  
     //MARK:- Variables
     private let locationManager = CLLocationManager()
     var properties: [Propertiesdata] = []
@@ -41,7 +40,6 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     var pickerView = UIPickerView()
     var toolBar = UIToolbar()
     var arrCategories = ["All Categories","Apartment for rent","Villa for sale","Land for sale","Villa for rent","Floor for rent","Floor for sale","Apartment for sale","Building for sale","Esteraha for rent","Esteraha for sale","Store for rent","Farm for sale","Building for rent","Land for rent","Room for rent","Room for sale","Office for rent","Office for sale","Warehouse for rent","Warehouse for sale", "Furnished Apartment for sale","Furnished Apartment for rent","Tent for rent", "Tent for sale"]
-    
     //var droplist = ["Owner","Agent","Government"]
     var droplist = [" ","0","1","2"]
     var valueDropDown = ""
@@ -56,9 +54,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     var  userUid = ""
     var propertytype  = ""
     var currentString = ""
-   
-    
-    //MARK:- View life cycle functions
+
     override func viewDidLoad() {
         super.viewDidLoad()
         languageUpdate()
@@ -67,7 +63,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         markerwindow.infoWindowTableView.delegate = self
         markerwindow.infoWindowTableView.dataSource = self
         markerwindow.infoWindowTableView.register(UINib(nibName: "infoWindowTableViewCell", bundle: nil), forCellReuseIdentifier: "infoWindowTableViewCell")
-        mapCenterPinImage.isHidden = true
+        // mapCenterPinImage.isHidden = true
         currentLocationBtn.layer.cornerRadius = 26
         currentLocationBtn.alpha = 0.8
         mapView.delegate = self
@@ -100,7 +96,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         self.maxSizeRange.delegate = self
         let meaasgeDetails =  UserDefaults.standard.value(forKey: "messageId")
         if meaasgeDetails == nil{
-        self.tabBarController?.tabBar.isHidden = false
+            self.tabBarController?.tabBar.isHidden = false
         }
     }
     
@@ -108,15 +104,12 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         self.hideKeyboardWhenTappedAround()
-        print(valueDropDown)
-        print(propertytype)
         let meaasgeDetails =  UserDefaults.standard.value(forKey: "messageId")
         if meaasgeDetails == nil{
-        self.tabBarController?.tabBar.isHidden = false
+            self.tabBarController?.tabBar.isHidden = false
         }
-       
     }
-
+    
     @objc func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -139,7 +132,6 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
             pickerView.contentMode = .center
             pickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
             self.view.addSubview(pickerView)
-            
             toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
             toolBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
@@ -169,40 +161,28 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                     try? document.data(as: Propertiesdata.self)
                 } ?? []
                 if propertytype != "All Categories" {
-                self.properties = self.mainArrayProperties.filter { data in
-                    return data.Category.contains("\(propertytype)")
-                }                    
+                    self.properties = self.mainArrayProperties.filter { data in
+                        return data.Category.contains("\(propertytype)")
+                    }
                 }  else {
                     self.properties = self.mainArrayProperties
                 }
             }
-     
-            
         }
-        
-  
-        
     }
     
-    
-   
- 
-    
+       
     @IBAction func searchPropertyAction(_ sender: Any) {
         self.getdata()
         let minPrice_Property = minPriceRange.text ?? ""
         let maxPrice_Property = maxPriceRange.text ?? ""
         let minSize_Property = minSizeRange.text ?? ""
         let maxSize_Property = maxSizeRange.text ?? ""
-        
-        
         let minPrice = minPrice_Property.replacingOccurrences(of: ",", with: "")
         let maxPrice = maxPrice_Property.replacingOccurrences(of: ",", with: "")
         let minSize = minSize_Property.replacingOccurrences(of: ",", with: "")
         let maxSize = maxSize_Property.replacingOccurrences(of: ",", with: "")
         
-        
-       
         if (minPrice == "" && maxPrice == "") && (minSize == "" && maxSize == "") && (propertySourceLbl.text != "")
         {
             for filteredProperty in properties {
@@ -213,72 +193,54 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                     rangeArray.append(filteredProperty)
                 }
             }
-        }
-        
-        else if (minPrice != "" && maxPrice != "") && (minSize != "" && maxSize != "") && (propertySourceLbl.text != ""){
+        }else if (minPrice != "" && maxPrice != "") && (minSize != "" && maxSize != "") && (propertySourceLbl.text != ""){
             for filteredPrice in properties {
                 let pricerange = filteredPrice.valueOftotalPrice
                 if Int(pricerange) ?? 0 >= Int(minPrice) ?? 0 && Int(pricerange) ?? 0 <= Int(maxPrice) ?? 0 {
                     valuePrice = pricerange
-                    print("pricerange \(valuePrice)")
                     let sizeRange = filteredPrice.valueOfsizeTextView
                     if Int(sizeRange) ?? 0 >= Int(minSize) ?? 0 && Int(sizeRange) ?? 0 <= Int(maxSize) ?? 0 {
                         valueSize = sizeRange
-                        print("sizeRange \(valueSize)")
                         rangeArray.append(filteredPrice)
                     }
                 }
             }
-        }
-        
-        
-        else if (minPrice != "" && maxPrice != "") && (minSize == "" && maxSize == "") && (propertySourceLbl.text != ""){
+        }else if (minPrice != "" && maxPrice != "") && (minSize == "" && maxSize == "") && (propertySourceLbl.text != ""){
             for filteredPrice in properties {
                 let pricerange = filteredPrice.valueOftotalPrice
                 if Int(pricerange) ?? 0 >= Int(minPrice) ?? 0 && Int(pricerange) ?? 0 <= Int(maxPrice) ?? 0 {
                     valuePrice = pricerange
-                    print("pricerange \(valuePrice)")
                     rangeArray.append(filteredPrice)
-                    }
                 }
             }
-       
-    
-        else if (minPrice == "" && maxPrice == "") && (minSize != "" && maxSize != "") && (propertySourceLbl.text != "") {
+        }else if (minPrice == "" && maxPrice == "") && (minSize != "" && maxSize != "") && (propertySourceLbl.text != "") {
             for filteredSize in properties {
                 let sizeRange = filteredSize.valueOfsizeTextView
                 if Int(sizeRange) ?? 0 >=  Int(minSize) ?? 0 && Int(sizeRange) ?? 0 <=  Int(maxSize) ?? 0 {
                     valueSize = sizeRange
-                    print("sizeRange \(valueSize)")
                     rangeArray.append(filteredSize)
                 }
             }
-        }
-        
-        else if(minPrice != "" && maxPrice != "") && (minSize == "" && maxSize == "") && (propertySourceLbl.text == ""){
+        }else if(minPrice != "" && maxPrice != "") && (minSize == "" && maxSize == "") && (propertySourceLbl.text == ""){
             for filteredPrice in properties {
                 let pricerange = filteredPrice.valueOftotalPrice
-                if Int(pricerange) ?? 0 >=  Int(minPrice) ?? 0 && Int(pricerange) ?? 0 <=  Int(maxPrice) ?? 0 {                     valuePrice = pricerange
-                    print("pricerange \(valuePrice)")
+                if Int(pricerange) ?? 0 >=  Int(minPrice) ?? 0 && Int(pricerange) ?? 0 <=  Int(maxPrice) ?? 0 {
+                    valuePrice = pricerange
                     rangeArray.append(filteredPrice)
                 }
             }
-            
-        }  else if(minPrice == "" && maxPrice == "") && (minSize != "" && maxSize != "") && (propertySourceLbl.text == "") {
+        }else if(minPrice == "" && maxPrice == "") && (minSize != "" && maxSize != "") && (propertySourceLbl.text == "") {
             for filteredSize in properties {
                 let sizeRange = filteredSize.valueOfsizeTextView
                 if Int(sizeRange) ?? 0 >=  Int(minSize) ?? 0 && Int(sizeRange) ?? 0 <=  Int(maxSize) ?? 0 {
                     valueSize = sizeRange
-                    print("sizeRange \(valueSize)")
                     rangeArray.append(filteredSize)
                 }
             }
-            print(rangeArray)
-        } else if (minPrice == "" && maxPrice == "") && (minSize == "" && maxSize == "") && (propertySourceLbl.text == "") {
+        }else if (minPrice == "" && maxPrice == "") && (minSize == "" && maxSize == "") && (propertySourceLbl.text == "") {
             for filteredProperties in properties {
-            rangeArray.append(filteredProperties)
+                rangeArray.append(filteredProperties)
             }
-            print(rangeArray)
         }
         self.showMarker_search()
         self.dropDownSearchView.isHidden = true
@@ -308,7 +270,6 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         Helper().showUniversalLoadingView(true)
         let db = Firestore.firestore()
         db.collection("Users").getDocuments() { [self] (querySnapshot, err) in
-            
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -316,7 +277,6 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                     // 6
                     try? document.data(as: UserData.self)
                 } ?? []
-                
                 self.CountData = self.mainArrayData3
             }
         }
@@ -324,21 +284,14 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     
     func languageUpdate(){
         let db = Firestore.firestore()
-        
         let userID = Auth.auth().currentUser?.uid
-        print(userID!)
-        //        let email = CountData[0].Email
-        //        print("email is = \(email)")
         let someData = ["appLanguage" : L102Language.currentAppleLanguage()
         ] as [String : Any]
-        //
         let UpdateRef = db.collection("Users").document(userID!)
         UpdateRef.updateData(someData) { err in
             if let err = err {
                 print("Error adding document: \(err)")
-                
                 Helper().showUniversalLoadingView(false)
-                
             } else {
                 //print(userID)
             }
@@ -346,22 +299,20 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
             Helper().showUniversalLoadingView(false)
         }
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         markerwindow.removeFromSuperview()
     }
     
     func drawText(text: NSString, inImage:UIImage) -> UIImage? {
-        
         let font = UIFont.systemFont(ofSize: 14)
         let size = inImage.size
-        //UIGraphicsBeginImageContext(size)
         let scale = UIScreen.main.scale
         UIGraphicsBeginImageContextWithOptions(inImage.size, false, scale)
         inImage.draw(in: CGRect(x: 0, y: 0, width: 50, height: 30))
         let style : NSMutableParagraphStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
         style.alignment = .center
         let attributes:NSDictionary = [ NSAttributedString.Key.font : font, NSAttributedString.Key.paragraphStyle : style, NSAttributedString.Key.foregroundColor : UIColor.white ]
-        
         let textSize = text.size(withAttributes: attributes as? [NSAttributedString.Key : Any])
         let rect = CGRect(x: 0, y: 0, width: 50, height: 30)
         let textRect = CGRect(x: (rect.size.width - textSize.width)/2, y: (rect.size.height - textSize.height)/2 - 2, width: textSize.width, height: textSize.height)
@@ -377,14 +328,13 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = 2
-        print(formatter.string(from: 1.0000)!) // 1
-        print(formatter.string(from: 1.2345)!) //
-        
+        print(formatter.string(from: 1.0000)!)
+        print(formatter.string(from: 1.2345)!)
         switch num {
         case 1_000_000_000...:
             var formatted = num / 1_000_000_000
             formatted = formatted.reduceScale(to: 1)
-            print(formatter.string(from: NSNumber(value: formatted))!) //
+            print(formatter.string(from: NSNumber(value: formatted))!)
             let decimal = formatter.string(from: NSNumber(value: formatted))!
             return "\(sign)\(decimal)B"
             
@@ -423,15 +373,10 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 let marker = GMSMarker()
                 marker.map = mapView
                 marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                print(item.valueOftotalPrice)
                 let int = ((item.valueOftotalPrice as NSString).integerValue)
-                print(int)
                 let ab = (formatNumber(int))
-                print(ab)
-                
                 if item.Category.contains("rent"){
                     marker.icon = self.drawText(text:"\(ab)" as NSString, inImage: #imageLiteral(resourceName: "imgpsh_fullsize_anim"))
-                    
                 }else{
                     marker.icon = self.drawText(text:"\(ab)" as NSString, inImage: #imageLiteral(resourceName: "marker_green"))
                 }
@@ -456,15 +401,10 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 let marker = GMSMarker()
                 marker.map = mapView
                 marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                print(item.valueOftotalPrice)
                 let int = ((item.valueOftotalPrice as NSString).integerValue)
-                print(int)
                 let ab = (formatNumber(int))
-                print(ab)
-               
                 if item.Category.contains("rent"){
                     marker.icon = self.drawText(text:"\(ab)" as NSString, inImage: #imageLiteral(resourceName: "imgpsh_fullsize_anim"))
-                    
                 }else{
                     marker.icon = self.drawText(text:"\(ab)" as NSString, inImage: #imageLiteral(resourceName: "marker_green"))
                 }
@@ -489,7 +429,6 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         let newPoint = mapView.projection.coordinate(for: point)
         let camera = GMSCameraUpdate.setTarget(newPoint)
         mapView.animate(with: camera)
-        
         self.mapView.addSubview(markerwindow)
         markerwindow.infoWindowTableView.delegate = self
         markerwindow.infoWindowTableView.dataSource = self
@@ -506,14 +445,12 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 let coordinate0 = CLLocation(latitude:markerlat, longitude: markerlng)
                 let coordinate1 = CLLocation(latitude: lat!, longitude: long!)
                 distanceInMeters = coordinate0.distance(from: coordinate1)
-                print(distanceInMeters!)
                 let radious = 5 as CLLocationDistance?
                 if self.distanceInMeters! <= radious!{
                     Aproperties_1.append(item)
                 }
             }
-        }
-        else{
+        }else{
             for item_search in properties {
                 let latStr = item_search.latitude
                 let longStr = item_search.longitude
@@ -522,14 +459,11 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
                 let coordinate0 = CLLocation(latitude:markerlat, longitude: markerlng)
                 let coordinate1 = CLLocation(latitude: lat!, longitude: long!)
                 distanceInMeters = coordinate0.distance(from: coordinate1)
-                print(distanceInMeters!)
                 let radious = 5 as CLLocationDistance?
                 if self.distanceInMeters! <= radious!{
                     Aproperties.append(item_search)
                 }
             }
-            
-            
         }
         markerwindow.infoWindowTableView.reloadData()
         return true
@@ -541,11 +475,11 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        
         let vc = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! detailViewController
         vc.Aproperties = [(marker.userData) as! Propertiesdata]
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         markerwindow.removeFromSuperview()
         self.dropDownSearchView.isHidden = true
@@ -556,6 +490,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         markerwindow.center = mapView.projection.point(for: position!)
         markerwindow.center.y -= 100
     }
+    
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool)
     {
         if mapView.selectedMarker != nil
@@ -569,33 +504,20 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         Helper().showUniversalLoadingView(true)
         let db = Firestore.firestore()
         db.collection("Properties").getDocuments() { [self] (querySnapshot, err) in
-            
-            
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 self.properties = querySnapshot?.documents.compactMap { document in
                     try? document.data(as: Propertiesdata.self)
                 } ?? []
-                
-                print(self.properties)
                 showMarker()
-                self.markerwindow = markerWindow().loadview()
-                mapView.isMyLocationEnabled = true
-                guard let lat = self.mapView.myLocation?.coordinate.latitude,
-                      let lng = self.mapView.myLocation?.coordinate.longitude else { return }
-                let camera = GMSCameraPosition.camera(withLatitude: lat ,longitude: lng, zoom: 14.0)
-                self.mapView.animate(to: camera)
-                mapCenterPinImage.isHidden = false                 
             }
-            
             let df = DateFormatter()
             df.dateFormat = "dd-MM-yyyy h:mm:ss a"
             df.amSymbol = "AM"
             df.pmSymbol = "PM"
             self.properties.sort {df.date(from: $0.createdDate)! > df.date(from: $1.createdDate)!}
         }
-        
         Helper().showUniversalLoadingView(false)
     }
     
@@ -614,18 +536,13 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
               let lng = self.mapView.myLocation?.coordinate.longitude else { return }
         let camera = GMSCameraPosition.camera(withLatitude: lat ,longitude: lng, zoom: 14.0)
         self.mapView.animate(to: camera)
-        mapCenterPinImage.isHidden = false
     }
     
     
     @IBAction func currentLocationAction(_ sender: Any) {
         self.getMyCurrentLocation()
-        
     }
-    
-    
-    
-    
+     
 }
 
 
@@ -638,7 +555,6 @@ extension mapViewController: UICollectionViewDelegate,UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = forSaleCollectionView.dequeueReusableCell(withReuseIdentifier: "forSaleCollectionViewCell", for: indexPath) as! forSaleCollectionViewCell
-        
         cell.cellView.layer.cornerRadius = 13
         cell.cellView.layer.borderWidth = 1
         cell.cellView.layer.borderColor = #colorLiteral(red: 0.01752752591, green: 0.01752752591, blue: 0.01752752591, alpha: 1)
@@ -657,7 +573,6 @@ extension mapViewController: UICollectionViewDelegate,UICollectionViewDataSource
         valueSize = ""
         valuePrice = ""
         propertytype = arrCategories[indexPath.row]
-        print(propertytype)
         if propertytype != "All Categories"  {
             let db = Firestore.firestore()
             db.collection("Properties").whereField("Category", isEqualTo: propertytype).getDocuments() { [self] (querySnapshot, err) in
@@ -667,25 +582,13 @@ extension mapViewController: UICollectionViewDelegate,UICollectionViewDataSource
                     self.properties = querySnapshot?.documents.compactMap { document in
                         try? document.data(as: Propertiesdata.self)
                     } ?? []
-                    print(self.properties)
                     mapView.clear()
                     showMarker()
-                    self.markerwindow = markerWindow().loadview()
-                    mapView.isMyLocationEnabled = true
-                    guard let lat = self.mapView.myLocation?.coordinate.latitude,
-                          let lng = self.mapView.myLocation?.coordinate.longitude else { return }
-                    let camera = GMSCameraPosition.camera(withLatitude: lat ,longitude: lng, zoom: 14.0)
-                    self.mapView.animate(to: camera)
-                    mapCenterPinImage.isHidden = false
                 }
-                
-            }}else{                
+            }}else{
                 self.mapView.clear()
                 fetchDatafromFirebase1()}
-        
-        
-        
-    }
+  }
     
     
     //MARK: - UICollectionViewDelegateFlowLayout
@@ -734,13 +637,10 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
             {
                 cell.isHidden = true
                 tableView.rowHeight = 0.0
-                
-            }
-            else{
+            }else{
                 // show cell values
                 tableView.rowHeight = 130
                 cell.isHidden = false
-                
                 let DateandTime = self.Aproperties_1[indexPath.item].createdDate.components(separatedBy: " ")
                 cell.lblDays.text = String(DateandTime[0]).replacedArabicDigitsWithEnglish
                 cell.lblBuildingType.text = self.Aproperties_1[indexPath.item].Category.localizedStr()
@@ -751,16 +651,12 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
                 cell.LblSAR.text = formattedNumber! + " " + "SAR".localizedStr()
                 let meter = " m² ";
                 cell.LblMeter.text = "📍" + self.Aproperties_1[indexPath.item].valueOfsizeTextView + meter .localizedStr()
-                
                 cell.purposeLbl.text = self.Aproperties_1[indexPath.item].purpose.localizedStr()
-                
                 cell.LblDescription.text = self.Aproperties_1[indexPath.item].valueofExtraDetail.localizedStr()
                 cell.houseImages.sd_setImage(with: URL(string:self.Aproperties_1[indexPath.item].ImageUrl.first ?? ""), placeholderImage: #imageLiteral(resourceName: "simple_home"))
-                
                 if Aproperties_1[indexPath.row].bathrooms == "" || Aproperties_1[indexPath.row].bathrooms == "0"{
                     cell.bathroomTubLbl.isHidden = true
                     cell.bathTubIMG.isHidden = true
-                    
                 }else{
                     cell.bathroomTubLbl.isHidden = false
                     cell.bathTubIMG.isHidden = false
@@ -770,7 +666,6 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
                 if Aproperties_1[indexPath.row].bedrooms == "" || Aproperties_1[indexPath.row].bedrooms == "0" {
                     cell.bedroomLbl.isHidden = true
                     cell.bedIMG.isHidden = true
-                    
                 }else{
                     cell.bedroomLbl.isHidden = false
                     cell.bedIMG.isHidden = false
@@ -781,7 +676,6 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
                 if Aproperties_1[indexPath.row].eetwidth == "" {
                     cell.widthLbl.isHidden = true
                     cell.widthImg.isHidden = true
-                    
                 }else{
                     cell.widthLbl.isHidden = false
                     cell.widthImg.isHidden = false
@@ -793,28 +687,23 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
                     cell.streetImg.isHidden = true
                     cell.streetLbl.isHidden = true
                     cell.streetView.isHidden = true
-                    
                 }else{
                     cell.streetView.isHidden = false
                     cell.streetImg.isHidden = false
                     cell.streetLbl.isHidden = false
                     cell.streetLbl.text = self.Aproperties_1[indexPath.item].streetdirection.localizedStr()
                 }
-                
-                
-            }} else {
-                
+            }
+       
+        }else {
                 if Aproperties[indexPath.row].forSoldAndRented == true
                 {
                     cell.isHidden = true
                     tableView.rowHeight = 0.0
-                    
-                }
-                else{
+                }else{
                     // show cell values
                     tableView.rowHeight = 130
                     cell.isHidden = false
-                    
                     let DateandTime = self.Aproperties[indexPath.item].createdDate.components(separatedBy: " ")
                     cell.lblDays.text = String(DateandTime[0]).replacedArabicDigitsWithEnglish
                     cell.lblBuildingType.text = self.Aproperties[indexPath.item].Category.localizedStr()
@@ -825,16 +714,12 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
                     cell.LblSAR.text = formattedNumber! + " " + "SAR".localizedStr()
                     let meter = " m² ";
                     cell.LblMeter.text = "📍" + self.Aproperties[indexPath.item].valueOfsizeTextView + meter .localizedStr()
-                    
                     cell.purposeLbl.text = self.Aproperties[indexPath.item].purpose.localizedStr()
-                    
                     cell.LblDescription.text = self.Aproperties[indexPath.item].valueofExtraDetail.localizedStr()
                     cell.houseImages.sd_setImage(with: URL(string:self.Aproperties[indexPath.item].ImageUrl.first ?? ""), placeholderImage: #imageLiteral(resourceName: "simple_home"))
-                    
                     if Aproperties[indexPath.row].bathrooms == "" || Aproperties[indexPath.row].bathrooms == "0"{
                         cell.bathroomTubLbl.isHidden = true
                         cell.bathTubIMG.isHidden = true
-                        
                     }else{
                         cell.bathroomTubLbl.isHidden = false
                         cell.bathTubIMG.isHidden = false
@@ -844,7 +729,6 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
                     if Aproperties[indexPath.row].bedrooms == "" || Aproperties[indexPath.row].bedrooms == "0" {
                         cell.bedroomLbl.isHidden = true
                         cell.bedIMG.isHidden = true
-                        
                     }else{
                         cell.bedroomLbl.isHidden = false
                         cell.bedIMG.isHidden = false
@@ -855,7 +739,6 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
                     if Aproperties[indexPath.row].eetwidth == "" {
                         cell.widthLbl.isHidden = true
                         cell.widthImg.isHidden = true
-                        
                     }else{
                         cell.widthLbl.isHidden = false
                         cell.widthImg.isHidden = false
@@ -867,20 +750,14 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
                         cell.streetImg.isHidden = true
                         cell.streetLbl.isHidden = true
                         cell.streetView.isHidden = true
-                        
                     }else{
                         cell.streetView.isHidden = false
                         cell.streetImg.isHidden = false
                         cell.streetLbl.isHidden = false
                         cell.streetLbl.text = self.Aproperties[indexPath.item].streetdirection.localizedStr()
                     }
-                    
-                    
                 }
-                
-                
             }
-        
         Helper().showUniversalLoadingView(false)
         return cell
     }
@@ -888,13 +765,10 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if valueDropDown != "" || valueSize != "" || valuePrice != "" {
-            
             let vc = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! detailViewController
             vc.Aproperties = [(Aproperties_1[indexPath.item])]
             self.navigationController?.pushViewController(vc, animated: true)
-            
         }else{
-            
             let vc = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! detailViewController
             vc.Aproperties = [(Aproperties[indexPath.item])]
             self.navigationController?.pushViewController(vc, animated: true)
@@ -903,7 +777,6 @@ extension mapViewController: UITableViewDelegate,UITableViewDataSource{
 }
 
 class forSaleCollectionViewCell: UICollectionViewCell{
-    
     @IBOutlet var cellView: UIView!
     @IBOutlet var ForSaleItemsLbl: UILabel!
 }
@@ -925,15 +798,14 @@ extension mapViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
         return droplist.count
     }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let mylist = droplist[row]
-        // propertySourceLbl.text = "\(mylist)"
         return mylist
-        
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         propertySourceLbl.text = droplist[row].localizedStr()
         valueDropDown = droplist[row]
@@ -943,30 +815,25 @@ extension mapViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
 extension mapViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
-         // Uses the number format corresponding to your Locale
+        // Uses the number format corresponding to your Locale
         let formatter = NumberFormatter()
-         formatter.numberStyle = .decimal
-          formatter.minimumFractionDigits = 0
-         formatter.usesGroupingSeparator = true
-         formatter.groupingSize = 3
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 0
+        formatter.usesGroupingSeparator = true
+        formatter.groupingSize = 3
         // Uses the grouping separator corresponding to your Locale
         // e.g. "," in the US, a space in France, and so on
         if let groupingSeparator = formatter.groupingSeparator {
-
             if string == groupingSeparator {
                 return true
             }
-
-
             if let textWithoutGroupingSeparator = textField.text?.replacingOccurrences(of: groupingSeparator, with: "") {
                 var totalTextWithoutGroupingSeparators = textWithoutGroupingSeparator + string
                 if string.isEmpty { // pressed Backspace key
                     totalTextWithoutGroupingSeparators.removeLast()
                 }
                 if let numberWithoutGroupingSeparator = formatter.number(from: totalTextWithoutGroupingSeparators),
-                    let formattedText = formatter.string(from: numberWithoutGroupingSeparator) {
-
+                   let formattedText = formatter.string(from: numberWithoutGroupingSeparator) {
                     textField.text = formattedText
                     return false
                 }

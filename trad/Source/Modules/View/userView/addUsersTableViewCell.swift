@@ -12,8 +12,8 @@ class addUsersTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameCellLBL: UILabel!
     @IBOutlet var userTypeLbl: UILabel!
     @IBOutlet var userAdminLbl: UILabel!
-    
 }
+
 class AdminTableViewCell: UITableViewCell {
     
     @IBOutlet weak var AdminNameTableCellLBL: UILabel!
@@ -22,10 +22,10 @@ class AdminTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         if selected {
-           // contentView.backgroundColor = UIColor.gray
+            // contentView.backgroundColor = UIColor.gray
             AdminNameTableCellLBL.textColor = .black
         } else {
-           // contentView.backgroundColor = UIColor.white
+            // contentView.backgroundColor = UIColor.white
             AdminNameTableCellLBL.textColor = .gray
         }
     }
@@ -36,9 +36,7 @@ class AdminTableViewCell: UITableViewCell {
 //MARK:- Alert Public Class 
 extension UIViewController {
     func showAlert(message: String) {
-        
         if L102Language.currentAppleLanguage() == "ar" {
-            
             let alertController = UIAlertController(title: "TRAD" , message:
                                                         message, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "تم", style: .default, handler: {action in
@@ -51,13 +49,7 @@ extension UIViewController {
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
             }))
             self.present(alertController, animated: true, completion: nil)
+        }
     }
-}
-    
-    
-    
-
-    
-    
-    
+  
 }

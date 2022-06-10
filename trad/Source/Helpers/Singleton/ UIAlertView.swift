@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 
 
-class TRADSingleton: NSObject {
-    
+class TRADSingleton: NSObject {     
     static let sharedInstance = TRADSingleton()
     let appName = "TRAD"
     
