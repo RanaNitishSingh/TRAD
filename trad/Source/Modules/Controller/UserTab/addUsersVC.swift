@@ -28,7 +28,6 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lblAdmin: UILabel!
     @IBOutlet weak var lblUsers: UILabel!
     var validation = Validation()
-    var arrayuserName = [String]()
     var arrayUseremail = [String]()
     var arrayUserPassword = [String]()
     var db: Firestore!
@@ -48,15 +47,10 @@ class addUsersVC: UIViewController, UITextFieldDelegate {
     var UserData: [userData] = []
     var mainArrayData : [userData] = []
     var selectedIndexPath = IndexPath(item: 0, section: 0)
-    var userIdProperties : String? = ""
-    var userNameProperties : String? = ""
     @IBOutlet var userNameLbl: UILabel!
     @IBOutlet var userTypeLbl: UILabel!
     @IBOutlet var userAdminNameLbl: UILabel!
-    var usersProperties: [Propertiesdata] = []
     var usersMainArrayProperties : [Propertiesdata] = []
-    var show = Bool()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,22 +9,7 @@ import GooglePlaces
 import GooglePlacesSearchController
 
 
-class ChooseLocationVC: UIViewController, UISearchBarDelegate,UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let query = searchController.searchBar.text, !query.trimmingCharacters(in:  .whitespaces).isEmpty else {
-            return
-        }
-        googlePlaceManger.shared.findPlaces(query: query) { result in
-            switch result {
-            case .success(let places):
-                print(places)
-            case .failure(let error):
-                print(error )
-            }
-        }
-    }
-    
+class ChooseLocationVC: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var locationSearchBar: UISearchBar!
     @IBOutlet weak var addressLabel: UILabel!
@@ -33,7 +18,6 @@ class ChooseLocationVC: UIViewController, UISearchBarDelegate,UISearchResultsUpd
     @IBOutlet var currentLocationBtn: UIButton!
     @IBOutlet var mapChangeBtn: UIButton!
     @IBOutlet var propertyType: UILabel!
-    let searchVc = UISearchController(searchResultsController: resultsViewController())
     var Aproperties1 : [Propertiesdata] = []
     var CategoryDetail1 =  String()
     var categoryindex =  Int()
@@ -68,7 +52,7 @@ class ChooseLocationVC: UIViewController, UISearchBarDelegate,UISearchResultsUpd
             mapChangeBtn.layer.borderWidth = 2
             mapChangeBtn.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             continueBtn.setTitle("continueBtn".localizedStr(), for: .normal)
-            searchVc.searchResultsUpdater = self
+           
         }else{
             propertyType.text = Aproperties1[0].selectCategory.localizedStr()
             mapView.delegate = self
@@ -97,10 +81,9 @@ class ChooseLocationVC: UIViewController, UISearchBarDelegate,UISearchResultsUpd
             mapChangeBtn.layer.borderWidth = 2
             mapChangeBtn.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             continueBtn.setTitle("continueBtn".localizedStr(), for: .normal)
-            searchVc.searchResultsUpdater = self
+          
         }
     }
-    
     
     @IBAction func mapChangeAction(_ sender: UIButton) {
         if mapChangeBtn.isSelected == true{
@@ -119,15 +102,6 @@ class ChooseLocationVC: UIViewController, UISearchBarDelegate,UISearchResultsUpd
     @IBAction func onLaunchClicked(sender: UIButton) {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
-        // Specify the place data types to return.
-        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
-                                                  UInt(GMSPlaceField.placeID.rawValue))
-        autocompleteController.placeFields = fields
-        // Specify a filter.
-        let filter = GMSAutocompleteFilter()
-        filter.type = .address
-        autocompleteController.autocompleteFilter = filter
-        // Display the autocomplete view controller.
         present(autocompleteController, animated: true, completion: nil)
     }
     
@@ -249,6 +223,9 @@ extension ChooseLocationVC: GMSAutocompleteViewControllerDelegate {
         print("Place ID: \(place.placeID)")
         print("Place attributions: \(place.attributions)")
         dismiss(animated: true, completion: nil)
+        self.mapView.clear()
+        let cord2D = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        self.mapView.camera = GMSCameraPosition.camera(withTarget: cord2D, zoom: 15)
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {

@@ -35,9 +35,6 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
     var UserData1: [Propertiesdata] = []
     var mainArrayData1 : [Propertiesdata] = []
     var Aproperties : [Propertiesdata] = []
-    var dateProprty : [Propertiesdata] = []
-    var currentProperty: [Propertiesdata] = []
-    var Bproperties : [Propertiesdata] = []
     @IBOutlet weak var BtnLeftArrow: UIButton!
     @IBOutlet weak var ImgLeftArrow: UIImageView!
     @IBOutlet weak var LblSar: UILabel!
@@ -135,19 +132,14 @@ class detailViewController: UIViewController, UIScrollViewDelegate, GMSMapViewDe
     @IBOutlet var editButton: UIButton!
     @IBOutlet var dateRefreshBtn: UIButton!
     var editDetailsVC = setFilterVC()
-    var positioncount = Int()
-    var largeimgs = String()
     var position = Int()
-    var imagess = String()
     var documentInteractionController = UIDocumentInteractionController()
-    var  Usertype: String? = ""
     var  UserUid: String? = ""
     var AdminUid: String? = ""
     var MasterUid: String? = ""
     var userUidArray = String()
     var masterUidArray = String()
-    var adminUidArray = String()
-    var UpdateDate : Bool = false
+    var adminUidArray = String()    
     
     
     override func viewDidLoad() {

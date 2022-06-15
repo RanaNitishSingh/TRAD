@@ -22,7 +22,6 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
     @IBOutlet var rentBtn: UIButton!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet var btnStack: UIStackView!
-    var numberOfCell = 0
     //MARK:- Variables
     var propertiesdata: [Propertiesdata] = []
     var mainArrayPropertiesdata : [Propertiesdata] = []
@@ -33,20 +32,14 @@ class showHideDataViewController: UIViewController , UISearchBarDelegate{
     var selectedIndexPath = IndexPath(item: 0, section: 0)
     var selectedRentOrSale = ""
     var selectedCategory = ""
-    var  adminUid: String? = ""
     var  userUid: String? = ""
     var ForSoldAndRented : Bool = false
-    var viewIsVisibleConstraint: NSLayoutConstraint!
-    var viewIsHiddenConstraint: NSLayoutConstraint!
     @IBOutlet weak var userLogoutView: UIView!
     @IBOutlet weak var userLable: UILabel!
     @IBOutlet weak var logoutBtn: UIButton!
     var User = ""
     var Email = ""
     var loginUserName = ""
-    var propertySort = [String]()
-    
-    
     //MARK:- View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()

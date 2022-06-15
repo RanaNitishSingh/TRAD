@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet var LblLanguage: UILabel!
     @IBOutlet weak var switchBtn: UISwitch!
     var show = Bool()
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         requestPropertyBtn.layer.cornerRadius = 24

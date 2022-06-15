@@ -17,10 +17,10 @@ import FirebaseMessaging
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 
-let googleApiKey = "AIzaSyDrpoJE-FXgMvHJx3Bw0rNNIXez2IGYyN8"
+//let googleApiKey = "AIzaSyDrpoJE-FXgMvHJx3Bw0rNNIXez2IGYyN8"
 //"AIzaSyB3bA7SKc32GplyHR5RZjFJTUxNIW4mBmo".
 //let googlePlaceApiKey = "AIzaSyBrNRrOgDJnokCGOsvTyC556MLJaLJQPsI"
-
+let googleApiKey = "AIzaSyCpJa37z8VtUwftDVRYI9E-zXw30JqYe-8"
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

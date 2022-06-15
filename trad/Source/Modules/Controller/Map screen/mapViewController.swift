@@ -34,7 +34,6 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     var rangeArray : [Propertiesdata] = []
     var selectedIndex = Int ()
     var selectedIndexPath : IndexPath?
-    var levelCheck = ""
     var CountData : [UserData] = []
     var mainArrayData3 : [UserData] = []
     var pickerView = UIPickerView()
@@ -49,11 +48,9 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
     var markerwindow  = markerWindow()
     var Aproperties : [Propertiesdata] = []
     var Aproperties_1 : [Propertiesdata] = []
-    var distanceInMeters : CLLocationDistance?
-    var  adminUid = ""
-    var  userUid = ""
+    var distanceInMeters : CLLocationDistance?   
     var propertytype  = ""
-    var currentString = ""
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

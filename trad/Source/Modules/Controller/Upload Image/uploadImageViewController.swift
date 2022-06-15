@@ -31,13 +31,11 @@ class uploadImageViewController: UIViewController, UIImagePickerControllerDelega
     var CategoryDetail =  String()
     var categoryindex =  Int()
     var arrayOfImagesAndVideos = [Any]()
-    var _selectedCells : NSMutableArray = []
     var imageDAta = UIImage()
     var imageUrlArray = [String]()
     var videoUrlArray = [String]()
     let myGroup = DispatchGroup()
-    let imagePicker = UIImagePickerController()
-    var positions = Int()
+    let imagePicker = UIImagePickerController()    
     var img = UIImage()
     
     override func viewDidLoad() {

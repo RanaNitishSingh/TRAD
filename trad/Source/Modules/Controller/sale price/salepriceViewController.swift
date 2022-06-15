@@ -27,15 +27,12 @@ class salepriceViewController: UIViewController, UISearchBarDelegate {
     var properties: [Propertiesdata] = []
     var mainArrayProperties : [Propertiesdata] = []
     let vc = detailViewController()
-    var listFilterData = [String()]
     var searching = false
     var filtered: [Propertiesdata] = []
     var displayArraycategories = ["All", "Villa","Land","Floor","Apartment","Building","Esteraha","Store","Farm","Room","Office","Warehouse","Furnished Apartment","Tent"]
     var selectedIndexPath = IndexPath(item: 0, section: 0)
     var selectedRentOrSale = ""
-    var selectedCategory = ""
-    var position = Int()
-    var arrayDate = [String]()
+    var selectedCategory = ""  
     
     override func viewDidLoad() {
         super.viewDidLoad()
