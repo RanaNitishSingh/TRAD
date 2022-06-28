@@ -63,10 +63,8 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
+    
+    
     
     @objc func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))

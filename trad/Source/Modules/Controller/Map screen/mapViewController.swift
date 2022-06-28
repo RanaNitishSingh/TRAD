@@ -101,6 +101,7 @@ class mapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDe
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         self.hideKeyboardWhenTappedAround()
+        self.getMyCurrentLocation()
         let meaasgeDetails =  UserDefaults.standard.value(forKey: "messageId")
         if meaasgeDetails == nil{
             self.tabBarController?.tabBar.isHidden = false

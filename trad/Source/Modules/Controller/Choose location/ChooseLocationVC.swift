@@ -26,7 +26,7 @@ class ChooseLocationVC: UIViewController, UISearchBarDelegate {
     var latitude = CLLocationDegrees()
     var longitude = CLLocationDegrees()
     private let locationManager = CLLocationManager()
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.Aproperties1.count == 0 {
@@ -102,6 +102,10 @@ class ChooseLocationVC: UIViewController, UISearchBarDelegate {
     @IBAction func onLaunchClicked(sender: UIButton) {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
+        let filter = GMSAutocompleteFilter()
+        filter.type = .establishment
+        filter.country = "SA"
+        autocompleteController.autocompleteFilter = filter
         present(autocompleteController, animated: true, completion: nil)
     }
     
@@ -161,6 +165,9 @@ class ChooseLocationVC: UIViewController, UISearchBarDelegate {
             UIView.animate(withDuration: 0.25) {
                 self.view.layoutIfNeeded()
             }}}
+    
+    
+    
 }
 
 
@@ -222,10 +229,10 @@ extension ChooseLocationVC: GMSAutocompleteViewControllerDelegate {
         print("Place name: \(place.name)")
         print("Place ID: \(place.placeID)")
         print("Place attributions: \(place.attributions)")
-        dismiss(animated: true, completion: nil)
-        self.mapView.clear()
+        self.mapView.clear()         
         let cord2D = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
         self.mapView.camera = GMSCameraPosition.camera(withTarget: cord2D, zoom: 15)
+       dismiss(animated: true, completion: nil)
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
