@@ -53,6 +53,7 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
     
     
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+        
         print(remoteMessage.appData)
         
     }
